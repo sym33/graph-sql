@@ -1,0 +1,23 @@
+[
+  {
+    "name": "cresemba",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/cresemba-epar-product-information_en.pdf",
+    "sha256": "717f0eaf344e7731233baaa73335921f17bfdd86e9fa04c8f2a3921c343e8f3d",
+    "retrieved_utc": "2026-10-10T15:14:14.110190+00:00",
+    "bytes": 1318200
+  },
+  {
+    "name": "noxafil",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/noxafil-epar-product-information_en.pdf",
+    "sha256": "bfc2a27f2fb2c982d1e4beb55db11eb1ad163481d32f08c94b54ec38f96ef5b5",
+    "retrieved_utc": "2026-10-10T15:14:14.575509+00:00",
+    "bytes": 1867788
+  },
+  {
+    "name": "SwissDRG_route_documentation",
+    "url": "https://www.swissdrg.org/download_file/view/5384/2330",
+    "sha256": "cb012155ca9242e6024059158f00288260c90bb5f946987ec81fad8be2531ddd",
+    "retrieved_utc": "2026-10-10T15:14:14.833108+00:00",
+    "bytes": 982992
+  }
+]

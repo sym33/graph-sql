@@ -1,0 +1,20 @@
+{
+  "frozen_utc": "2026-10-11T12:09:42.129692+00:00",
+  "prior_information": "V27 memory/Neo4j results known; persistent SQLite results not measured",
+  "purpose": "Separate SQLite storage mode from original observed latency gap; three interleaved HTTP arms",
+  "query_sha256": "9bc89e42b8583db8de14a4bcfe9f27afd8a50c306da60e3c1070413755cd9231",
+  "cases": "All five task populations retained, no post-hoc faster-case selection; errors/timeouts reported",
+  "transport": "SQLite memory and committed/reopened file via identical Python HTTP stack; persistent Neo4j localhost HTTP",
+  "warmups": 3,
+  "repetitions": 15,
+  "seed": 28011,
+  "timeout_seconds": 180,
+  "validation": "All complete result keys/values and set multiplicities match independent Python source oracle before measurement, and on each measured execution",
+  "indexes": "SQL keys/join indexes; Neo4j existing uniqueness plus protocol-tagged Association(jurisdiction,rule), Association(subject,rule), SourceRecord(file,tariff_atc) range indexes; record index creation time and remove additions in finally",
+  "cache": "Three warmups; persistent does not mean cold OS cache",
+  "output": "Median, quartiles, complete counts/digests, every observation and query plan; fail correctness before timing comparisons",
+  "inference_scope": "Existing source-derived witnesses queried and combined; no exclusive reasoning capability or engine-only performance inferred",
+  "effort": "No authoring-time or comprehension measurement",
+  "storage": "Identical normalized schema and indexes copied via SQLite backup, committed, closed/reopened before queries",
+  "code_sha256": "20c1bc7b65aa5fc89694b7fdbf3d8a34074be44dced6c3440fff7def09236591"
+}

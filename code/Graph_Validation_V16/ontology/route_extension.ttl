@@ -1,0 +1,9 @@
+@prefix ex: <https://example.org/medigraph/evidence/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+ex:recordedOralCode a owl:ObjectProperty .
+ex:recordedParenteralCode a owl:ObjectProperty .
+ex:listedByOralTariff a owl:ObjectProperty .
+ex:listedByParenteralTariff a owl:ObjectProperty .
+ex:routeCompatibleTariff a owl:ObjectProperty ;
+ owl:propertyChainAxiom (ex:recordedOralCode ex:listedByOralTariff) ;
+ owl:propertyChainAxiom (ex:recordedParenteralCode ex:listedByParenteralTariff) .

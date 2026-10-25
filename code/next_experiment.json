@@ -1,0 +1,51 @@
+{
+  "status": "executed; registered and exploratory observations in Source_Refresh/observed",
+  "question": "When medication sources change, do stored derivations improve repeated evidence retrieval enough to justify their construction and maintenance cost, and are all candidate judgments kept correct?",
+  "design": "2 x 2 comparison: Neo4j and file-backed SQLite, each with query-time derivation and stored derivation",
+  "primary_application": "Which medication-tariff candidates and route judgments changed after a source refresh, what source records caused the changes, and which linked records require follow-up?",
+  "sources": {
+    "initial": "included June medication extracts and frozen tariff catalogue",
+    "refresh": "first eligible later complete official release acquired after this protocol is fixed",
+    "eligibility": "complete documented SAI/Refdata and SL publications; unchanged tariff version for the primary source-refresh contrast",
+    "freeze_before_execution": "source hashes, acquisition date, parsing rules, workloads and tuning choices",
+    "fallback": "the included earlier-to-June transition may be used as development data only; it is not the independent evaluation population"
+  },
+  "arms": [
+    "Neo4j indexed query-time ATC-to-tariff equality",
+    "Neo4j stored witness-to-tariff relationship retaining every derivation and premise",
+    "SQLite indexed query-time ATC-to-tariff equality",
+    "SQLite indexed stored witness-to-tariff table retaining every derivation and premise"
+  ],
+  "fairness": [
+    "Identical source records, interpretation rules, complete outputs and multiplicities in all arms",
+    "Every stored graph relationship has an equivalent relational table row",
+    "Same host, HTTP transport, response fields and complete row consumption",
+    "Document memory, storage, indexes, query plans and software versions",
+    "Tune on development data before the independent release is acquired; record revisions transparently",
+    "Use a dedicated disposable database; retain raw source snapshots"
+  ],
+  "workloads": [
+    "All five existing source-explanation tasks with unchanged output contracts",
+    "Candidate and judgment changes between the two source releases",
+    "Affected source premises and candidate explanations after refresh"
+  ],
+  "measurements": {
+    "correctness": "complete pair, derivation, premise and judgment equality against independent source reconstruction before and after every update",
+    "latency": "median and quartiles of full-output retrieval; paired observed differences",
+    "materialization": "initial construction time, relationship or row counts and extra storage",
+    "refresh": "refresh time and invalidation count; stale candidate and stale judgment counts must be zero",
+    "total_cost": "construction plus refresh plus repeated retrieval at 1, 10, 100 and 1000 requests; report observed break-even only when it exists",
+    "protocol": "three warmups and fifteen randomized interleaved retrieval repetitions; seven independent construction/refresh cycles from an identical starting state",
+    "uncertainty": "report timing distributions and dependent units; repeat counts are not independent medication observations"
+  },
+  "acceptance": [
+    "Every arm matches independently reconstructed source-derived answers",
+    "Every refreshed answer exposes its exact source changes",
+    "No elapsed-time advantage is inferred from query brevity or join count",
+    "Report unfavorable, tied and favorable outcomes symmetrically",
+    "An engineering benefit is claimed only for its measured arm, workload and refresh frequency"
+  ],
+  "interpretation_limits": "This experiment measures deployment choices and update correctness. It does not measure human comprehension, acquisition effort, clinical outcomes or reimbursement entitlement. A real evidence-acquisition study would additionally need unknown fields from a heterogeneous new cohort and independently documented retrieval effort.",
+  "immutable_pre_execution_protocol": "Source_Refresh/protocol_before_execution.json",
+  "execution_conditions": "Source_Refresh/EXECUTION_PROTOCOL.json"
+}

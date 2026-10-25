@@ -1,0 +1,18 @@
+@prefix ex: <https://example.org/medigraph/evidence/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+ex:DocumentaryShape a sh:NodeShape ; sh:targetClass ex:DocumentaryWitness ;
+ sh:property [sh:path ex:subject ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ex:SwissProduct] ;
+ sh:property [sh:path ex:recordedCode ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ex:ATCConcept] ;
+ sh:property [sh:path ex:premise ; sh:minCount 1 ; sh:class ex:SourceRecord] ;
+ sh:property [sh:path ex:documentaryTariff ; sh:class ex:SwissTariffRecord] ;
+ sh:property [sh:path ex:snapshot ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string] .
+ex:HistoricalShape a sh:NodeShape ; sh:targetClass ex:HistoricalWitness ;
+ sh:property [sh:path ex:historicalCode ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ex:ATCConcept] ;
+ sh:property [sh:path ex:recordedCode ; sh:maxCount 0] ;
+ sh:property [sh:path ex:documentaryTariff ; sh:maxCount 0] ;
+ sh:property [sh:path ex:historicalTariff ; sh:class ex:SwissTariffRecord] .
+ex:IngredientShape a sh:NodeShape ; sh:targetClass ex:IngredientDeclaration ;
+ sh:property [sh:path ex:lexicalValue ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string] ;
+ sh:property [sh:path ex:sourceRecord ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ex:SourceRecord] ;
+ sh:property [sh:path ex:ingredientTariffCandidate ; sh:minCount 1 ; sh:class ex:SwissTariffRecord] .

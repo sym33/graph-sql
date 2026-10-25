@@ -1,0 +1,45 @@
+{
+  "frozen_utc": "2026-10-11T12:45:02.481898+00:00",
+  "question": "Which unresolved product-tariff route questions need a missing package bridge, which can be settled from recorded family exclusions, and which package-route fields have the greatest bounded acquisition value?",
+  "prior_information": "Original exact/coarse/formulation and robustness marginals known; new information-value counts and masked-reveal outcomes not computed",
+  "population": "All 564 candidate pairs and 999 linked SL paths in frozen June sources",
+  "route_target": "Recorded exact-route compatibility; preserve existing explicit-route decisions",
+  "possibilities": {
+    "oral": [
+      "O"
+    ],
+    "parenteral": [
+      "IV",
+      "SC",
+      "IM",
+      "IT",
+      "OTHER_PAREN"
+    ],
+    "unknown": [
+      "O",
+      "IV",
+      "SC",
+      "IM",
+      "IT",
+      "SR",
+      "Inhal",
+      "ET",
+      "OTHER"
+    ]
+  },
+  "scope": "Finite documentary possibilities under the modeled vocabulary. OTHER prevents a closed-world assertion that listed family members exhaust real routes. Unknown tariff tokens keep nonoverlap undetermined.",
+  "new_decision": "Known routes: existing overlap decision. No known routes: certain V if every modeled possibility allowed; certain C if all possibilities excluded and tariff vocabulary complete; otherwise U.",
+  "review_value": "For each missing-route SL record, reveal each feasible singleton route, propagate it through every retained candidate path, and count U-to-V/C transitions. Report min and max over possibilities; no probability or expected benefit.",
+  "ranking": "Descending minimum gain, maximum gain, affected unresolved pairs, then source-record ID. Single-field values are not additive.",
+  "masked_evaluation": "Exhaust every SL record with an explicit parenteral route in the original exact-policy population. Hide that record route only, retain its family and all other facts. Compute prediction and interval before revealing archived route(s). Compare actual determinate-pair gain with frozen bounds and account for each case.",
+  "transfer": "Report all observed ATC level-2 prefixes (first three characters) for the masked parenteral records; no class selected by favorable results. Each mask trial shares the source population, so counts are not independent clinical observations.",
+  "external_reference": "Existing glossary/EDQM supports route meanings; no EMA-to-Swiss authorization substitution or imputed route. External document retrieval is a separate possible acquisition step.",
+  "comparators": "Independent SQLite expression for all uncertainty decisions; finite exhaustive controls; complete source accounting.",
+  "outputs": "Unresolved-cause census, single-record acquisition bounds and ranking, all masked reveal trials and class summaries, set equality and conservation checks",
+  "inputs": {
+    "Graph_Validation_V9/temporal_snapshot/input/silver/sl.csv": "8170c468ed391bd93a3cb8119d338296faa887053d9498bf2f5f2d6f887b2651",
+    "Graph_Validation_V9/temporal_snapshot/input/silver/sai_praeparate.csv": "21ab964f09219334f48439535f4ddfc708127c3d3e01bdbce807b64edbaceabe",
+    "Graph_Validation_V9/temporal_snapshot/input/silver/ze_definitions.csv": "8e7893592ef0f9d9bd817e0ebfa5194be8918958777c25290d022fbc760046fa",
+    "Graph_Validation_V17/code/route_policies.py": "4f46f98305b7691f2f9ca7b79ebb676bfebc549ccb85381dc212753fdb84a039"
+  }
+}

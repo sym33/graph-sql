@@ -1,0 +1,51 @@
+{
+  "question": "For which recorded active-ingredient declarations does the same frozen tariff candidate have at least one compatible and at least one contradictory package-route path?",
+  "fixed_before_first_followup_execution_utc": "2026-10-10T19:17:00.777090+00:00",
+  "prior_knowledge": "Overall route populations, six newly exposed SC-IV paths, stable path counts and ingredient-tariff materialization counts were already inspected. Declaration-by-tariff mixed-context groups have not been computed for this follow-up. This is local prospective specification within an explored dataset, not external preregistration.",
+  "population": "Every inferred SL source-row ingredientTariffCandidate relationship in the frozen June graph; documentary Swiss paths only.",
+  "primary_policy": "exact_code",
+  "secondary_policies": [
+    "coarse",
+    "explicit_formulation"
+  ],
+  "group_key": "(recorded ingredient declaration, exact tariff source-record ID); declaration normalization only strip, casefold and collapse whitespace; no synonyms or ingredient splitting.",
+  "primary_outcome": "All groups containing at least one VERIFIED and one CONTRADICTED path under exact_code; no minimum-count threshold.",
+  "secondary_outcomes": [
+    "Complete group status profiles under each policy",
+    "Exact-code mixed groups also mixed under explicit_formulation",
+    "Mixed groups absent under coarse but present under exact_code",
+    "Complete product, package and premise traces for every selected group"
+  ],
+  "interpretation": "Same recorded ingredient description is a documentary grouping, not established molecular identity, therapeutic interchangeability or billing eligibility.",
+  "inference_use": "Follow-up query consumes materialized ingredientTariffCandidate edges and source-bound package/tariff context.",
+  "comparators": [
+    "No-materialization query on identical input triples",
+    "Remove ingredientTariffCandidate property-chain axiom",
+    "Restore removed axiom",
+    "Independent SQL join from frozen SAI, SL and tariff source fields; separate lexical route decision expression"
+  ],
+  "acceptance": [
+    "Complete inferred ingredient/tariff pair agreement with source SQL",
+    "Every selected group has exact supporting positive and conflicting source paths",
+    "No-materialization and removed-chain query return no materialized input edges",
+    "Restored-chain sets and selected outcomes equal full inference",
+    "Preserve all documentaryTariff predicates when ingredient chain is removed"
+  ],
+  "inputs": {
+    "antraege.csv": "26036e9e3ddfe4e6087acc11847a2e074201a8bb6eb66119a6d44b288f5ab42c",
+    "atc_alterations.csv": "9a853611cd029791d17f736486dc69d2be0e1745b72609bf43ae64761d4a291e",
+    "atc_ddd.csv": "f02d7af5dcca5fa7e859c2f7634cec59090418d87c570f078ce73f1624a1d9d9",
+    "atc_list.csv": "7fc47d896dc0e7dc605fb3f628d84d735da6767f02941cd7ad814729ebba4487",
+    "ema_products.csv": "d2d7f1e1c73f7a432eae532eb7e999cd9c588664a5424a38660e81b40c80e14d",
+    "gBA_icd.csv": "0da2331c0cc9f471a8e17009a547d05ec4cfd2c93de02ef5ee2f83944bfd1a39",
+    "gBA_nutzenbewertung.csv": "ce631f3c87cc1d63df588a20b73967885d2e4cd7d6fda3f8da72cf2e79649373",
+    "geloeschte_substanzen.csv": "425567d7a4050b9c800f830cb403172b9b102dee9154e5b55846f12a80ddbc5d",
+    "hochteure_medis.csv": "aa9a90dadee7d70945587ce26a5f4b87b1dd5d83bc4e67098482bbff5653ff63",
+    "sai_praeparate.csv": "21ab964f09219334f48439535f4ddfc708127c3d3e01bdbce807b64edbaceabe",
+    "sl.csv": "8170c468ed391bd93a3cb8119d338296faa887053d9498bf2f5f2d6f887b2651",
+    "technisches_begleitblatt.csv": "24908ff12f82a7a1ebdd2ee12f222f969827892c18c60f70e8780cbd2c509599",
+    "ze_definitions.csv": "8e7893592ef0f9d9bd817e0ebfa5194be8918958777c25290d022fbc760046fa"
+  },
+  "ontology_sha256": "1ac185cf89eabad9d356d1026c2ad958393666a1d595436a9be5bcf783568041",
+  "followup_code_sha256_before_execution": "344d0655c60221375c99329a963e90cd57e81b1662bd02e05a8a67541c0ae293"
+}

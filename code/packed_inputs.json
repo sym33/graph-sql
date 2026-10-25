@@ -1,0 +1,47 @@
+[
+  {
+    "original": "Graph_Validation_V9/results/baseline_physical_bundles.json",
+    "packed": "Graph_Validation_V9/results/baseline_physical_bundles.json.gz",
+    "sha256": "7ecc5aeab82c374beaec0fa76d3e182098665be4cc5153dffa8c4b17594ef5c5"
+  },
+  {
+    "original": "Graph_Validation_V9/results/temporal_physical_bundles.json",
+    "packed": "Graph_Validation_V9/results/temporal_physical_bundles.json.gz",
+    "sha256": "2b863df4aa7a8045df0e41ed5eafa9c5ac764466de8cba2a98120d9e9bb98538"
+  },
+  {
+    "original": "External_Knowledge_Validation/raw/chembl_molecules_002.json",
+    "packed": "External_Knowledge_Validation/raw/chembl_molecules_002.json.gz",
+    "sha256": "e32872a7ac4cbf6d6127fe29acb48d89234697c83c22e5d24c465b8c3d0d216b"
+  },
+  {
+    "original": "External_Knowledge_Validation/raw/chembl_molecules_000.json",
+    "packed": "External_Knowledge_Validation/raw/chembl_molecules_000.json.gz",
+    "sha256": "53e87fd8fa9f8a65a6342c4715d6854a7e8cd2d263b7cc5f473dc5bf7fec8ae2"
+  },
+  {
+    "original": "External_Knowledge_Validation/raw/chembl_molecules_001.json",
+    "packed": "External_Knowledge_Validation/raw/chembl_molecules_001.json.gz",
+    "sha256": "d6cbce6cb38b647012615619091ec81f97323bd0d43d7c7a4a49ceaa391a9a5a"
+  },
+  {
+    "original": "Graph_Validation_V10/results/June_indication_bundles.jsonl",
+    "packed": "Graph_Validation_V10/results/June_indication_bundles.jsonl.gz",
+    "sha256": "d3d36ccc68500ea339089a2ce254c54fc1b18bd87243cfa203775f65bf35179d"
+  },
+  {
+    "original": "Graph_Validation_V10/results/baseline_indication_bundles.jsonl",
+    "packed": "Graph_Validation_V10/results/baseline_indication_bundles.jsonl.gz",
+    "sha256": "32b1b328b46af312510b06d49a935271c00dfa7c4332b40120c0f7c3d472d720"
+  },
+  {
+    "original": "Graph_Validation_V16/external/cresemba.pdf",
+    "source": "Graph_Validation_V21/external/cresemba.pdf",
+    "sha256": "717f0eaf344e7731233baaa73335921f17bfdd86e9fa04c8f2a3921c343e8f3d"
+  },
+  {
+    "original": "Graph_Validation_V16/external/noxafil.pdf",
+    "source": "Graph_Validation_V21/external/noxafil.pdf",
+    "sha256": "bfc2a27f2fb2c982d1e4beb55db11eb1ad163481d32f08c94b54ec38f96ef5b5"
+  }
+]

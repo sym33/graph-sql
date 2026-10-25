@@ -1,0 +1,11 @@
+{
+  "task": "External compatibility of staged substance names and ATC assertions",
+  "population": "All 1569 frozen EMA rows; unique substance/code pairs also reported",
+  "reference": "Entire ATC-bearing ChEMBL molecule collection, release recorded from status endpoint",
+  "entity_resolution": "NFKC Unicode normalization, casefold and whitespace collapse; exact preferred-name primary and exact synonym secondary; no ATC-assisted matching, fuzzy matching or salt stripping",
+  "ambiguity": "More than one parent molecule yields unresolved; absent entity or code yields insufficient evidence, not false",
+  "classification": "Exact code-set membership; syntactically valid ATC ancestor compatibility; official one-step named WHO alterations including ancestor-of-origin; partial multi-code support and malformed codes reported separately",
+  "clinical_scope": "Substance classification compatibility, not current product authorization or payment eligibility",
+  "dependence": "ChEMBL inherits WHO classification and can reuse regulatory information; an external acquisition is not an independent clinical gold standard",
+  "freeze": "Initial exact-equivalence protocol and outcomes archived; granularity-aware refinement added after reviewing observed format discrepancies. No independent held-out validation claim."
+}

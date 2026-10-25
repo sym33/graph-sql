@@ -1,0 +1,5655 @@
+{
+  "protocol_sha256": "f5a4e704ff9aece78009e63e55b4dcc008904c72408cc9280621dd384b9cc304",
+  "input_hashes": {
+    "atc_list.csv": "7fc47d896dc0e7dc605fb3f628d84d735da6767f02941cd7ad814729ebba4487",
+    "sai_praeparate.csv": "7f1a6717b6b7cc0f8f56db6177821b4bbe1c4fd1c2ef3c8cee894c7334c70dfc",
+    "sl.csv": "03ff8ff406e30018b5a500ca009a6771656944f160ccbf093059ccc782f00928"
+  },
+  "environment": {
+    "platform": "Linux-6.8.0-117-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0]",
+    "SQLite": "3.45.1",
+    "PostgreSQL": 160013,
+    "psycopg2": "2.9.11 (dt dec pq3 ext lo64)",
+    "Neo4j": [
+      {
+        "name": "Neo4j Kernel",
+        "versions": [
+          "5.26.1"
+        ],
+        "edition": "community"
+      }
+    ],
+    "transport": "one local HTTP JSON request per engine; SQL bridge uses sqlite3/psycopg2; Neo4j uses native transactional HTTP; execution, transfer, decode included; sorting and agreement outside timer",
+    "PostgreSQL_settings": {
+      "shared_buffers": "1GB",
+      "work_mem": "64MB",
+      "jit": "on",
+      "synchronous_commit": "on"
+    },
+    "Neo4j_memory": "heap initial 1G, max 2G; page cache 1G"
+  },
+  "queries": {
+    "0": {
+      "SQL": "WITH RECURSIVE up(ns,leaf,ancestor,d) AS (\n SELECT ns,code,code,0 FROM witness GROUP BY ns,code\n UNION ALL SELECT u.ns,u.leaf,p.parent,u.d+1 FROM up u JOIN parent p ON p.ns=u.ns AND p.child=u.ancestor WHERE u.d<0)\n SELECT a.ns,a.product anchor,b.product peer,x.ancestor,a.code anchor_code,b.code peer_code,x.d anchor_depth,y.d peer_depth,a.id anchor_witness,b.id peer_witness,a.premises anchor_premises,b.premises peer_premises\n FROM seed s JOIN witness a ON a.ns=s.ns AND a.product=s.product\n JOIN up x ON x.ns=a.ns AND x.leaf=a.code\n JOIN up y ON y.ns=x.ns AND y.ancestor=x.ancestor\n JOIN witness b ON b.ns=y.ns AND b.code=y.leaf\n WHERE b.product<>a.product",
+      "Cypher": "MATCH (s:PeerSeed),(a:PeerWitness {ns:s.ns,product:s.product})-[:RECORDED]->(ca:PeerCode)\n MATCH pa=(ca)-[:PARENT*0..0]->(c:PeerCode)\n MATCH pb=(c)<-[:PARENT*0..0]-(cb:PeerCode)<-[:RECORDED]-(b:PeerWitness)\n WHERE a.ns=b.ns AND a.product<>b.product\n RETURN a.ns AS ns,a.product AS anchor,b.product AS peer,c.code AS ancestor,a.code AS anchor_code,b.code AS peer_code,\n length(pa) AS anchor_depth,length(pb)-1 AS peer_depth,a.id AS anchor_witness,b.id AS peer_witness,a.premises AS anchor_premises,b.premises AS peer_premises"
+    },
+    "2": {
+      "SQL": "WITH RECURSIVE up(ns,leaf,ancestor,d) AS (\n SELECT ns,code,code,0 FROM witness GROUP BY ns,code\n UNION ALL SELECT u.ns,u.leaf,p.parent,u.d+1 FROM up u JOIN parent p ON p.ns=u.ns AND p.child=u.ancestor WHERE u.d<2)\n SELECT a.ns,a.product anchor,b.product peer,x.ancestor,a.code anchor_code,b.code peer_code,x.d anchor_depth,y.d peer_depth,a.id anchor_witness,b.id peer_witness,a.premises anchor_premises,b.premises peer_premises\n FROM seed s JOIN witness a ON a.ns=s.ns AND a.product=s.product\n JOIN up x ON x.ns=a.ns AND x.leaf=a.code\n JOIN up y ON y.ns=x.ns AND y.ancestor=x.ancestor\n JOIN witness b ON b.ns=y.ns AND b.code=y.leaf\n WHERE b.product<>a.product",
+      "Cypher": "MATCH (s:PeerSeed),(a:PeerWitness {ns:s.ns,product:s.product})-[:RECORDED]->(ca:PeerCode)\n MATCH pa=(ca)-[:PARENT*0..2]->(c:PeerCode)\n MATCH pb=(c)<-[:PARENT*0..2]-(cb:PeerCode)<-[:RECORDED]-(b:PeerWitness)\n WHERE a.ns=b.ns AND a.product<>b.product\n RETURN a.ns AS ns,a.product AS anchor,b.product AS peer,c.code AS ancestor,a.code AS anchor_code,b.code AS peer_code,\n length(pa) AS anchor_depth,length(pb)-1 AS peer_depth,a.id AS anchor_witness,b.id AS peer_witness,a.premises AS anchor_premises,b.premises AS peer_premises"
+    },
+    "4": {
+      "SQL": "WITH RECURSIVE up(ns,leaf,ancestor,d) AS (\n SELECT ns,code,code,0 FROM witness GROUP BY ns,code\n UNION ALL SELECT u.ns,u.leaf,p.parent,u.d+1 FROM up u JOIN parent p ON p.ns=u.ns AND p.child=u.ancestor WHERE u.d<4)\n SELECT a.ns,a.product anchor,b.product peer,x.ancestor,a.code anchor_code,b.code peer_code,x.d anchor_depth,y.d peer_depth,a.id anchor_witness,b.id peer_witness,a.premises anchor_premises,b.premises peer_premises\n FROM seed s JOIN witness a ON a.ns=s.ns AND a.product=s.product\n JOIN up x ON x.ns=a.ns AND x.leaf=a.code\n JOIN up y ON y.ns=x.ns AND y.ancestor=x.ancestor\n JOIN witness b ON b.ns=y.ns AND b.code=y.leaf\n WHERE b.product<>a.product",
+      "Cypher": "MATCH (s:PeerSeed),(a:PeerWitness {ns:s.ns,product:s.product})-[:RECORDED]->(ca:PeerCode)\n MATCH pa=(ca)-[:PARENT*0..4]->(c:PeerCode)\n MATCH pb=(c)<-[:PARENT*0..4]-(cb:PeerCode)<-[:RECORDED]-(b:PeerWitness)\n WHERE a.ns=b.ns AND a.product<>b.product\n RETURN a.ns AS ns,a.product AS anchor,b.product AS peer,c.code AS ancestor,a.code AS anchor_code,b.code AS peer_code,\n length(pa) AS anchor_depth,length(pb)-1 AS peer_depth,a.id AS anchor_witness,b.id AS peer_witness,a.premises AS anchor_premises,b.premises AS peer_premises"
+    }
+  },
+  "construction": [
+    {
+      "copies": 1,
+      "witnesses": 9014,
+      "hierarchy_nodes": 6996,
+      "hierarchy_edges": 6982,
+      "SQLite_seconds": 0.040503501892089844,
+      "PostgreSQL_seconds": 0.2834340054541826,
+      "Neo4j_seconds": 2.5989388413727283,
+      "SQLite_bytes": 4300800,
+      "scope": "single construction per size; tuning and starting services excluded; native client ingestion paths differ"
+    },
+    {
+      "copies": 2,
+      "witnesses": 18028,
+      "hierarchy_nodes": 13992,
+      "hierarchy_edges": 13964,
+      "SQLite_seconds": 0.08182166330516338,
+      "PostgreSQL_seconds": 0.3680000677704811,
+      "Neo4j_seconds": 1.7361418325453997,
+      "SQLite_bytes": 8544256,
+      "scope": "single construction per size; tuning and starting services excluded; native client ingestion paths differ"
+    },
+    {
+      "copies": 4,
+      "witnesses": 36056,
+      "hierarchy_nodes": 27984,
+      "hierarchy_edges": 27928,
+      "SQLite_seconds": 0.14752903766930103,
+      "PostgreSQL_seconds": 0.6978775169700384,
+      "Neo4j_seconds": 2.6405185386538506,
+      "SQLite_bytes": 17227776,
+      "scope": "single construction per size; tuning and starting services excluded; native client ingestion paths differ"
+    }
+  ],
+  "measurements": [
+    {
+      "repeat": 0,
+      "copies": 1,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 19.238468,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 0,
+      "copies": 1,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 12.107063,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 0,
+      "copies": 1,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 172.165951,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 0,
+      "copies": 1,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 33.470463,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 0,
+      "copies": 1,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 453.929865,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 0,
+      "copies": 1,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 2270.533412,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 0,
+      "copies": 1,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 110.903026,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 0,
+      "copies": 1,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 7.175182,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 0,
+      "copies": 1,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 36.033901,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 1,
+      "copies": 1,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 7.907621,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 1,
+      "copies": 1,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 38.410282,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 1,
+      "copies": 1,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 2177.256812,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 1,
+      "copies": 1,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 258.512335,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 1,
+      "copies": 1,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 112.403036,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 1,
+      "copies": 1,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 176.02177,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 1,
+      "copies": 1,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 31.009819,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 1,
+      "copies": 1,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 20.189373,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 1,
+      "copies": 1,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 11.112269,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 2,
+      "copies": 1,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 42.903299,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 2,
+      "copies": 1,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 26.599315,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 2,
+      "copies": 1,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 8.339932,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 2,
+      "copies": 1,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 10.313113,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 2,
+      "copies": 1,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 194.816843,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 2,
+      "copies": 1,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 19.937004,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 2,
+      "copies": 1,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 2147.211027,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 2,
+      "copies": 1,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 110.853749,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 2,
+      "copies": 1,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 427.964123,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 3,
+      "copies": 1,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 109.428637,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 3,
+      "copies": 1,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 10.461089,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 3,
+      "copies": 1,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 107.42595,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 3,
+      "copies": 1,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 31.492398,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 3,
+      "copies": 1,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 30.525651,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 3,
+      "copies": 1,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 33.638424,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 3,
+      "copies": 1,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 2404.833225,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 3,
+      "copies": 1,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 8.914362,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 3,
+      "copies": 1,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 254.339284,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 4,
+      "copies": 1,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 239.536524,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 4,
+      "copies": 1,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 32.621847,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 4,
+      "copies": 1,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 32.130601,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 4,
+      "copies": 1,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 9.004459,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 4,
+      "copies": 1,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 110.50512,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 4,
+      "copies": 1,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 194.167939,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 4,
+      "copies": 1,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 8.470544,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 4,
+      "copies": 1,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 21.961431,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 4,
+      "copies": 1,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 2152.426433,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 5,
+      "copies": 1,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 35.869256,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 5,
+      "copies": 1,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 107.543878,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 5,
+      "copies": 1,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 28.655558,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 5,
+      "copies": 1,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 8.325163,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 5,
+      "copies": 1,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 29.598706,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 5,
+      "copies": 1,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 451.410977,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 5,
+      "copies": 1,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 3120.913198,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 5,
+      "copies": 1,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 19.298815,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 5,
+      "copies": 1,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 152.619065,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 6,
+      "copies": 1,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 243.379785,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 6,
+      "copies": 1,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 18.787484,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 6,
+      "copies": 1,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 153.459792,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 6,
+      "copies": 1,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 2167.49746,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 6,
+      "copies": 1,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 32.804859,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 6,
+      "copies": 1,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 25.666927,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 6,
+      "copies": 1,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 10.445335,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 6,
+      "copies": 1,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 6.166951,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 6,
+      "copies": 1,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 107.486658,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 7,
+      "copies": 1,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 32.10276,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 7,
+      "copies": 1,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 21.33411,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 7,
+      "copies": 1,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 158.3818,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 7,
+      "copies": 1,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 2141.007451,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 7,
+      "copies": 1,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 12.993964,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 7,
+      "copies": 1,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 22.827994,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 7,
+      "copies": 1,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 109.808475,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 7,
+      "copies": 1,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 241.212192,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 7,
+      "copies": 1,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 8.247018,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 8,
+      "copies": 1,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 2138.358426,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 8,
+      "copies": 1,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 9.824915,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 8,
+      "copies": 1,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 238.564208,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 8,
+      "copies": 1,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 21.028512,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 8,
+      "copies": 1,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 33.807072,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 8,
+      "copies": 1,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 73.749727,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 8,
+      "copies": 1,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 123.504901,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "repeat": 8,
+      "copies": 1,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 30.907975,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "repeat": 8,
+      "copies": 1,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 36.444921,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "repeat": 0,
+      "copies": 2,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 131.257398,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 0,
+      "copies": 2,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 37.652713,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 0,
+      "copies": 2,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 8.823656,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 0,
+      "copies": 2,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 32.896589,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 0,
+      "copies": 2,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 122.031752,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 0,
+      "copies": 2,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 48.364217,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 0,
+      "copies": 2,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 15.525096,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 0,
+      "copies": 2,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 9.599812,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 0,
+      "copies": 2,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 270.655209,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 1,
+      "copies": 2,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 34.155129,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 1,
+      "copies": 2,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 13.829274,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 1,
+      "copies": 2,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 289.742288,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 1,
+      "copies": 2,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 59.837572,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 1,
+      "copies": 2,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 219.112854,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 1,
+      "copies": 2,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 166.919572,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 1,
+      "copies": 2,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 40.528644,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 1,
+      "copies": 2,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 10.599996,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 1,
+      "copies": 2,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 8.498897,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 2,
+      "copies": 2,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 124.965419,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 2,
+      "copies": 2,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 11.406157,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 2,
+      "copies": 2,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 60.86389,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 2,
+      "copies": 2,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 246.814281,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 2,
+      "copies": 2,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 34.093614,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 2,
+      "copies": 2,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 9.21383,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 2,
+      "copies": 2,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 122.800802,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 2,
+      "copies": 2,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 12.585134,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 2,
+      "copies": 2,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 44.26836,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 3,
+      "copies": 2,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 9.653363,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 3,
+      "copies": 2,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 219.268546,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 3,
+      "copies": 2,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 37.611922,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 3,
+      "copies": 2,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 38.761359,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 3,
+      "copies": 2,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 124.184237,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 3,
+      "copies": 2,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 274.935219,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 3,
+      "copies": 2,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 14.09569,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 3,
+      "copies": 2,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 36.727269,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 3,
+      "copies": 2,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 13.614431,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 4,
+      "copies": 2,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 8.964896,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 4,
+      "copies": 2,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 114.612326,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 4,
+      "copies": 2,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 37.231209,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 4,
+      "copies": 2,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 249.426815,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 4,
+      "copies": 2,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 37.732634,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 4,
+      "copies": 2,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 12.833818,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 4,
+      "copies": 2,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 10.579014,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 4,
+      "copies": 2,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 39.57551,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 4,
+      "copies": 2,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 206.025126,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 5,
+      "copies": 2,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 10.731926,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 5,
+      "copies": 2,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 13.061033,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 5,
+      "copies": 2,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 195.661722,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 5,
+      "copies": 2,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 8.673047,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 5,
+      "copies": 2,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 98.735776,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 5,
+      "copies": 2,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 21.17139,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 5,
+      "copies": 2,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 270.642135,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 5,
+      "copies": 2,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 41.958813,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 5,
+      "copies": 2,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 60.903593,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 6,
+      "copies": 2,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 9.675999,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 6,
+      "copies": 2,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 121.300534,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 6,
+      "copies": 2,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 101.480126,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 6,
+      "copies": 2,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 275.638627,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 6,
+      "copies": 2,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 13.945932,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 6,
+      "copies": 2,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 35.686449,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 6,
+      "copies": 2,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 57.447196,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 6,
+      "copies": 2,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 14.560624,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 6,
+      "copies": 2,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 27.177034,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 7,
+      "copies": 2,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 95.458372,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 7,
+      "copies": 2,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 10.322139,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 7,
+      "copies": 2,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 125.895953,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 7,
+      "copies": 2,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 25.241718,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 7,
+      "copies": 2,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 7.727561,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 7,
+      "copies": 2,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 29.998089,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 7,
+      "copies": 2,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 9.677512,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 7,
+      "copies": 2,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 171.972436,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 7,
+      "copies": 2,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 36.02388,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 8,
+      "copies": 2,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 34.964354,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 8,
+      "copies": 2,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 130.865911,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 8,
+      "copies": 2,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 198.08633,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 8,
+      "copies": 2,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 6.100001,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 8,
+      "copies": 2,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 6.289203,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 8,
+      "copies": 2,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 32.15802,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 8,
+      "copies": 2,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 31.119264,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "repeat": 8,
+      "copies": 2,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 144.28397,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "repeat": 8,
+      "copies": 2,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 10.725139,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "repeat": 0,
+      "copies": 4,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 86.822787,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 0,
+      "copies": 4,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 15.999267,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 0,
+      "copies": 4,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 26.739779,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 0,
+      "copies": 4,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 12.11617,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 0,
+      "copies": 4,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 411.749113,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 0,
+      "copies": 4,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 337.922518,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 0,
+      "copies": 4,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 76.170827,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 0,
+      "copies": 4,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 80.17216,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 0,
+      "copies": 4,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 327.435714,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 1,
+      "copies": 4,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 66.087148,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 1,
+      "copies": 4,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 225.515694,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 1,
+      "copies": 4,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 15.119933,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 1,
+      "copies": 4,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 75.006295,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 1,
+      "copies": 4,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 455.966981,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 1,
+      "copies": 4,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 464.853541,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 1,
+      "copies": 4,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 10.984836,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 1,
+      "copies": 4,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 26.143106,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 1,
+      "copies": 4,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 74.153453,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 2,
+      "copies": 4,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 66.493449,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 2,
+      "copies": 4,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 431.614108,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 2,
+      "copies": 4,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 24.379058,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 2,
+      "copies": 4,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 11.988309,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 2,
+      "copies": 4,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 119.12471,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 2,
+      "copies": 4,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 27.360195,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 2,
+      "copies": 4,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 79.571379,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 2,
+      "copies": 4,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 461.23771,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 2,
+      "copies": 4,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 276.856068,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 3,
+      "copies": 4,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 55.982153,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 3,
+      "copies": 4,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 416.203244,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 3,
+      "copies": 4,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 16.766859,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 3,
+      "copies": 4,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 26.159388,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 3,
+      "copies": 4,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 315.826937,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 3,
+      "copies": 4,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 17.070837,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 3,
+      "copies": 4,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 76.959525,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 3,
+      "copies": 4,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 69.776475,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 3,
+      "copies": 4,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 320.747212,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 4,
+      "copies": 4,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 324.7494,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 4,
+      "copies": 4,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 19.257689,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 4,
+      "copies": 4,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 69.481415,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 4,
+      "copies": 4,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 15.368511,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 4,
+      "copies": 4,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 276.004533,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 4,
+      "copies": 4,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 10.388654,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 4,
+      "copies": 4,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 45.667144,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 4,
+      "copies": 4,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 495.671707,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 4,
+      "copies": 4,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 79.258065,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 5,
+      "copies": 4,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 9.57982,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 5,
+      "copies": 4,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 53.921609,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 5,
+      "copies": 4,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 62.526682,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 5,
+      "copies": 4,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 312.700616,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 5,
+      "copies": 4,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 19.358205,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 5,
+      "copies": 4,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 13.302401,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 5,
+      "copies": 4,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 70.459081,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 5,
+      "copies": 4,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 259.064194,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 5,
+      "copies": 4,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 370.99239,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 6,
+      "copies": 4,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 113.101881,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 6,
+      "copies": 4,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 73.078522,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 6,
+      "copies": 4,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 420.189814,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 6,
+      "copies": 4,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 378.575523,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 6,
+      "copies": 4,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 14.937759,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 6,
+      "copies": 4,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 10.564802,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 6,
+      "copies": 4,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 54.139193,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 6,
+      "copies": 4,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 276.529366,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 6,
+      "copies": 4,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 22.091904,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 7,
+      "copies": 4,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 11.822799,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 7,
+      "copies": 4,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 320.139869,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 7,
+      "copies": 4,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 256.072002,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 7,
+      "copies": 4,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 76.091227,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 7,
+      "copies": 4,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 15.544991,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 7,
+      "copies": 4,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 75.710264,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 7,
+      "copies": 4,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 551.950651,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 7,
+      "copies": 4,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 68.608592,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 7,
+      "copies": 4,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 25.706409,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 8,
+      "copies": 4,
+      "depth": 0,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 25.860142,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 8,
+      "copies": 4,
+      "depth": 0,
+      "engine": "SQLite",
+      "retrieval_ms": 11.799018,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 8,
+      "copies": 4,
+      "depth": 2,
+      "engine": "Neo4j",
+      "retrieval_ms": 52.2935,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 8,
+      "copies": 4,
+      "depth": 4,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 304.781188,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 8,
+      "copies": 4,
+      "depth": 0,
+      "engine": "Neo4j",
+      "retrieval_ms": 11.189438,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "repeat": 8,
+      "copies": 4,
+      "depth": 2,
+      "engine": "SQLite",
+      "retrieval_ms": 67.01927,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 8,
+      "copies": 4,
+      "depth": 2,
+      "engine": "PostgreSQL",
+      "retrieval_ms": 68.143603,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "repeat": 8,
+      "copies": 4,
+      "depth": 4,
+      "engine": "SQLite",
+      "retrieval_ms": 266.13424,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "repeat": 8,
+      "copies": 4,
+      "depth": 4,
+      "engine": "Neo4j",
+      "retrieval_ms": 491.022587,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    }
+  ],
+  "summaries": [
+    {
+      "copies": 1,
+      "engine": "Neo4j",
+      "depth": 0,
+      "median_ms": 11.112269,
+      "q1_ms": 10.379224,
+      "q3_ms": 17.011238,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "copies": 1,
+      "engine": "Neo4j",
+      "depth": 2,
+      "median_ms": 32.130601,
+      "q1_ms": 26.133121000000003,
+      "q3_ms": 36.239411000000004,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "copies": 1,
+      "engine": "Neo4j",
+      "depth": 4,
+      "median_ms": 158.3818,
+      "q1_ms": 138.061983,
+      "q3_ms": 185.0948545,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "copies": 1,
+      "engine": "SQLite",
+      "depth": 0,
+      "median_ms": 8.325163,
+      "q1_ms": 7.5414015,
+      "q3_ms": 8.692453,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "copies": 1,
+      "engine": "SQLite",
+      "depth": 2,
+      "median_ms": 32.621847,
+      "q1_ms": 31.2511085,
+      "q3_ms": 33.6387675,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "copies": 1,
+      "engine": "SQLite",
+      "depth": 4,
+      "median_ms": 109.808475,
+      "q1_ms": 107.456304,
+      "q3_ms": 110.8783875,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "copies": 1,
+      "engine": "PostgreSQL",
+      "depth": 0,
+      "median_ms": 20.189373,
+      "q1_ms": 19.2686415,
+      "q3_ms": 26.243541,
+      "rows": 42,
+      "answer_sha256": "74d5268519c01ffb7419a9a71f1fc288abb033ad03faa6e51b2ff7c16d3e368d"
+    },
+    {
+      "copies": 1,
+      "engine": "PostgreSQL",
+      "depth": 2,
+      "median_ms": 254.339284,
+      "q1_ms": 240.37435799999997,
+      "q3_ms": 439.68755,
+      "rows": 824,
+      "answer_sha256": "b5a3b5c4a0c951b74a241fb24d9a2659c9ee139ea7c2614b2670bd02c4a9c228"
+    },
+    {
+      "copies": 1,
+      "engine": "PostgreSQL",
+      "depth": 4,
+      "median_ms": 2167.49746,
+      "q1_ms": 2144.109239,
+      "q3_ms": 2337.6833185,
+      "rows": 6292,
+      "answer_sha256": "eb50c662046fe4a552ca4a162dbf10dda9e704198e8f1426506021088b47864a"
+    },
+    {
+      "copies": 2,
+      "engine": "Neo4j",
+      "depth": 0,
+      "median_ms": 10.579014,
+      "q1_ms": 9.664681,
+      "q3_ms": 10.7285325,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "copies": 2,
+      "engine": "Neo4j",
+      "depth": 2,
+      "median_ms": 38.761359,
+      "q1_ms": 30.5586765,
+      "q3_ms": 43.1135865,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "copies": 2,
+      "engine": "Neo4j",
+      "depth": 4,
+      "median_ms": 270.642135,
+      "q1_ms": 222.4503055,
+      "q3_ms": 275.286923,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "copies": 2,
+      "engine": "SQLite",
+      "depth": 0,
+      "median_ms": 8.823656,
+      "q1_ms": 8.113229,
+      "q3_ms": 11.414130499999999,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "copies": 2,
+      "engine": "SQLite",
+      "depth": 2,
+      "median_ms": 37.611922,
+      "q1_ms": 35.494117,
+      "q3_ms": 60.350730999999996,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "copies": 2,
+      "engine": "SQLite",
+      "depth": 4,
+      "median_ms": 130.865911,
+      "q1_ms": 123.49858549999999,
+      "q3_ms": 212.56898999999999,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "copies": 2,
+      "engine": "PostgreSQL",
+      "depth": 0,
+      "median_ms": 13.061033,
+      "q1_ms": 11.4536365,
+      "q3_ms": 14.328157000000001,
+      "rows": 84,
+      "answer_sha256": "e7699f4eda05083e51e93bda8310f6c128adc43fb57baabe022c8bb83dca41cf"
+    },
+    {
+      "copies": 2,
+      "engine": "PostgreSQL",
+      "depth": 2,
+      "median_ms": 35.686449,
+      "q1_ms": 28.699869,
+      "q3_ms": 37.6926735,
+      "rows": 1648,
+      "answer_sha256": "a4d08af40b4ff73cc5372f28889dfd04f836fb8c292fbcebe4f0888c22a0c7b7"
+    },
+    {
+      "copies": 2,
+      "engine": "PostgreSQL",
+      "depth": 4,
+      "median_ms": 122.800802,
+      "q1_ms": 100.107951,
+      "q3_ms": 137.77068400000002,
+      "rows": 12584,
+      "answer_sha256": "fa0e9e974542645952979d74c2b899d184e1b7dd5c03494a7a8c41ae5bf55d13"
+    },
+    {
+      "copies": 4,
+      "engine": "Neo4j",
+      "depth": 0,
+      "median_ms": 11.189438,
+      "q1_ms": 10.476728000000001,
+      "q3_ms": 13.993787999999999,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "copies": 4,
+      "engine": "Neo4j",
+      "depth": 2,
+      "median_ms": 75.006295,
+      "q1_ms": 60.207528999999994,
+      "q3_ms": 76.56517600000001,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "copies": 4,
+      "engine": "Neo4j",
+      "depth": 4,
+      "median_ms": 461.23771,
+      "q1_ms": 413.9761785,
+      "q3_ms": 493.347147,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "copies": 4,
+      "engine": "SQLite",
+      "depth": 0,
+      "median_ms": 15.119933,
+      "q1_ms": 12.7092855,
+      "q3_ms": 16.307914,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "copies": 4,
+      "engine": "SQLite",
+      "depth": 2,
+      "median_ms": 70.459081,
+      "q1_ms": 68.2503425,
+      "q3_ms": 99.962334,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "copies": 4,
+      "engine": "SQLite",
+      "depth": 4,
+      "median_ms": 324.7494,
+      "q1_ms": 316.4202425,
+      "q3_ms": 405.0948155,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    },
+    {
+      "copies": 4,
+      "engine": "PostgreSQL",
+      "depth": 0,
+      "median_ms": 25.860142,
+      "q1_ms": 20.7250545,
+      "q3_ms": 26.4495835,
+      "rows": 168,
+      "answer_sha256": "c510d0d620a697fbf72fb5930cac179f9ec9134358e4bbfc5c2a3bc3179c3879"
+    },
+    {
+      "copies": 4,
+      "engine": "PostgreSQL",
+      "depth": 2,
+      "median_ms": 68.143603,
+      "q1_ms": 55.060672999999994,
+      "q3_ms": 76.862416,
+      "rows": 3296,
+      "answer_sha256": "927f75d1694dcb94a04408917a9ec606ffafb40183e7476a05add6266eb7830a"
+    },
+    {
+      "copies": 4,
+      "engine": "PostgreSQL",
+      "depth": 4,
+      "median_ms": 276.529366,
+      "q1_ms": 257.56809799999996,
+      "q3_ms": 310.3040625,
+      "rows": 25168,
+      "answer_sha256": "1cac5ce2ff4876eb06b8bc6dad0a56210a98b7b44a50c6abf014b9229e4547b2"
+    }
+  ],
+  "plans": {
+    "1": {
+      "0": {
+        "SQLite": [
+          [
+            3,
+            0,
+            0,
+            "MATERIALIZE up"
+          ],
+          [
+            7,
+            3,
+            0,
+            "SETUP"
+          ],
+          [
+            13,
+            7,
+            0,
+            "SCAN witness USING COVERING INDEX wc"
+          ],
+          [
+            56,
+            3,
+            0,
+            "RECURSIVE STEP"
+          ],
+          [
+            59,
+            56,
+            0,
+            "SCAN u"
+          ],
+          [
+            62,
+            56,
+            0,
+            "SEARCH p USING INDEX sqlite_autoindex_parent_1 (ns=? AND child=?)"
+          ],
+          [
+            89,
+            0,
+            0,
+            "SCAN s"
+          ],
+          [
+            91,
+            0,
+            0,
+            "SEARCH a USING INDEX wp (ns=? AND product=?)"
+          ],
+          [
+            104,
+            0,
+            0,
+            "BLOOM FILTER ON x (ns=? AND leaf=?)"
+          ],
+          [
+            116,
+            0,
+            0,
+            "SEARCH x USING AUTOMATIC COVERING INDEX (ns=? AND leaf=?)"
+          ],
+          [
+            127,
+            0,
+            0,
+            "BLOOM FILTER ON y (ns=? AND ancestor=?)"
+          ],
+          [
+            139,
+            0,
+            0,
+            "SEARCH y USING AUTOMATIC COVERING INDEX (ns=? AND ancestor=?)"
+          ],
+          [
+            148,
+            0,
+            0,
+            "SEARCH b USING INDEX wc (ns=? AND code=?)"
+          ]
+        ],
+        "PostgreSQL": [
+          {
+            "Plan": {
+              "Node Type": "Nested Loop",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Inner",
+              "Startup Cost": 7093.51,
+              "Total Cost": 7164.19,
+              "Plan Rows": 5,
+              "Plan Width": 590,
+              "Inner Unique": false,
+              "Join Filter": "((b.product <> a.product) AND (a.ns = b.ns))",
+              "Plans": [
+                {
+                  "Node Type": "Recursive Union",
+                  "Parent Relationship": "InitPlan",
+                  "Subplan Name": "CTE up",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 490.21,
+                  "Total Cost": 7036.45,
+                  "Plan Rows": 2082,
+                  "Plan Width": 45,
+                  "Plans": [
+                    {
+                      "Node Type": "Aggregate",
+                      "Strategy": "Hashed",
+                      "Partial Mode": "Simple",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 490.21,
+                      "Total Cost": 508.03,
+                      "Plan Rows": 1782,
+                      "Plan Width": 24,
+                      "Group Key": [
+                        "witness.ns",
+                        "witness.code"
+                      ],
+                      "Planned Partitions": 0,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "witness",
+                          "Alias": "witness",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 445.14,
+                          "Plan Rows": 9014,
+                          "Plan Width": 12
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 218.55,
+                      "Total Cost": 650.76,
+                      "Plan Rows": 30,
+                      "Plan Width": 45,
+                      "Inner Unique": true,
+                      "Hash Cond": "((u.ns = p.ns) AND (u.ancestor = p.child))",
+                      "Plans": [
+                        {
+                          "Node Type": "WorkTable Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "CTE Name": "up",
+                          "Alias": "u",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 400.95,
+                          "Plan Rows": 5940,
+                          "Plan Width": 72,
+                          "Filter": "(d < 0)"
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 113.82,
+                          "Total Cost": 113.82,
+                          "Plan Rows": 6982,
+                          "Plan Width": 16,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Relation Name": "parent",
+                              "Alias": "p",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 113.82,
+                              "Plan Rows": 6982,
+                              "Plan Width": 16
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Nested Loop",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 56.78,
+                  "Total Cost": 126.56,
+                  "Plan Rows": 1,
+                  "Plan Width": 361,
+                  "Inner Unique": false,
+                  "Join Filter": "((s.ns = a.ns) AND (s.product = a.product))",
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 56.5,
+                      "Total Cost": 124.18,
+                      "Plan Rows": 2,
+                      "Plan Width": 122,
+                      "Inner Unique": false,
+                      "Hash Cond": "((y.ns = s.ns) AND (y.ancestor = x.ancestor))",
+                      "Plans": [
+                        {
+                          "Node Type": "CTE Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "CTE Name": "up",
+                          "Alias": "y",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 41.64,
+                          "Plan Rows": 2082,
+                          "Plan Width": 72
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 56.03,
+                          "Total Cost": 56.03,
+                          "Plan Rows": 31,
+                          "Plan Width": 82,
+                          "Plans": [
+                            {
+                              "Node Type": "Hash Join",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Join Type": "Inner",
+                              "Startup Cost": 1.07,
+                              "Total Cost": 56.03,
+                              "Plan Rows": 31,
+                              "Plan Width": 82,
+                              "Inner Unique": false,
+                              "Hash Cond": "(x.ns = s.ns)",
+                              "Plans": [
+                                {
+                                  "Node Type": "CTE Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "CTE Name": "up",
+                                  "Alias": "x",
+                                  "Startup Cost": 0.0,
+                                  "Total Cost": 41.64,
+                                  "Plan Rows": 2082,
+                                  "Plan Width": 72
+                                },
+                                {
+                                  "Node Type": "Hash",
+                                  "Parent Relationship": "Inner",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Startup Cost": 1.03,
+                                  "Total Cost": 1.03,
+                                  "Plan Rows": 3,
+                                  "Plan Width": 10,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Relation Name": "seed",
+                                      "Alias": "s",
+                                      "Startup Cost": 0.0,
+                                      "Total Cost": 1.03,
+                                      "Plan Rows": 3,
+                                      "Plan Width": 10
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Index Scan",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Scan Direction": "Forward",
+                      "Index Name": "wc",
+                      "Relation Name": "witness",
+                      "Alias": "a",
+                      "Startup Cost": 0.29,
+                      "Total Cost": 1.11,
+                      "Plan Rows": 5,
+                      "Plan Width": 277,
+                      "Index Cond": "((ns = x.ns) AND (code = x.leaf))"
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "wc",
+                  "Relation Name": "witness",
+                  "Alias": "b",
+                  "Startup Cost": 0.29,
+                  "Total Cost": 1.11,
+                  "Plan Rows": 5,
+                  "Plan Width": 277,
+                  "Index Cond": "((ns = y.ns) AND (code = y.leaf))"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "2": {
+        "SQLite": [
+          [
+            3,
+            0,
+            0,
+            "MATERIALIZE up"
+          ],
+          [
+            7,
+            3,
+            0,
+            "SETUP"
+          ],
+          [
+            13,
+            7,
+            0,
+            "SCAN witness USING COVERING INDEX wc"
+          ],
+          [
+            56,
+            3,
+            0,
+            "RECURSIVE STEP"
+          ],
+          [
+            59,
+            56,
+            0,
+            "SCAN u"
+          ],
+          [
+            62,
+            56,
+            0,
+            "SEARCH p USING INDEX sqlite_autoindex_parent_1 (ns=? AND child=?)"
+          ],
+          [
+            89,
+            0,
+            0,
+            "SCAN s"
+          ],
+          [
+            91,
+            0,
+            0,
+            "SEARCH a USING INDEX wp (ns=? AND product=?)"
+          ],
+          [
+            104,
+            0,
+            0,
+            "BLOOM FILTER ON x (ns=? AND leaf=?)"
+          ],
+          [
+            116,
+            0,
+            0,
+            "SEARCH x USING AUTOMATIC COVERING INDEX (ns=? AND leaf=?)"
+          ],
+          [
+            127,
+            0,
+            0,
+            "BLOOM FILTER ON y (ns=? AND ancestor=?)"
+          ],
+          [
+            139,
+            0,
+            0,
+            "SEARCH y USING AUTOMATIC COVERING INDEX (ns=? AND ancestor=?)"
+          ],
+          [
+            148,
+            0,
+            0,
+            "SEARCH b USING INDEX wc (ns=? AND code=?)"
+          ]
+        ],
+        "PostgreSQL": [
+          {
+            "Plan": {
+              "Node Type": "Nested Loop",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Inner",
+              "Startup Cost": 7093.51,
+              "Total Cost": 7164.19,
+              "Plan Rows": 5,
+              "Plan Width": 590,
+              "Inner Unique": false,
+              "Join Filter": "((b.product <> a.product) AND (a.ns = b.ns))",
+              "Plans": [
+                {
+                  "Node Type": "Recursive Union",
+                  "Parent Relationship": "InitPlan",
+                  "Subplan Name": "CTE up",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 490.21,
+                  "Total Cost": 7036.45,
+                  "Plan Rows": 2082,
+                  "Plan Width": 45,
+                  "Plans": [
+                    {
+                      "Node Type": "Aggregate",
+                      "Strategy": "Hashed",
+                      "Partial Mode": "Simple",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 490.21,
+                      "Total Cost": 508.03,
+                      "Plan Rows": 1782,
+                      "Plan Width": 24,
+                      "Group Key": [
+                        "witness.ns",
+                        "witness.code"
+                      ],
+                      "Planned Partitions": 0,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "witness",
+                          "Alias": "witness",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 445.14,
+                          "Plan Rows": 9014,
+                          "Plan Width": 12
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 218.55,
+                      "Total Cost": 650.76,
+                      "Plan Rows": 30,
+                      "Plan Width": 45,
+                      "Inner Unique": true,
+                      "Hash Cond": "((u.ns = p.ns) AND (u.ancestor = p.child))",
+                      "Plans": [
+                        {
+                          "Node Type": "WorkTable Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "CTE Name": "up",
+                          "Alias": "u",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 400.95,
+                          "Plan Rows": 5940,
+                          "Plan Width": 72,
+                          "Filter": "(d < 2)"
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 113.82,
+                          "Total Cost": 113.82,
+                          "Plan Rows": 6982,
+                          "Plan Width": 16,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Relation Name": "parent",
+                              "Alias": "p",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 113.82,
+                              "Plan Rows": 6982,
+                              "Plan Width": 16
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Nested Loop",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 56.78,
+                  "Total Cost": 126.56,
+                  "Plan Rows": 1,
+                  "Plan Width": 361,
+                  "Inner Unique": false,
+                  "Join Filter": "((s.ns = a.ns) AND (s.product = a.product))",
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 56.5,
+                      "Total Cost": 124.18,
+                      "Plan Rows": 2,
+                      "Plan Width": 122,
+                      "Inner Unique": false,
+                      "Hash Cond": "((y.ns = s.ns) AND (y.ancestor = x.ancestor))",
+                      "Plans": [
+                        {
+                          "Node Type": "CTE Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "CTE Name": "up",
+                          "Alias": "y",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 41.64,
+                          "Plan Rows": 2082,
+                          "Plan Width": 72
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 56.03,
+                          "Total Cost": 56.03,
+                          "Plan Rows": 31,
+                          "Plan Width": 82,
+                          "Plans": [
+                            {
+                              "Node Type": "Hash Join",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Join Type": "Inner",
+                              "Startup Cost": 1.07,
+                              "Total Cost": 56.03,
+                              "Plan Rows": 31,
+                              "Plan Width": 82,
+                              "Inner Unique": false,
+                              "Hash Cond": "(x.ns = s.ns)",
+                              "Plans": [
+                                {
+                                  "Node Type": "CTE Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "CTE Name": "up",
+                                  "Alias": "x",
+                                  "Startup Cost": 0.0,
+                                  "Total Cost": 41.64,
+                                  "Plan Rows": 2082,
+                                  "Plan Width": 72
+                                },
+                                {
+                                  "Node Type": "Hash",
+                                  "Parent Relationship": "Inner",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Startup Cost": 1.03,
+                                  "Total Cost": 1.03,
+                                  "Plan Rows": 3,
+                                  "Plan Width": 10,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Relation Name": "seed",
+                                      "Alias": "s",
+                                      "Startup Cost": 0.0,
+                                      "Total Cost": 1.03,
+                                      "Plan Rows": 3,
+                                      "Plan Width": 10
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Index Scan",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Scan Direction": "Forward",
+                      "Index Name": "wc",
+                      "Relation Name": "witness",
+                      "Alias": "a",
+                      "Startup Cost": 0.29,
+                      "Total Cost": 1.11,
+                      "Plan Rows": 5,
+                      "Plan Width": 277,
+                      "Index Cond": "((ns = x.ns) AND (code = x.leaf))"
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "wc",
+                  "Relation Name": "witness",
+                  "Alias": "b",
+                  "Startup Cost": 0.29,
+                  "Total Cost": 1.11,
+                  "Plan Rows": 5,
+                  "Plan Width": 277,
+                  "Index Cond": "((ns = y.ns) AND (code = y.leaf))"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "4": {
+        "SQLite": [
+          [
+            3,
+            0,
+            0,
+            "MATERIALIZE up"
+          ],
+          [
+            7,
+            3,
+            0,
+            "SETUP"
+          ],
+          [
+            13,
+            7,
+            0,
+            "SCAN witness USING COVERING INDEX wc"
+          ],
+          [
+            56,
+            3,
+            0,
+            "RECURSIVE STEP"
+          ],
+          [
+            59,
+            56,
+            0,
+            "SCAN u"
+          ],
+          [
+            62,
+            56,
+            0,
+            "SEARCH p USING INDEX sqlite_autoindex_parent_1 (ns=? AND child=?)"
+          ],
+          [
+            89,
+            0,
+            0,
+            "SCAN s"
+          ],
+          [
+            91,
+            0,
+            0,
+            "SEARCH a USING INDEX wp (ns=? AND product=?)"
+          ],
+          [
+            104,
+            0,
+            0,
+            "BLOOM FILTER ON x (ns=? AND leaf=?)"
+          ],
+          [
+            116,
+            0,
+            0,
+            "SEARCH x USING AUTOMATIC COVERING INDEX (ns=? AND leaf=?)"
+          ],
+          [
+            127,
+            0,
+            0,
+            "BLOOM FILTER ON y (ns=? AND ancestor=?)"
+          ],
+          [
+            139,
+            0,
+            0,
+            "SEARCH y USING AUTOMATIC COVERING INDEX (ns=? AND ancestor=?)"
+          ],
+          [
+            148,
+            0,
+            0,
+            "SEARCH b USING INDEX wc (ns=? AND code=?)"
+          ]
+        ],
+        "PostgreSQL": [
+          {
+            "Plan": {
+              "Node Type": "Nested Loop",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Inner",
+              "Startup Cost": 7093.51,
+              "Total Cost": 7164.19,
+              "Plan Rows": 5,
+              "Plan Width": 590,
+              "Inner Unique": false,
+              "Join Filter": "((b.product <> a.product) AND (a.ns = b.ns))",
+              "Plans": [
+                {
+                  "Node Type": "Recursive Union",
+                  "Parent Relationship": "InitPlan",
+                  "Subplan Name": "CTE up",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 490.21,
+                  "Total Cost": 7036.45,
+                  "Plan Rows": 2082,
+                  "Plan Width": 45,
+                  "Plans": [
+                    {
+                      "Node Type": "Aggregate",
+                      "Strategy": "Hashed",
+                      "Partial Mode": "Simple",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 490.21,
+                      "Total Cost": 508.03,
+                      "Plan Rows": 1782,
+                      "Plan Width": 24,
+                      "Group Key": [
+                        "witness.ns",
+                        "witness.code"
+                      ],
+                      "Planned Partitions": 0,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "witness",
+                          "Alias": "witness",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 445.14,
+                          "Plan Rows": 9014,
+                          "Plan Width": 12
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 218.55,
+                      "Total Cost": 650.76,
+                      "Plan Rows": 30,
+                      "Plan Width": 45,
+                      "Inner Unique": true,
+                      "Hash Cond": "((u.ns = p.ns) AND (u.ancestor = p.child))",
+                      "Plans": [
+                        {
+                          "Node Type": "WorkTable Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "CTE Name": "up",
+                          "Alias": "u",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 400.95,
+                          "Plan Rows": 5940,
+                          "Plan Width": 72,
+                          "Filter": "(d < 4)"
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 113.82,
+                          "Total Cost": 113.82,
+                          "Plan Rows": 6982,
+                          "Plan Width": 16,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Relation Name": "parent",
+                              "Alias": "p",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 113.82,
+                              "Plan Rows": 6982,
+                              "Plan Width": 16
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Nested Loop",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 56.78,
+                  "Total Cost": 126.56,
+                  "Plan Rows": 1,
+                  "Plan Width": 361,
+                  "Inner Unique": false,
+                  "Join Filter": "((s.ns = a.ns) AND (s.product = a.product))",
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 56.5,
+                      "Total Cost": 124.18,
+                      "Plan Rows": 2,
+                      "Plan Width": 122,
+                      "Inner Unique": false,
+                      "Hash Cond": "((y.ns = s.ns) AND (y.ancestor = x.ancestor))",
+                      "Plans": [
+                        {
+                          "Node Type": "CTE Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "CTE Name": "up",
+                          "Alias": "y",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 41.64,
+                          "Plan Rows": 2082,
+                          "Plan Width": 72
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 56.03,
+                          "Total Cost": 56.03,
+                          "Plan Rows": 31,
+                          "Plan Width": 82,
+                          "Plans": [
+                            {
+                              "Node Type": "Hash Join",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Join Type": "Inner",
+                              "Startup Cost": 1.07,
+                              "Total Cost": 56.03,
+                              "Plan Rows": 31,
+                              "Plan Width": 82,
+                              "Inner Unique": false,
+                              "Hash Cond": "(x.ns = s.ns)",
+                              "Plans": [
+                                {
+                                  "Node Type": "CTE Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "CTE Name": "up",
+                                  "Alias": "x",
+                                  "Startup Cost": 0.0,
+                                  "Total Cost": 41.64,
+                                  "Plan Rows": 2082,
+                                  "Plan Width": 72
+                                },
+                                {
+                                  "Node Type": "Hash",
+                                  "Parent Relationship": "Inner",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Startup Cost": 1.03,
+                                  "Total Cost": 1.03,
+                                  "Plan Rows": 3,
+                                  "Plan Width": 10,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Relation Name": "seed",
+                                      "Alias": "s",
+                                      "Startup Cost": 0.0,
+                                      "Total Cost": 1.03,
+                                      "Plan Rows": 3,
+                                      "Plan Width": 10
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Index Scan",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Scan Direction": "Forward",
+                      "Index Name": "wc",
+                      "Relation Name": "witness",
+                      "Alias": "a",
+                      "Startup Cost": 0.29,
+                      "Total Cost": 1.11,
+                      "Plan Rows": 5,
+                      "Plan Width": 277,
+                      "Index Cond": "((ns = x.ns) AND (code = x.leaf))"
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "wc",
+                  "Relation Name": "witness",
+                  "Alias": "b",
+                  "Startup Cost": 0.29,
+                  "Total Cost": 1.11,
+                  "Plan Rows": 5,
+                  "Plan Width": 277,
+                  "Index Cond": "((ns = y.ns) AND (code = y.leaf))"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "2": {
+      "0": {
+        "SQLite": [
+          [
+            3,
+            0,
+            0,
+            "MATERIALIZE up"
+          ],
+          [
+            7,
+            3,
+            0,
+            "SETUP"
+          ],
+          [
+            13,
+            7,
+            0,
+            "SCAN witness USING COVERING INDEX wc"
+          ],
+          [
+            56,
+            3,
+            0,
+            "RECURSIVE STEP"
+          ],
+          [
+            59,
+            56,
+            0,
+            "SCAN u"
+          ],
+          [
+            62,
+            56,
+            0,
+            "SEARCH p USING INDEX sqlite_autoindex_parent_1 (ns=? AND child=?)"
+          ],
+          [
+            89,
+            0,
+            0,
+            "SCAN s"
+          ],
+          [
+            91,
+            0,
+            0,
+            "SEARCH a USING INDEX wp (ns=? AND product=?)"
+          ],
+          [
+            104,
+            0,
+            0,
+            "BLOOM FILTER ON x (ns=? AND leaf=?)"
+          ],
+          [
+            116,
+            0,
+            0,
+            "SEARCH x USING AUTOMATIC COVERING INDEX (ns=? AND leaf=?)"
+          ],
+          [
+            127,
+            0,
+            0,
+            "BLOOM FILTER ON y (ns=? AND ancestor=?)"
+          ],
+          [
+            139,
+            0,
+            0,
+            "SEARCH y USING AUTOMATIC COVERING INDEX (ns=? AND ancestor=?)"
+          ],
+          [
+            148,
+            0,
+            0,
+            "SEARCH b USING INDEX wc (ns=? AND code=?)"
+          ]
+        ],
+        "PostgreSQL": [
+          {
+            "Plan": {
+              "Node Type": "Nested Loop",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Inner",
+              "Startup Cost": 9859.33,
+              "Total Cost": 9926.85,
+              "Plan Rows": 5,
+              "Plan Width": 590,
+              "Inner Unique": false,
+              "Join Filter": "((b.product <> a.product) AND (a.ns = b.ns))",
+              "Plans": [
+                {
+                  "Node Type": "Recursive Union",
+                  "Parent Relationship": "InitPlan",
+                  "Subplan Name": "CTE up",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 979.42,
+                  "Total Cost": 9756.26,
+                  "Plan Rows": 2403,
+                  "Plan Width": 45,
+                  "Plans": [
+                    {
+                      "Node Type": "Aggregate",
+                      "Strategy": "Hashed",
+                      "Partial Mode": "Simple",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 979.42,
+                      "Total Cost": 997.45,
+                      "Plan Rows": 1803,
+                      "Plan Width": 24,
+                      "Group Key": [
+                        "witness.ns",
+                        "witness.code"
+                      ],
+                      "Planned Partitions": 0,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "witness",
+                          "Alias": "witness",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 889.28,
+                          "Plan Rows": 18028,
+                          "Plan Width": 12
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 436.1,
+                      "Total Cost": 873.48,
+                      "Plan Rows": 60,
+                      "Plan Width": 45,
+                      "Inner Unique": true,
+                      "Hash Cond": "((u.ns = p.ns) AND (u.ancestor = p.child))",
+                      "Plans": [
+                        {
+                          "Node Type": "WorkTable Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "CTE Name": "up",
+                          "Alias": "u",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 405.68,
+                          "Plan Rows": 6010,
+                          "Plan Width": 72,
+                          "Filter": "(d < 0)"
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 226.64,
+                          "Total Cost": 226.64,
+                          "Plan Rows": 13964,
+                          "Plan Width": 16,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Relation Name": "parent",
+                              "Alias": "p",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 226.64,
+                              "Plan Rows": 13964,
+                              "Plan Width": 16
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 102.79,
+                  "Total Cost": 168.88,
+                  "Plan Rows": 1,
+                  "Plan Width": 361,
+                  "Inner Unique": false,
+                  "Hash Cond": "((y.ns = a.ns) AND (y.ancestor = x.ancestor))",
+                  "Plans": [
+                    {
+                      "Node Type": "CTE Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "CTE Name": "up",
+                      "Alias": "y",
+                      "Startup Cost": 0.0,
+                      "Total Cost": 48.06,
+                      "Plan Rows": 2403,
+                      "Plan Width": 72
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 102.78,
+                      "Total Cost": 102.78,
+                      "Plan Rows": 1,
+                      "Plan Width": 321,
+                      "Plans": [
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 36.68,
+                          "Total Cost": 102.78,
+                          "Plan Rows": 1,
+                          "Plan Width": 321,
+                          "Inner Unique": false,
+                          "Hash Cond": "((x.ns = a.ns) AND (x.leaf = a.code))",
+                          "Plans": [
+                            {
+                              "Node Type": "CTE Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "CTE Name": "up",
+                              "Alias": "x",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 48.06,
+                              "Plan Rows": 2403,
+                              "Plan Width": 72
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Startup Cost": 36.55,
+                              "Total Cost": 36.55,
+                              "Plan Rows": 9,
+                              "Plan Width": 281,
+                              "Plans": [
+                                {
+                                  "Node Type": "Nested Loop",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Join Type": "Inner",
+                                  "Startup Cost": 0.3,
+                                  "Total Cost": 36.55,
+                                  "Plan Rows": 9,
+                                  "Plan Width": 281,
+                                  "Inner Unique": false,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Relation Name": "seed",
+                                      "Alias": "s",
+                                      "Startup Cost": 0.0,
+                                      "Total Cost": 1.06,
+                                      "Plan Rows": 6,
+                                      "Plan Width": 10
+                                    },
+                                    {
+                                      "Node Type": "Memoize",
+                                      "Parent Relationship": "Inner",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Startup Cost": 0.3,
+                                      "Total Cost": 10.09,
+                                      "Plan Rows": 2,
+                                      "Plan Width": 277,
+                                      "Cache Key": "s.ns, s.product",
+                                      "Cache Mode": "logical",
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Index Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Async Capable": false,
+                                          "Scan Direction": "Forward",
+                                          "Index Name": "wp",
+                                          "Relation Name": "witness",
+                                          "Alias": "a",
+                                          "Startup Cost": 0.29,
+                                          "Total Cost": 10.08,
+                                          "Plan Rows": 2,
+                                          "Plan Width": 277,
+                                          "Index Cond": "((ns = s.ns) AND (product = s.product))"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "wc",
+                  "Relation Name": "witness",
+                  "Alias": "b",
+                  "Startup Cost": 0.29,
+                  "Total Cost": 1.64,
+                  "Plan Rows": 5,
+                  "Plan Width": 277,
+                  "Index Cond": "((ns = y.ns) AND (code = y.leaf))"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "2": {
+        "SQLite": [
+          [
+            3,
+            0,
+            0,
+            "MATERIALIZE up"
+          ],
+          [
+            7,
+            3,
+            0,
+            "SETUP"
+          ],
+          [
+            13,
+            7,
+            0,
+            "SCAN witness USING COVERING INDEX wc"
+          ],
+          [
+            56,
+            3,
+            0,
+            "RECURSIVE STEP"
+          ],
+          [
+            59,
+            56,
+            0,
+            "SCAN u"
+          ],
+          [
+            62,
+            56,
+            0,
+            "SEARCH p USING INDEX sqlite_autoindex_parent_1 (ns=? AND child=?)"
+          ],
+          [
+            89,
+            0,
+            0,
+            "SCAN s"
+          ],
+          [
+            91,
+            0,
+            0,
+            "SEARCH a USING INDEX wp (ns=? AND product=?)"
+          ],
+          [
+            104,
+            0,
+            0,
+            "BLOOM FILTER ON x (ns=? AND leaf=?)"
+          ],
+          [
+            116,
+            0,
+            0,
+            "SEARCH x USING AUTOMATIC COVERING INDEX (ns=? AND leaf=?)"
+          ],
+          [
+            127,
+            0,
+            0,
+            "BLOOM FILTER ON y (ns=? AND ancestor=?)"
+          ],
+          [
+            139,
+            0,
+            0,
+            "SEARCH y USING AUTOMATIC COVERING INDEX (ns=? AND ancestor=?)"
+          ],
+          [
+            148,
+            0,
+            0,
+            "SEARCH b USING INDEX wc (ns=? AND code=?)"
+          ]
+        ],
+        "PostgreSQL": [
+          {
+            "Plan": {
+              "Node Type": "Nested Loop",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Inner",
+              "Startup Cost": 9859.33,
+              "Total Cost": 9926.85,
+              "Plan Rows": 5,
+              "Plan Width": 590,
+              "Inner Unique": false,
+              "Join Filter": "((b.product <> a.product) AND (a.ns = b.ns))",
+              "Plans": [
+                {
+                  "Node Type": "Recursive Union",
+                  "Parent Relationship": "InitPlan",
+                  "Subplan Name": "CTE up",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 979.42,
+                  "Total Cost": 9756.26,
+                  "Plan Rows": 2403,
+                  "Plan Width": 45,
+                  "Plans": [
+                    {
+                      "Node Type": "Aggregate",
+                      "Strategy": "Hashed",
+                      "Partial Mode": "Simple",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 979.42,
+                      "Total Cost": 997.45,
+                      "Plan Rows": 1803,
+                      "Plan Width": 24,
+                      "Group Key": [
+                        "witness.ns",
+                        "witness.code"
+                      ],
+                      "Planned Partitions": 0,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "witness",
+                          "Alias": "witness",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 889.28,
+                          "Plan Rows": 18028,
+                          "Plan Width": 12
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 436.1,
+                      "Total Cost": 873.48,
+                      "Plan Rows": 60,
+                      "Plan Width": 45,
+                      "Inner Unique": true,
+                      "Hash Cond": "((u.ns = p.ns) AND (u.ancestor = p.child))",
+                      "Plans": [
+                        {
+                          "Node Type": "WorkTable Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "CTE Name": "up",
+                          "Alias": "u",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 405.68,
+                          "Plan Rows": 6010,
+                          "Plan Width": 72,
+                          "Filter": "(d < 2)"
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 226.64,
+                          "Total Cost": 226.64,
+                          "Plan Rows": 13964,
+                          "Plan Width": 16,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Relation Name": "parent",
+                              "Alias": "p",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 226.64,
+                              "Plan Rows": 13964,
+                              "Plan Width": 16
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 102.79,
+                  "Total Cost": 168.88,
+                  "Plan Rows": 1,
+                  "Plan Width": 361,
+                  "Inner Unique": false,
+                  "Hash Cond": "((y.ns = a.ns) AND (y.ancestor = x.ancestor))",
+                  "Plans": [
+                    {
+                      "Node Type": "CTE Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "CTE Name": "up",
+                      "Alias": "y",
+                      "Startup Cost": 0.0,
+                      "Total Cost": 48.06,
+                      "Plan Rows": 2403,
+                      "Plan Width": 72
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 102.78,
+                      "Total Cost": 102.78,
+                      "Plan Rows": 1,
+                      "Plan Width": 321,
+                      "Plans": [
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 36.68,
+                          "Total Cost": 102.78,
+                          "Plan Rows": 1,
+                          "Plan Width": 321,
+                          "Inner Unique": false,
+                          "Hash Cond": "((x.ns = a.ns) AND (x.leaf = a.code))",
+                          "Plans": [
+                            {
+                              "Node Type": "CTE Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "CTE Name": "up",
+                              "Alias": "x",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 48.06,
+                              "Plan Rows": 2403,
+                              "Plan Width": 72
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Startup Cost": 36.55,
+                              "Total Cost": 36.55,
+                              "Plan Rows": 9,
+                              "Plan Width": 281,
+                              "Plans": [
+                                {
+                                  "Node Type": "Nested Loop",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Join Type": "Inner",
+                                  "Startup Cost": 0.3,
+                                  "Total Cost": 36.55,
+                                  "Plan Rows": 9,
+                                  "Plan Width": 281,
+                                  "Inner Unique": false,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Relation Name": "seed",
+                                      "Alias": "s",
+                                      "Startup Cost": 0.0,
+                                      "Total Cost": 1.06,
+                                      "Plan Rows": 6,
+                                      "Plan Width": 10
+                                    },
+                                    {
+                                      "Node Type": "Memoize",
+                                      "Parent Relationship": "Inner",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Startup Cost": 0.3,
+                                      "Total Cost": 10.09,
+                                      "Plan Rows": 2,
+                                      "Plan Width": 277,
+                                      "Cache Key": "s.ns, s.product",
+                                      "Cache Mode": "logical",
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Index Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Async Capable": false,
+                                          "Scan Direction": "Forward",
+                                          "Index Name": "wp",
+                                          "Relation Name": "witness",
+                                          "Alias": "a",
+                                          "Startup Cost": 0.29,
+                                          "Total Cost": 10.08,
+                                          "Plan Rows": 2,
+                                          "Plan Width": 277,
+                                          "Index Cond": "((ns = s.ns) AND (product = s.product))"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "wc",
+                  "Relation Name": "witness",
+                  "Alias": "b",
+                  "Startup Cost": 0.29,
+                  "Total Cost": 1.64,
+                  "Plan Rows": 5,
+                  "Plan Width": 277,
+                  "Index Cond": "((ns = y.ns) AND (code = y.leaf))"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "4": {
+        "SQLite": [
+          [
+            3,
+            0,
+            0,
+            "MATERIALIZE up"
+          ],
+          [
+            7,
+            3,
+            0,
+            "SETUP"
+          ],
+          [
+            13,
+            7,
+            0,
+            "SCAN witness USING COVERING INDEX wc"
+          ],
+          [
+            56,
+            3,
+            0,
+            "RECURSIVE STEP"
+          ],
+          [
+            59,
+            56,
+            0,
+            "SCAN u"
+          ],
+          [
+            62,
+            56,
+            0,
+            "SEARCH p USING INDEX sqlite_autoindex_parent_1 (ns=? AND child=?)"
+          ],
+          [
+            89,
+            0,
+            0,
+            "SCAN s"
+          ],
+          [
+            91,
+            0,
+            0,
+            "SEARCH a USING INDEX wp (ns=? AND product=?)"
+          ],
+          [
+            104,
+            0,
+            0,
+            "BLOOM FILTER ON x (ns=? AND leaf=?)"
+          ],
+          [
+            116,
+            0,
+            0,
+            "SEARCH x USING AUTOMATIC COVERING INDEX (ns=? AND leaf=?)"
+          ],
+          [
+            127,
+            0,
+            0,
+            "BLOOM FILTER ON y (ns=? AND ancestor=?)"
+          ],
+          [
+            139,
+            0,
+            0,
+            "SEARCH y USING AUTOMATIC COVERING INDEX (ns=? AND ancestor=?)"
+          ],
+          [
+            148,
+            0,
+            0,
+            "SEARCH b USING INDEX wc (ns=? AND code=?)"
+          ]
+        ],
+        "PostgreSQL": [
+          {
+            "Plan": {
+              "Node Type": "Nested Loop",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Inner",
+              "Startup Cost": 9859.33,
+              "Total Cost": 9926.85,
+              "Plan Rows": 5,
+              "Plan Width": 590,
+              "Inner Unique": false,
+              "Join Filter": "((b.product <> a.product) AND (a.ns = b.ns))",
+              "Plans": [
+                {
+                  "Node Type": "Recursive Union",
+                  "Parent Relationship": "InitPlan",
+                  "Subplan Name": "CTE up",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 979.42,
+                  "Total Cost": 9756.26,
+                  "Plan Rows": 2403,
+                  "Plan Width": 45,
+                  "Plans": [
+                    {
+                      "Node Type": "Aggregate",
+                      "Strategy": "Hashed",
+                      "Partial Mode": "Simple",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 979.42,
+                      "Total Cost": 997.45,
+                      "Plan Rows": 1803,
+                      "Plan Width": 24,
+                      "Group Key": [
+                        "witness.ns",
+                        "witness.code"
+                      ],
+                      "Planned Partitions": 0,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "witness",
+                          "Alias": "witness",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 889.28,
+                          "Plan Rows": 18028,
+                          "Plan Width": 12
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 436.1,
+                      "Total Cost": 873.48,
+                      "Plan Rows": 60,
+                      "Plan Width": 45,
+                      "Inner Unique": true,
+                      "Hash Cond": "((u.ns = p.ns) AND (u.ancestor = p.child))",
+                      "Plans": [
+                        {
+                          "Node Type": "WorkTable Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "CTE Name": "up",
+                          "Alias": "u",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 405.68,
+                          "Plan Rows": 6010,
+                          "Plan Width": 72,
+                          "Filter": "(d < 4)"
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 226.64,
+                          "Total Cost": 226.64,
+                          "Plan Rows": 13964,
+                          "Plan Width": 16,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Relation Name": "parent",
+                              "Alias": "p",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 226.64,
+                              "Plan Rows": 13964,
+                              "Plan Width": 16
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 102.79,
+                  "Total Cost": 168.88,
+                  "Plan Rows": 1,
+                  "Plan Width": 361,
+                  "Inner Unique": false,
+                  "Hash Cond": "((y.ns = a.ns) AND (y.ancestor = x.ancestor))",
+                  "Plans": [
+                    {
+                      "Node Type": "CTE Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "CTE Name": "up",
+                      "Alias": "y",
+                      "Startup Cost": 0.0,
+                      "Total Cost": 48.06,
+                      "Plan Rows": 2403,
+                      "Plan Width": 72
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 102.78,
+                      "Total Cost": 102.78,
+                      "Plan Rows": 1,
+                      "Plan Width": 321,
+                      "Plans": [
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 36.68,
+                          "Total Cost": 102.78,
+                          "Plan Rows": 1,
+                          "Plan Width": 321,
+                          "Inner Unique": false,
+                          "Hash Cond": "((x.ns = a.ns) AND (x.leaf = a.code))",
+                          "Plans": [
+                            {
+                              "Node Type": "CTE Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "CTE Name": "up",
+                              "Alias": "x",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 48.06,
+                              "Plan Rows": 2403,
+                              "Plan Width": 72
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Startup Cost": 36.55,
+                              "Total Cost": 36.55,
+                              "Plan Rows": 9,
+                              "Plan Width": 281,
+                              "Plans": [
+                                {
+                                  "Node Type": "Nested Loop",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Join Type": "Inner",
+                                  "Startup Cost": 0.3,
+                                  "Total Cost": 36.55,
+                                  "Plan Rows": 9,
+                                  "Plan Width": 281,
+                                  "Inner Unique": false,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Relation Name": "seed",
+                                      "Alias": "s",
+                                      "Startup Cost": 0.0,
+                                      "Total Cost": 1.06,
+                                      "Plan Rows": 6,
+                                      "Plan Width": 10
+                                    },
+                                    {
+                                      "Node Type": "Memoize",
+                                      "Parent Relationship": "Inner",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Startup Cost": 0.3,
+                                      "Total Cost": 10.09,
+                                      "Plan Rows": 2,
+                                      "Plan Width": 277,
+                                      "Cache Key": "s.ns, s.product",
+                                      "Cache Mode": "logical",
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Index Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Async Capable": false,
+                                          "Scan Direction": "Forward",
+                                          "Index Name": "wp",
+                                          "Relation Name": "witness",
+                                          "Alias": "a",
+                                          "Startup Cost": 0.29,
+                                          "Total Cost": 10.08,
+                                          "Plan Rows": 2,
+                                          "Plan Width": 277,
+                                          "Index Cond": "((ns = s.ns) AND (product = s.product))"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "wc",
+                  "Relation Name": "witness",
+                  "Alias": "b",
+                  "Startup Cost": 0.29,
+                  "Total Cost": 1.64,
+                  "Plan Rows": 5,
+                  "Plan Width": 277,
+                  "Index Cond": "((ns = y.ns) AND (code = y.leaf))"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "4": {
+      "0": {
+        "SQLite": [
+          [
+            3,
+            0,
+            0,
+            "MATERIALIZE up"
+          ],
+          [
+            7,
+            3,
+            0,
+            "SETUP"
+          ],
+          [
+            13,
+            7,
+            0,
+            "SCAN witness USING COVERING INDEX wc"
+          ],
+          [
+            56,
+            3,
+            0,
+            "RECURSIVE STEP"
+          ],
+          [
+            59,
+            56,
+            0,
+            "SCAN u"
+          ],
+          [
+            62,
+            56,
+            0,
+            "SEARCH p USING INDEX sqlite_autoindex_parent_1 (ns=? AND child=?)"
+          ],
+          [
+            89,
+            0,
+            0,
+            "SCAN s"
+          ],
+          [
+            91,
+            0,
+            0,
+            "SEARCH a USING INDEX wp (ns=? AND product=?)"
+          ],
+          [
+            104,
+            0,
+            0,
+            "BLOOM FILTER ON x (ns=? AND leaf=?)"
+          ],
+          [
+            116,
+            0,
+            0,
+            "SEARCH x USING AUTOMATIC COVERING INDEX (ns=? AND leaf=?)"
+          ],
+          [
+            127,
+            0,
+            0,
+            "BLOOM FILTER ON y (ns=? AND ancestor=?)"
+          ],
+          [
+            139,
+            0,
+            0,
+            "SEARCH y USING AUTOMATIC COVERING INDEX (ns=? AND ancestor=?)"
+          ],
+          [
+            148,
+            0,
+            0,
+            "SEARCH b USING INDEX wc (ns=? AND code=?)"
+          ]
+        ],
+        "PostgreSQL": [
+          {
+            "Plan": {
+              "Node Type": "Nested Loop",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Inner",
+              "Startup Cost": 19740.88,
+              "Total Cost": 19907.23,
+              "Plan Rows": 5,
+              "Plan Width": 590,
+              "Inner Unique": false,
+              "Join Filter": "((b.product <> a.product) AND (a.ns = b.ns))",
+              "Plans": [
+                {
+                  "Node Type": "Recursive Union",
+                  "Parent Relationship": "InitPlan",
+                  "Subplan Name": "CTE up",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 1957.84,
+                  "Total Cost": 19526.51,
+                  "Plan Rows": 6006,
+                  "Plan Width": 45,
+                  "Plans": [
+                    {
+                      "Node Type": "Aggregate",
+                      "Strategy": "Hashed",
+                      "Partial Mode": "Simple",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 1957.84,
+                      "Total Cost": 1993.9,
+                      "Plan Rows": 3606,
+                      "Plan Width": 24,
+                      "Group Key": [
+                        "witness.ns",
+                        "witness.code"
+                      ],
+                      "Planned Partitions": 0,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "witness",
+                          "Alias": "witness",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 1777.56,
+                          "Plan Rows": 36056,
+                          "Plan Width": 12
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 872.2,
+                      "Total Cost": 1747.26,
+                      "Plan Rows": 240,
+                      "Plan Width": 45,
+                      "Inner Unique": true,
+                      "Hash Cond": "((u.ns = p.ns) AND (u.ancestor = p.child))",
+                      "Plans": [
+                        {
+                          "Node Type": "WorkTable Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "CTE Name": "up",
+                          "Alias": "u",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 811.35,
+                          "Plan Rows": 12020,
+                          "Plan Width": 72,
+                          "Filter": "(d < 0)"
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 453.28,
+                          "Total Cost": 453.28,
+                          "Plan Rows": 27928,
+                          "Plan Width": 16,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Relation Name": "parent",
+                              "Alias": "p",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 453.28,
+                              "Plan Rows": 27928,
+                              "Plan Width": 16
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 214.08,
+                  "Total Cost": 379.25,
+                  "Plan Rows": 1,
+                  "Plan Width": 361,
+                  "Inner Unique": false,
+                  "Hash Cond": "((y.ns = a.ns) AND (y.ancestor = x.ancestor))",
+                  "Plans": [
+                    {
+                      "Node Type": "CTE Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "CTE Name": "up",
+                      "Alias": "y",
+                      "Startup Cost": 0.0,
+                      "Total Cost": 120.12,
+                      "Plan Rows": 6006,
+                      "Plan Width": 72
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 214.06,
+                      "Total Cost": 214.06,
+                      "Plan Rows": 1,
+                      "Plan Width": 321,
+                      "Plans": [
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 48.89,
+                          "Total Cost": 214.06,
+                          "Plan Rows": 1,
+                          "Plan Width": 321,
+                          "Inner Unique": false,
+                          "Hash Cond": "((x.ns = a.ns) AND (x.leaf = a.code))",
+                          "Plans": [
+                            {
+                              "Node Type": "CTE Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "CTE Name": "up",
+                              "Alias": "x",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 120.12,
+                              "Plan Rows": 6006,
+                              "Plan Width": 72
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Startup Cost": 48.6,
+                              "Total Cost": 48.6,
+                              "Plan Rows": 19,
+                              "Plan Width": 281,
+                              "Plans": [
+                                {
+                                  "Node Type": "Nested Loop",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Join Type": "Inner",
+                                  "Startup Cost": 0.3,
+                                  "Total Cost": 48.6,
+                                  "Plan Rows": 19,
+                                  "Plan Width": 281,
+                                  "Inner Unique": false,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Relation Name": "seed",
+                                      "Alias": "s",
+                                      "Startup Cost": 0.0,
+                                      "Total Cost": 1.12,
+                                      "Plan Rows": 12,
+                                      "Plan Width": 10
+                                    },
+                                    {
+                                      "Node Type": "Memoize",
+                                      "Parent Relationship": "Inner",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Startup Cost": 0.3,
+                                      "Total Cost": 10.09,
+                                      "Plan Rows": 2,
+                                      "Plan Width": 277,
+                                      "Cache Key": "s.ns, s.product",
+                                      "Cache Mode": "logical",
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Index Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Async Capable": false,
+                                          "Scan Direction": "Forward",
+                                          "Index Name": "wp",
+                                          "Relation Name": "witness",
+                                          "Alias": "a",
+                                          "Startup Cost": 0.29,
+                                          "Total Cost": 10.08,
+                                          "Plan Rows": 2,
+                                          "Plan Width": 277,
+                                          "Index Cond": "((ns = s.ns) AND (product = s.product))"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "wc",
+                  "Relation Name": "witness",
+                  "Alias": "b",
+                  "Startup Cost": 0.29,
+                  "Total Cost": 1.39,
+                  "Plan Rows": 5,
+                  "Plan Width": 277,
+                  "Index Cond": "((ns = y.ns) AND (code = y.leaf))"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "2": {
+        "SQLite": [
+          [
+            3,
+            0,
+            0,
+            "MATERIALIZE up"
+          ],
+          [
+            7,
+            3,
+            0,
+            "SETUP"
+          ],
+          [
+            13,
+            7,
+            0,
+            "SCAN witness USING COVERING INDEX wc"
+          ],
+          [
+            56,
+            3,
+            0,
+            "RECURSIVE STEP"
+          ],
+          [
+            59,
+            56,
+            0,
+            "SCAN u"
+          ],
+          [
+            62,
+            56,
+            0,
+            "SEARCH p USING INDEX sqlite_autoindex_parent_1 (ns=? AND child=?)"
+          ],
+          [
+            89,
+            0,
+            0,
+            "SCAN s"
+          ],
+          [
+            91,
+            0,
+            0,
+            "SEARCH a USING INDEX wp (ns=? AND product=?)"
+          ],
+          [
+            104,
+            0,
+            0,
+            "BLOOM FILTER ON x (ns=? AND leaf=?)"
+          ],
+          [
+            116,
+            0,
+            0,
+            "SEARCH x USING AUTOMATIC COVERING INDEX (ns=? AND leaf=?)"
+          ],
+          [
+            127,
+            0,
+            0,
+            "BLOOM FILTER ON y (ns=? AND ancestor=?)"
+          ],
+          [
+            139,
+            0,
+            0,
+            "SEARCH y USING AUTOMATIC COVERING INDEX (ns=? AND ancestor=?)"
+          ],
+          [
+            148,
+            0,
+            0,
+            "SEARCH b USING INDEX wc (ns=? AND code=?)"
+          ]
+        ],
+        "PostgreSQL": [
+          {
+            "Plan": {
+              "Node Type": "Nested Loop",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Inner",
+              "Startup Cost": 19740.88,
+              "Total Cost": 19907.23,
+              "Plan Rows": 5,
+              "Plan Width": 590,
+              "Inner Unique": false,
+              "Join Filter": "((b.product <> a.product) AND (a.ns = b.ns))",
+              "Plans": [
+                {
+                  "Node Type": "Recursive Union",
+                  "Parent Relationship": "InitPlan",
+                  "Subplan Name": "CTE up",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 1957.84,
+                  "Total Cost": 19526.51,
+                  "Plan Rows": 6006,
+                  "Plan Width": 45,
+                  "Plans": [
+                    {
+                      "Node Type": "Aggregate",
+                      "Strategy": "Hashed",
+                      "Partial Mode": "Simple",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 1957.84,
+                      "Total Cost": 1993.9,
+                      "Plan Rows": 3606,
+                      "Plan Width": 24,
+                      "Group Key": [
+                        "witness.ns",
+                        "witness.code"
+                      ],
+                      "Planned Partitions": 0,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "witness",
+                          "Alias": "witness",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 1777.56,
+                          "Plan Rows": 36056,
+                          "Plan Width": 12
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 872.2,
+                      "Total Cost": 1747.26,
+                      "Plan Rows": 240,
+                      "Plan Width": 45,
+                      "Inner Unique": true,
+                      "Hash Cond": "((u.ns = p.ns) AND (u.ancestor = p.child))",
+                      "Plans": [
+                        {
+                          "Node Type": "WorkTable Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "CTE Name": "up",
+                          "Alias": "u",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 811.35,
+                          "Plan Rows": 12020,
+                          "Plan Width": 72,
+                          "Filter": "(d < 2)"
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 453.28,
+                          "Total Cost": 453.28,
+                          "Plan Rows": 27928,
+                          "Plan Width": 16,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Relation Name": "parent",
+                              "Alias": "p",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 453.28,
+                              "Plan Rows": 27928,
+                              "Plan Width": 16
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 214.08,
+                  "Total Cost": 379.25,
+                  "Plan Rows": 1,
+                  "Plan Width": 361,
+                  "Inner Unique": false,
+                  "Hash Cond": "((y.ns = a.ns) AND (y.ancestor = x.ancestor))",
+                  "Plans": [
+                    {
+                      "Node Type": "CTE Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "CTE Name": "up",
+                      "Alias": "y",
+                      "Startup Cost": 0.0,
+                      "Total Cost": 120.12,
+                      "Plan Rows": 6006,
+                      "Plan Width": 72
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 214.06,
+                      "Total Cost": 214.06,
+                      "Plan Rows": 1,
+                      "Plan Width": 321,
+                      "Plans": [
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 48.89,
+                          "Total Cost": 214.06,
+                          "Plan Rows": 1,
+                          "Plan Width": 321,
+                          "Inner Unique": false,
+                          "Hash Cond": "((x.ns = a.ns) AND (x.leaf = a.code))",
+                          "Plans": [
+                            {
+                              "Node Type": "CTE Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "CTE Name": "up",
+                              "Alias": "x",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 120.12,
+                              "Plan Rows": 6006,
+                              "Plan Width": 72
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Startup Cost": 48.6,
+                              "Total Cost": 48.6,
+                              "Plan Rows": 19,
+                              "Plan Width": 281,
+                              "Plans": [
+                                {
+                                  "Node Type": "Nested Loop",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Join Type": "Inner",
+                                  "Startup Cost": 0.3,
+                                  "Total Cost": 48.6,
+                                  "Plan Rows": 19,
+                                  "Plan Width": 281,
+                                  "Inner Unique": false,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Relation Name": "seed",
+                                      "Alias": "s",
+                                      "Startup Cost": 0.0,
+                                      "Total Cost": 1.12,
+                                      "Plan Rows": 12,
+                                      "Plan Width": 10
+                                    },
+                                    {
+                                      "Node Type": "Memoize",
+                                      "Parent Relationship": "Inner",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Startup Cost": 0.3,
+                                      "Total Cost": 10.09,
+                                      "Plan Rows": 2,
+                                      "Plan Width": 277,
+                                      "Cache Key": "s.ns, s.product",
+                                      "Cache Mode": "logical",
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Index Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Async Capable": false,
+                                          "Scan Direction": "Forward",
+                                          "Index Name": "wp",
+                                          "Relation Name": "witness",
+                                          "Alias": "a",
+                                          "Startup Cost": 0.29,
+                                          "Total Cost": 10.08,
+                                          "Plan Rows": 2,
+                                          "Plan Width": 277,
+                                          "Index Cond": "((ns = s.ns) AND (product = s.product))"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "wc",
+                  "Relation Name": "witness",
+                  "Alias": "b",
+                  "Startup Cost": 0.29,
+                  "Total Cost": 1.39,
+                  "Plan Rows": 5,
+                  "Plan Width": 277,
+                  "Index Cond": "((ns = y.ns) AND (code = y.leaf))"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "4": {
+        "SQLite": [
+          [
+            3,
+            0,
+            0,
+            "MATERIALIZE up"
+          ],
+          [
+            7,
+            3,
+            0,
+            "SETUP"
+          ],
+          [
+            13,
+            7,
+            0,
+            "SCAN witness USING COVERING INDEX wc"
+          ],
+          [
+            56,
+            3,
+            0,
+            "RECURSIVE STEP"
+          ],
+          [
+            59,
+            56,
+            0,
+            "SCAN u"
+          ],
+          [
+            62,
+            56,
+            0,
+            "SEARCH p USING INDEX sqlite_autoindex_parent_1 (ns=? AND child=?)"
+          ],
+          [
+            89,
+            0,
+            0,
+            "SCAN s"
+          ],
+          [
+            91,
+            0,
+            0,
+            "SEARCH a USING INDEX wp (ns=? AND product=?)"
+          ],
+          [
+            104,
+            0,
+            0,
+            "BLOOM FILTER ON x (ns=? AND leaf=?)"
+          ],
+          [
+            116,
+            0,
+            0,
+            "SEARCH x USING AUTOMATIC COVERING INDEX (ns=? AND leaf=?)"
+          ],
+          [
+            127,
+            0,
+            0,
+            "BLOOM FILTER ON y (ns=? AND ancestor=?)"
+          ],
+          [
+            139,
+            0,
+            0,
+            "SEARCH y USING AUTOMATIC COVERING INDEX (ns=? AND ancestor=?)"
+          ],
+          [
+            148,
+            0,
+            0,
+            "SEARCH b USING INDEX wc (ns=? AND code=?)"
+          ]
+        ],
+        "PostgreSQL": [
+          {
+            "Plan": {
+              "Node Type": "Nested Loop",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Inner",
+              "Startup Cost": 19740.88,
+              "Total Cost": 19907.23,
+              "Plan Rows": 5,
+              "Plan Width": 590,
+              "Inner Unique": false,
+              "Join Filter": "((b.product <> a.product) AND (a.ns = b.ns))",
+              "Plans": [
+                {
+                  "Node Type": "Recursive Union",
+                  "Parent Relationship": "InitPlan",
+                  "Subplan Name": "CTE up",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 1957.84,
+                  "Total Cost": 19526.51,
+                  "Plan Rows": 6006,
+                  "Plan Width": 45,
+                  "Plans": [
+                    {
+                      "Node Type": "Aggregate",
+                      "Strategy": "Hashed",
+                      "Partial Mode": "Simple",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 1957.84,
+                      "Total Cost": 1993.9,
+                      "Plan Rows": 3606,
+                      "Plan Width": 24,
+                      "Group Key": [
+                        "witness.ns",
+                        "witness.code"
+                      ],
+                      "Planned Partitions": 0,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "witness",
+                          "Alias": "witness",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 1777.56,
+                          "Plan Rows": 36056,
+                          "Plan Width": 12
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 872.2,
+                      "Total Cost": 1747.26,
+                      "Plan Rows": 240,
+                      "Plan Width": 45,
+                      "Inner Unique": true,
+                      "Hash Cond": "((u.ns = p.ns) AND (u.ancestor = p.child))",
+                      "Plans": [
+                        {
+                          "Node Type": "WorkTable Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "CTE Name": "up",
+                          "Alias": "u",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 811.35,
+                          "Plan Rows": 12020,
+                          "Plan Width": 72,
+                          "Filter": "(d < 4)"
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 453.28,
+                          "Total Cost": 453.28,
+                          "Plan Rows": 27928,
+                          "Plan Width": 16,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Relation Name": "parent",
+                              "Alias": "p",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 453.28,
+                              "Plan Rows": 27928,
+                              "Plan Width": 16
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 214.08,
+                  "Total Cost": 379.25,
+                  "Plan Rows": 1,
+                  "Plan Width": 361,
+                  "Inner Unique": false,
+                  "Hash Cond": "((y.ns = a.ns) AND (y.ancestor = x.ancestor))",
+                  "Plans": [
+                    {
+                      "Node Type": "CTE Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "CTE Name": "up",
+                      "Alias": "y",
+                      "Startup Cost": 0.0,
+                      "Total Cost": 120.12,
+                      "Plan Rows": 6006,
+                      "Plan Width": 72
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 214.06,
+                      "Total Cost": 214.06,
+                      "Plan Rows": 1,
+                      "Plan Width": 321,
+                      "Plans": [
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 48.89,
+                          "Total Cost": 214.06,
+                          "Plan Rows": 1,
+                          "Plan Width": 321,
+                          "Inner Unique": false,
+                          "Hash Cond": "((x.ns = a.ns) AND (x.leaf = a.code))",
+                          "Plans": [
+                            {
+                              "Node Type": "CTE Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "CTE Name": "up",
+                              "Alias": "x",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 120.12,
+                              "Plan Rows": 6006,
+                              "Plan Width": 72
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Startup Cost": 48.6,
+                              "Total Cost": 48.6,
+                              "Plan Rows": 19,
+                              "Plan Width": 281,
+                              "Plans": [
+                                {
+                                  "Node Type": "Nested Loop",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Join Type": "Inner",
+                                  "Startup Cost": 0.3,
+                                  "Total Cost": 48.6,
+                                  "Plan Rows": 19,
+                                  "Plan Width": 281,
+                                  "Inner Unique": false,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Relation Name": "seed",
+                                      "Alias": "s",
+                                      "Startup Cost": 0.0,
+                                      "Total Cost": 1.12,
+                                      "Plan Rows": 12,
+                                      "Plan Width": 10
+                                    },
+                                    {
+                                      "Node Type": "Memoize",
+                                      "Parent Relationship": "Inner",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Startup Cost": 0.3,
+                                      "Total Cost": 10.09,
+                                      "Plan Rows": 2,
+                                      "Plan Width": 277,
+                                      "Cache Key": "s.ns, s.product",
+                                      "Cache Mode": "logical",
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Index Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Async Capable": false,
+                                          "Scan Direction": "Forward",
+                                          "Index Name": "wp",
+                                          "Relation Name": "witness",
+                                          "Alias": "a",
+                                          "Startup Cost": 0.29,
+                                          "Total Cost": 10.08,
+                                          "Plan Rows": 2,
+                                          "Plan Width": 277,
+                                          "Index Cond": "((ns = s.ns) AND (product = s.product))"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "wc",
+                  "Relation Name": "witness",
+                  "Alias": "b",
+                  "Startup Cost": 0.29,
+                  "Total Cost": 1.39,
+                  "Plan Rows": 5,
+                  "Plan Width": 277,
+                  "Index Cond": "((ns = y.ns) AND (code = y.leaf))"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "checks": [
+    {
+      "copies": 1,
+      "engine": "Neo4j",
+      "direct_only_agreement": true
+    },
+    {
+      "copies": 1,
+      "engine": "SQLite",
+      "direct_only_agreement": true
+    },
+    {
+      "copies": 1,
+      "engine": "PostgreSQL",
+      "direct_only_agreement": true
+    },
+    {
+      "copies": 2,
+      "engine": "Neo4j",
+      "direct_only_agreement": true
+    },
+    {
+      "copies": 2,
+      "engine": "SQLite",
+      "direct_only_agreement": true
+    },
+    {
+      "copies": 2,
+      "engine": "PostgreSQL",
+      "direct_only_agreement": true
+    },
+    {
+      "copies": 4,
+      "engine": "Neo4j",
+      "direct_only_agreement": true
+    },
+    {
+      "copies": 4,
+      "engine": "SQLite",
+      "direct_only_agreement": true
+    },
+    {
+      "copies": 4,
+      "engine": "PostgreSQL",
+      "direct_only_agreement": true
+    }
+  ],
+  "complete": true
+}

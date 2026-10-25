@@ -1,0 +1,1398 @@
+{
+  "protocol_sha256": "f5a4e704ff9aece78009e63e55b4dcc008904c72408cc9280621dd384b9cc304",
+  "snapshots": {
+    "D0": {
+      "inputs": {
+        "sai_praeparate.csv": "21ab964f09219334f48439535f4ddfc708127c3d3e01bdbce807b64edbaceabe",
+        "sl.csv": "8170c468ed391bd93a3cb8119d338296faa887053d9498bf2f5f2d6f887b2651",
+        "atc_list.csv": "7fc47d896dc0e7dc605fb3f628d84d735da6767f02941cd7ad814729ebba4487"
+      },
+      "witnesses": 8960,
+      "codes": 6996,
+      "parent_edges": 6982,
+      "excluded": {
+        "direct_nonleaf_or_unlisted": 745,
+        "package_unlinked_nonleaf_or_unlisted": 359
+      },
+      "tasks": {
+        "0": {
+          "full": {
+            "rows": 40,
+            "peer_pairs": 12,
+            "sha256": "7534fe9079d4f99eb73f9c30ce75c06b10ea7176ebeeb666fa68d35495e52a6f"
+          },
+          "direct": {
+            "rows": 12,
+            "peer_pairs": 12,
+            "sha256": "f9f4afeae79f36e06325d970ce7a1147ba541b71d2fbb59ddd75d0c722259222"
+          },
+          "additional_peer_pairs": 0,
+          "per_anchor": {
+            "70124": {
+              "name": "Nintedanib Zentiva, Weichkapseln",
+              "full_peers": 5,
+              "direct_peers": 5
+            },
+            "69640": {
+              "name": "Prednison Galepharm, Tabletten",
+              "full_peers": 7,
+              "direct_peers": 7
+            },
+            "55446": {
+              "name": "TechneScan DMSA, Markierungsbesteck",
+              "full_peers": 0,
+              "direct_peers": 0
+            }
+          },
+          "new_peer_pairs": []
+        },
+        "2": {
+          "full": {
+            "rows": 808,
+            "peer_pairs": 154,
+            "sha256": "41575fb7baa102f72d3140b9638ec3202671c2b9cdef338fdd6ba273cb93ddf2"
+          },
+          "direct": {
+            "rows": 224,
+            "peer_pairs": 147,
+            "sha256": "0fab86a3c8d6ac92d2da13bd45d35c2b1436cdf2e70b57124708a7ffa5e09e07"
+          },
+          "additional_peer_pairs": 7,
+          "per_anchor": {
+            "70124": {
+              "name": "Nintedanib Zentiva, Weichkapseln",
+              "full_peers": 117,
+              "direct_peers": 110
+            },
+            "69640": {
+              "name": "Prednison Galepharm, Tabletten",
+              "full_peers": 34,
+              "direct_peers": 34
+            },
+            "55446": {
+              "name": "TechneScan DMSA, Markierungsbesteck",
+              "full_peers": 3,
+              "direct_peers": 3
+            }
+          },
+          "new_peer_pairs": [
+            {
+              "anchor": "70124",
+              "peer": "59174",
+              "peer_name": "Afinitor, Tabletten",
+              "common_ancestors": [
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EG02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "60326",
+              "peer_name": "Votrient, Filmtabletten",
+              "common_ancestors": [
+                "L01E",
+                "L01EX"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EX03"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "62061",
+              "peer_name": "Votubia, Tabletten",
+              "common_ancestors": [
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EG02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "62812",
+              "peer_name": "Votubia, dispergierbare Tabletten",
+              "common_ancestors": [
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EG02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "65580",
+              "peer_name": "Imatinib Devatis, Filmtabletten",
+              "common_ancestors": [
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EA01"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "67648",
+              "peer_name": "Tabrecta, Filmtabletten",
+              "common_ancestors": [
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EP01"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "69771",
+              "peer_name": "Nilotinib Spirig HC, Hartkapseln",
+              "common_ancestors": [
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EA03"
+              ]
+            }
+          ]
+        },
+        "4": {
+          "full": {
+            "rows": 6188,
+            "peer_pairs": 1114,
+            "sha256": "c81ce44ea58f8388230f9ab14d3f064a253237d38038b9aa03d53c98571d8eec"
+          },
+          "direct": {
+            "rows": 1769,
+            "peer_pairs": 1075,
+            "sha256": "4dd60ee880fbce761457b257bb34fb3fe96d78b26401a3cf064520cf272d0a2c"
+          },
+          "additional_peer_pairs": 39,
+          "per_anchor": {
+            "70124": {
+              "name": "Nintedanib Zentiva, Weichkapseln",
+              "full_peers": 775,
+              "direct_peers": 758
+            },
+            "69640": {
+              "name": "Prednison Galepharm, Tabletten",
+              "full_peers": 108,
+              "direct_peers": 108
+            },
+            "55446": {
+              "name": "TechneScan DMSA, Markierungsbesteck",
+              "full_peers": 231,
+              "direct_peers": 209
+            }
+          },
+          "new_peer_pairs": [
+            {
+              "anchor": "55446",
+              "peer": "54546",
+              "peer_name": "Tetley Technegas, Generator",
+              "common_ancestors": [
+                "V",
+                "V09"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V09EA02"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "57687",
+              "peer_name": "Thyrogen, poudre pour solution injectable",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [
+                "H01AB01"
+              ],
+              "package_peer_codes": [
+                "V04CJ01"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60621",
+              "peer_name": "Allergovit Mixtura Graminea/Artemisia/Secale, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60623",
+              "peer_name": "Allergovit Mixtura Graminea/Betula/Secale, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60624",
+              "peer_name": "Allergovit Alnus/Corylus, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA05"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60625",
+              "peer_name": "Allergovit Mixtura Graminea-Cerealis/Plantago, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60626",
+              "peer_name": "Allergovit Mixtura Graminea-Cerealis/Artemisia, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60627",
+              "peer_name": "Allergovit Mixtura Graminea-Cerealis/Betula, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60628",
+              "peer_name": "Allergovit Mixtura Graminea 60/Secale 40, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60629",
+              "peer_name": "Allergovit Mixtura Graminea 80/Secale 20, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60630",
+              "peer_name": "Allergovit Mixtura Graminea-Cerealis, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60631",
+              "peer_name": "Allergovit Mixtura Graminea, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60632",
+              "peer_name": "Allergovit Plantago, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA10"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60634",
+              "peer_name": "Allergovit Mixtura Graminea/Betula/Secale/Plantago, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60635",
+              "peer_name": "Allergovit Mixtura Graminea/Artemisia/Secale/Plantago, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60636",
+              "peer_name": "Allergovit Betula/Alnus/Corylus, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA05"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60637",
+              "peer_name": "Allergovit Mixtura Graminea/Secale/Plantago, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60638",
+              "peer_name": "Allergovit Secale, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA02"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60639",
+              "peer_name": "Allergovit Corylus, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA05"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60640",
+              "peer_name": "Allergovit Parietaria, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA10"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60641",
+              "peer_name": "Allergovit Artemisia, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA10"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60642",
+              "peer_name": "Allergovit Betula, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA05"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "54834",
+              "peer_name": "Arava, comprimés pelliculés",
+              "common_ancestors": [
+                "L"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L04AK01"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "56238",
+              "peer_name": "Certican, Tabletten",
+              "common_ancestors": [
+                "L"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L04AH02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "56239",
+              "peer_name": "Certican, dispergierbare Tabletten",
+              "common_ancestors": [
+                "L"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L04AH02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "58589",
+              "peer_name": "Hycamtin, Kapseln",
+              "common_ancestors": [
+                "L",
+                "L01"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01CE01"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "59174",
+              "peer_name": "Afinitor, Tabletten",
+              "common_ancestors": [
+                "L",
+                "L01",
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EG02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "59284",
+              "peer_name": "Irinotecan Labatec, solution à diluer pour perfusion",
+              "common_ancestors": [
+                "L",
+                "L01"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01CE02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "60326",
+              "peer_name": "Votrient, Filmtabletten",
+              "common_ancestors": [
+                "L",
+                "L01",
+                "L01E",
+                "L01EX"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EX03"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "61246",
+              "peer_name": "Irinotecan Fresenius, Konzentrat zur Herstellung einer Infusionslösung",
+              "common_ancestors": [
+                "L",
+                "L01"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01CE02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "62061",
+              "peer_name": "Votubia, Tabletten",
+              "common_ancestors": [
+                "L",
+                "L01",
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EG02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "62248",
+              "peer_name": "Leflunomide Zentiva,Filmtabletten",
+              "common_ancestors": [
+                "L"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L04AK01"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "62812",
+              "peer_name": "Votubia, dispergierbare Tabletten",
+              "common_ancestors": [
+                "L",
+                "L01",
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EG02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "65580",
+              "peer_name": "Imatinib Devatis, Filmtabletten",
+              "common_ancestors": [
+                "L",
+                "L01",
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EA01"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "66215",
+              "peer_name": "Olumiant, comprimés pelliculés",
+              "common_ancestors": [
+                "L"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L04AF02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "67648",
+              "peer_name": "Tabrecta, Filmtabletten",
+              "common_ancestors": [
+                "L",
+                "L01",
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EP01"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "68601",
+              "peer_name": "Fingolimod Viatris, Hartkapseln",
+              "common_ancestors": [
+                "L"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L04AE01"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "68936",
+              "peer_name": "Teriflunomid Spirig HC, Filmtabletten",
+              "common_ancestors": [
+                "L"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L04AK02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "69771",
+              "peer_name": "Nilotinib Spirig HC, Hartkapseln",
+              "common_ancestors": [
+                "L",
+                "L01",
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EA03"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "D1": {
+      "inputs": {
+        "sai_praeparate.csv": "7f1a6717b6b7cc0f8f56db6177821b4bbe1c4fd1c2ef3c8cee894c7334c70dfc",
+        "sl.csv": "03ff8ff406e30018b5a500ca009a6771656944f160ccbf093059ccc782f00928",
+        "atc_list.csv": "7fc47d896dc0e7dc605fb3f628d84d735da6767f02941cd7ad814729ebba4487"
+      },
+      "witnesses": 9014,
+      "codes": 6996,
+      "parent_edges": 6982,
+      "excluded": {
+        "direct_nonleaf_or_unlisted": 729,
+        "package_unlinked_nonleaf_or_unlisted": 376
+      },
+      "tasks": {
+        "0": {
+          "full": {
+            "rows": 42,
+            "peer_pairs": 13,
+            "sha256": "a111e20e66fafdd121b3cebc9a78a614446aefc751d940f349bb52c85ebcdd5d"
+          },
+          "direct": {
+            "rows": 13,
+            "peer_pairs": 13,
+            "sha256": "8736e7900e3005800a4f4ec42d1fb0ee50a7f9d9988f4f0976b91e8198f4da10"
+          },
+          "additional_peer_pairs": 0,
+          "per_anchor": {
+            "70124": {
+              "name": "Nintedanib Zentiva, Weichkapseln",
+              "full_peers": 6,
+              "direct_peers": 6
+            },
+            "69640": {
+              "name": "Prednison Galepharm, Tabletten",
+              "full_peers": 7,
+              "direct_peers": 7
+            },
+            "55446": {
+              "name": "TechneScan DMSA, Markierungsbesteck",
+              "full_peers": 0,
+              "direct_peers": 0
+            }
+          },
+          "new_peer_pairs": []
+        },
+        "2": {
+          "full": {
+            "rows": 824,
+            "peer_pairs": 157,
+            "sha256": "b55ab6a90c8425c5fe196cd6c7f4b6181c6c282013a90de5340c6b178d4c386e"
+          },
+          "direct": {
+            "rows": 230,
+            "peer_pairs": 150,
+            "sha256": "df8644f0f71f719fc7d02d805dad9ccdf69db9f159e9f5741568e47f06c83587"
+          },
+          "additional_peer_pairs": 7,
+          "per_anchor": {
+            "70124": {
+              "name": "Nintedanib Zentiva, Weichkapseln",
+              "full_peers": 120,
+              "direct_peers": 113
+            },
+            "69640": {
+              "name": "Prednison Galepharm, Tabletten",
+              "full_peers": 34,
+              "direct_peers": 34
+            },
+            "55446": {
+              "name": "TechneScan DMSA, Markierungsbesteck",
+              "full_peers": 3,
+              "direct_peers": 3
+            }
+          },
+          "new_peer_pairs": [
+            {
+              "anchor": "70124",
+              "peer": "59174",
+              "peer_name": "Afinitor, Tabletten",
+              "common_ancestors": [
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EG02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "60326",
+              "peer_name": "Votrient, Filmtabletten",
+              "common_ancestors": [
+                "L01E",
+                "L01EX"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EX03"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "62061",
+              "peer_name": "Votubia, Tabletten",
+              "common_ancestors": [
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EG02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "62812",
+              "peer_name": "Votubia, dispergierbare Tabletten",
+              "common_ancestors": [
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EG02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "65580",
+              "peer_name": "Imatinib Devatis, Filmtabletten",
+              "common_ancestors": [
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EA01"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "67648",
+              "peer_name": "Tabrecta, Filmtabletten",
+              "common_ancestors": [
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EP01"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "69771",
+              "peer_name": "Nilotinib Spirig HC, Hartkapseln",
+              "common_ancestors": [
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EA03"
+              ]
+            }
+          ]
+        },
+        "4": {
+          "full": {
+            "rows": 6292,
+            "peer_pairs": 1130,
+            "sha256": "aaea0a4495fb6b44981f27878e22ca3ee372ab388815d0f0e22d0b75ba3d0f5c"
+          },
+          "direct": {
+            "rows": 1797,
+            "peer_pairs": 1092,
+            "sha256": "0d6708707d1b75a942ca13c620af91f38e394860df363345763405bec50842ca"
+          },
+          "additional_peer_pairs": 38,
+          "per_anchor": {
+            "70124": {
+              "name": "Nintedanib Zentiva, Weichkapseln",
+              "full_peers": 788,
+              "direct_peers": 772
+            },
+            "69640": {
+              "name": "Prednison Galepharm, Tabletten",
+              "full_peers": 109,
+              "direct_peers": 109
+            },
+            "55446": {
+              "name": "TechneScan DMSA, Markierungsbesteck",
+              "full_peers": 233,
+              "direct_peers": 211
+            }
+          },
+          "new_peer_pairs": [
+            {
+              "anchor": "55446",
+              "peer": "54546",
+              "peer_name": "Tetley Technegas, Generator",
+              "common_ancestors": [
+                "V",
+                "V09"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V09EA02"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "57687",
+              "peer_name": "Thyrogen, poudre pour solution injectable",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [
+                "H01AB01"
+              ],
+              "package_peer_codes": [
+                "V04CJ01"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60621",
+              "peer_name": "Allergovit Mixtura Graminea/Artemisia/Secale, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60623",
+              "peer_name": "Allergovit Mixtura Graminea/Betula/Secale, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60624",
+              "peer_name": "Allergovit Alnus/Corylus, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA05"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60625",
+              "peer_name": "Allergovit Mixtura Graminea-Cerealis/Plantago, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60626",
+              "peer_name": "Allergovit Mixtura Graminea-Cerealis/Artemisia, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60627",
+              "peer_name": "Allergovit Mixtura Graminea-Cerealis/Betula, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60628",
+              "peer_name": "Allergovit Mixtura Graminea 60/Secale 40, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60629",
+              "peer_name": "Allergovit Mixtura Graminea 80/Secale 20, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60630",
+              "peer_name": "Allergovit Mixtura Graminea-Cerealis, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60631",
+              "peer_name": "Allergovit Mixtura Graminea, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60632",
+              "peer_name": "Allergovit Plantago, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA10"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60634",
+              "peer_name": "Allergovit Mixtura Graminea/Betula/Secale/Plantago, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60635",
+              "peer_name": "Allergovit Mixtura Graminea/Artemisia/Secale/Plantago, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60636",
+              "peer_name": "Allergovit Betula/Alnus/Corylus, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA05"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60637",
+              "peer_name": "Allergovit Mixtura Graminea/Secale/Plantago, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA20"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60638",
+              "peer_name": "Allergovit Secale, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA02"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60639",
+              "peer_name": "Allergovit Corylus, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA05"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60640",
+              "peer_name": "Allergovit Parietaria, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA10"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60641",
+              "peer_name": "Allergovit Artemisia, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA10"
+              ]
+            },
+            {
+              "anchor": "55446",
+              "peer": "60642",
+              "peer_name": "Allergovit Betula, Injektionssuspension",
+              "common_ancestors": [
+                "V"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "V01AA05"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "54834",
+              "peer_name": "Arava, comprimés pelliculés",
+              "common_ancestors": [
+                "L"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L04AK01"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "56238",
+              "peer_name": "Certican, Tabletten",
+              "common_ancestors": [
+                "L"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L04AH02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "56239",
+              "peer_name": "Certican, dispergierbare Tabletten",
+              "common_ancestors": [
+                "L"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L04AH02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "58589",
+              "peer_name": "Hycamtin, Kapseln",
+              "common_ancestors": [
+                "L",
+                "L01"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01CE01"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "59174",
+              "peer_name": "Afinitor, Tabletten",
+              "common_ancestors": [
+                "L",
+                "L01",
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EG02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "59284",
+              "peer_name": "Irinotecan Labatec, solution à diluer pour perfusion",
+              "common_ancestors": [
+                "L",
+                "L01"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01CE02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "60326",
+              "peer_name": "Votrient, Filmtabletten",
+              "common_ancestors": [
+                "L",
+                "L01",
+                "L01E",
+                "L01EX"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EX03"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "61246",
+              "peer_name": "Irinotecan Fresenius, Konzentrat zur Herstellung einer Infusionslösung",
+              "common_ancestors": [
+                "L",
+                "L01"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01CE02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "62061",
+              "peer_name": "Votubia, Tabletten",
+              "common_ancestors": [
+                "L",
+                "L01",
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EG02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "62248",
+              "peer_name": "Leflunomide Zentiva,Filmtabletten",
+              "common_ancestors": [
+                "L"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L04AK01"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "62812",
+              "peer_name": "Votubia, dispergierbare Tabletten",
+              "common_ancestors": [
+                "L",
+                "L01",
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EG02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "65580",
+              "peer_name": "Imatinib Devatis, Filmtabletten",
+              "common_ancestors": [
+                "L",
+                "L01",
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EA01"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "66215",
+              "peer_name": "Olumiant, comprimés pelliculés",
+              "common_ancestors": [
+                "L"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L04AF02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "67648",
+              "peer_name": "Tabrecta, Filmtabletten",
+              "common_ancestors": [
+                "L",
+                "L01",
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EP01"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "68936",
+              "peer_name": "Teriflunomid Spirig HC, Filmtabletten",
+              "common_ancestors": [
+                "L"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L04AK02"
+              ]
+            },
+            {
+              "anchor": "70124",
+              "peer": "69771",
+              "peer_name": "Nilotinib Spirig HC, Hartkapseln",
+              "common_ancestors": [
+                "L",
+                "L01",
+                "L01E"
+              ],
+              "direct_peer_codes": [],
+              "package_peer_codes": [
+                "L01EA03"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "controls": {
+    "D0_independent_source_projection": true,
+    "D0_absent_anchor": true,
+    "D0_missing_parent": true,
+    "D1_independent_source_projection": true,
+    "D1_absent_anchor": true,
+    "D1_missing_parent": true,
+    "two_copy_answer_equality": true
+  },
+  "native_receipts": {
+    "native_initial.json": {
+      "timed_outputs": 243,
+      "cells": 27,
+      "ablation_checks": 9
+    },
+    "native_control.json": {
+      "timed_outputs": 405,
+      "cells": 45,
+      "ablation_checks": 15
+    }
+  },
+  "updates": {
+    "0": {
+      "added_peer_pairs": 1,
+      "removed_peer_pairs": 0
+    },
+    "2": {
+      "added_peer_pairs": 3,
+      "removed_peer_pairs": 0
+    },
+    "4": {
+      "added_peer_pairs": 26,
+      "removed_peer_pairs": 10
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "frozen_before_first_analysis_utc": "2026-10-10T19:30:07.183679+00:00",
+  "prior_exploration": "Existing source, route and ingredient analyses known. Joint source-by-policy robustness table not previously computed. Local prospective specification, not external preregistration.",
+  "question": "Which documentary product\u2013tariff candidates retain package support across all three route policies and alternative classification paths, and which depend on one path or policy?",
+  "unit": "Swiss authorization and exact frozen tariff record; documentary direct SAI and authorization-linked SL paths only",
+  "source_axes": [
+    "SAI_ATC_only",
+    "SL_ATC_only",
+    "both_classification_paths"
+  ],
+  "ablation_scope": "Remove classification path type; retain SAI authorization bridge required by SL. This is not withdrawal of all SAI records.",
+  "policies": [
+    "coarse",
+    "exact_code",
+    "explicit_formulation"
+  ],
+  "aggregation": "VERIFIED if any SL package VERIFIED; CONTRADICTED only if at least one SL package and all SL packages CONTRADICTED; otherwise UNDETERMINED. Direct SAI carries no package route.",
+  "categories": {
+    "stable_supported": "all three aggregate policies VERIFIED",
+    "stable_conflict": "all three aggregate policies CONTRADICTED",
+    "unavailable_all": "all three aggregate policies UNDETERMINED",
+    "policy_sensitive": "remaining combinations"
+  },
+  "strong_robustness": "Both classification path types support the exact pair, all three policies aggregate VERIFIED, and no SL path is CONTRADICTED under any policy. Completeness of route information is reported separately.",
+  "comparators": "independent CSV/SQLite source reconstruction versus retained physical Neo4j witnesses; full package policy decisions bound to independently checked V23 digests",
+  "external_checks": "WHO alteration relations for all SL-only recovered candidates; full formulation-section census of EMA Vfend document for voriconazole interpretation, without Swiss-authorization or tariff-eligibility promotion",
+  "inputs": {
+    "Graph_Validation_V9/temporal_snapshot/input/silver/sl.csv": "8170c468ed391bd93a3cb8119d338296faa887053d9498bf2f5f2d6f887b2651",
+    "Graph_Validation_V9/temporal_snapshot/input/silver/sai_praeparate.csv": "21ab964f09219334f48439535f4ddfc708127c3d3e01bdbce807b64edbaceabe",
+    "Graph_Validation_V9/temporal_snapshot/input/silver/ze_definitions.csv": "8e7893592ef0f9d9bd817e0ebfa5194be8918958777c25290d022fbc760046fa",
+    "Graph_Validation_V9/results/temporal_physical_bundles.json.gz": "328f5c7dfd35f6102b80dc02eb9a4d5a989fc176f3ccf15c2ca460ca1d6e4bde"
+  }
+}

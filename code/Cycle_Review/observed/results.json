@@ -1,0 +1,127 @@
+{
+  "design": "Exploratory undirected classification-cycle inspection; three previously selected products with a same-code peer; three warmups and five randomized interleaved timed repetitions. Indexed file-backed generic SQLite node/edge model versus native Neo4j through HTTP. SQL plan control is a separate within-SQLite run.",
+  "case_selection": [
+    {
+      "product": "CH:authorization:31096",
+      "record": "sai_praeparate.csv:7f1a6717b6b7cc0f8f56db6177821b4bbe1c4fd1c2ef3c8cee894c7334c70dfc:record:4288",
+      "target": "CH:authorization:53342"
+    },
+    {
+      "product": "CH:authorization:41330",
+      "record": "sai_praeparate.csv:7f1a6717b6b7cc0f8f56db6177821b4bbe1c4fd1c2ef3c8cee894c7334c70dfc:record:4153",
+      "target": "CH:authorization:57918"
+    },
+    {
+      "product": "CH:authorization:44470",
+      "record": "sai_praeparate.csv:7f1a6717b6b7cc0f8f56db6177821b4bbe1c4fd1c2ef3c8cee894c7334c70dfc:record:1884",
+      "target": "CH:authorization:70030"
+    }
+  ],
+  "nodes": 84672,
+  "edges": 177044,
+  "tasks": {
+    "redundant_classification_cycles": {
+      "question": "Which pairs of distinct linking records repeat a classification of this product?",
+      "Cypher": "MATCH (p:ProductRef {id:$product})<-[:ABOUT_PRODUCT]-(a:Association)-[:TARGET_ATC]->(c:ATCConcept)<-[:TARGET_ATC]-(b:Association)-[:ABOUT_PRODUCT]->(p) WHERE a.id<b.id RETURN a.id AS first,b.id AS second,c.id AS code",
+      "SQL": "SELECT wa.source_id first,wb.source_id second,c.source_id code FROM node p JOIN edge a ON a.t=p.id AND a.r='ABOUT_PRODUCT' JOIN edge b ON b.s=a.s AND b.r='TARGET_ATC' JOIN edge d ON d.t=b.t AND d.r='TARGET_ATC' JOIN edge e ON e.s=d.s AND e.r='ABOUT_PRODUCT' AND e.t=p.id JOIN node wa ON wa.id=a.s AND wa.label='Association' JOIN node c ON c.id=b.t AND c.label='ATCConcept' JOIN node wb ON wb.id=d.s AND wb.label='Association' WHERE p.label='ProductRef' AND p.source_id=:product AND wa.source_id<wb.source_id",
+      "Browser": "MATCH path=(p:ProductRef {id:$product})<-[:ABOUT_PRODUCT]-(a:Association)-[:TARGET_ATC]->(c:ATCConcept)<-[:TARGET_ATC]-(b:Association)-[:ABOUT_PRODUCT]->(p) WHERE a.id<b.id RETURN path"
+    }
+  },
+  "cases": [
+    {
+      "task": "redundant_classification_cycles",
+      "parameters": {
+        "product": "CH:authorization:31096",
+        "record": "sai_praeparate.csv:7f1a6717b6b7cc0f8f56db6177821b4bbe1c4fd1c2ef3c8cee894c7334c70dfc:record:4288",
+        "target": "CH:authorization:53342"
+      },
+      "rows": 0,
+      "answer_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "medians_ms": {
+        "SQLite_embedded": 33.575512,
+        "Neo4j_HTTP": 7.977785
+      },
+      "samples_ms": {
+        "SQLite_embedded": [
+          20.80907,
+          35.587638,
+          33.483275,
+          33.575512,
+          34.133476
+        ],
+        "Neo4j_HTTP": [
+          9.080343,
+          7.413093,
+          7.977785,
+          5.663868,
+          9.224195
+        ]
+      },
+      "missing_endpoint_control": true
+    },
+    {
+      "task": "redundant_classification_cycles",
+      "parameters": {
+        "product": "CH:authorization:41330",
+        "record": "sai_praeparate.csv:7f1a6717b6b7cc0f8f56db6177821b4bbe1c4fd1c2ef3c8cee894c7334c70dfc:record:4153",
+        "target": "CH:authorization:57918"
+      },
+      "rows": 1,
+      "answer_sha256": "0b7bd476ee825bdeffa2d4b98f2fa917445c439c90ba86415bddc0bb074bd89b",
+      "medians_ms": {
+        "SQLite_embedded": 42.349156,
+        "Neo4j_HTTP": 8.974177
+      },
+      "samples_ms": {
+        "SQLite_embedded": [
+          43.993502,
+          42.258376,
+          25.853815,
+          43.569488,
+          42.349156
+        ],
+        "Neo4j_HTTP": [
+          8.974177,
+          9.588886,
+          8.555451,
+          6.585782,
+          9.65696
+        ]
+      },
+      "missing_endpoint_control": true
+    },
+    {
+      "task": "redundant_classification_cycles",
+      "parameters": {
+        "product": "CH:authorization:44470",
+        "record": "sai_praeparate.csv:7f1a6717b6b7cc0f8f56db6177821b4bbe1c4fd1c2ef3c8cee894c7334c70dfc:record:1884",
+        "target": "CH:authorization:70030"
+      },
+      "rows": 0,
+      "answer_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "medians_ms": {
+        "SQLite_embedded": 23.42558,
+        "Neo4j_HTTP": 7.317355
+      },
+      "samples_ms": {
+        "SQLite_embedded": [
+          35.069188,
+          36.838895,
+          21.736117,
+          23.42558,
+          20.293098
+        ],
+        "Neo4j_HTTP": [
+          7.317355,
+          6.39883,
+          8.366347,
+          6.508878,
+          7.61456
+        ]
+      },
+      "missing_endpoint_control": true
+    }
+  ],
+  "graph_facts_sha256": "445e1bbdaab4cce533b94587dd741a7895405b2a6c78f05ffcf99868bbe2d176",
+  "interpretation": "Shortest classification paths explain recorded connectivity; they establish neither medicine equivalence nor reimbursement eligibility. Source-impact results identify dependent explanations, not changed judgments. Browser outputs demonstrate native visualization availability, not user comprehension or time saved. No schema/inference/visual superiority assumption."
+}

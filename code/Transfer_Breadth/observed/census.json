@@ -1,0 +1,118 @@
+{
+  "protocol_sha256": "f971508cf6bfdaab1693eaeb25beb0d38030378b787ae2297c5bbaf11b2e7853",
+  "corpora": {
+    "Swiss_D1": {
+      "corpus": "Swiss_D1",
+      "eligible_entities": 5678,
+      "source_witnesses": 9014,
+      "source_hashes": {
+        "sai_praeparate.csv": "7f1a6717b6b7cc0f8f56db6177821b4bbe1c4fd1c2ef3c8cee894c7334c70dfc",
+        "sl.csv": "03ff8ff406e30018b5a500ca009a6771656944f160ccbf093059ccc782f00928",
+        "atc_list.csv": "7fc47d896dc0e7dc605fb3f628d84d735da6767f02941cd7ad814729ebba4487"
+      },
+      "excluded": {
+        "direct_nonleaf_or_unlisted": 729,
+        "package_unlinked_nonleaf_or_unlisted": 376
+      },
+      "entities_in_multiple_first_level_groups": 3,
+      "entities_with_multiple_admitted_codes": 17,
+      "Swiss_entities_gaining_codes_from_packages": 70,
+      "tasks": {
+        "0": {
+          "unordered_peer_pairs": 21772,
+          "additional_unordered_pairs": 290,
+          "anchors": 5678,
+          "directed_peer_pairs": 43544,
+          "nonempty_anchors": 4849,
+          "maximum_peers": 66,
+          "reduced_pairs": 42964,
+          "additional_pairs": 580,
+          "anchors_gaining_peers": 182,
+          "answer_sha256": "a83cf5470c380341f73af7c84411e5a140bcdf4e84ddddca70fbb3b73b2d4377"
+        },
+        "2": {
+          "unordered_peer_pairs": 187667,
+          "additional_unordered_pairs": 4632,
+          "anchors": 5678,
+          "directed_peer_pairs": 375334,
+          "nonempty_anchors": 5660,
+          "maximum_peers": 328,
+          "reduced_pairs": 366070,
+          "additional_pairs": 9264,
+          "anchors_gaining_peers": 1130,
+          "answer_sha256": "7725e1fb42feca23bfaea49aa1576de0e08790b5140e5603059cff4782f7428e"
+        },
+        "4": {
+          "unordered_peer_pairs": 1538005,
+          "additional_unordered_pairs": 24589,
+          "anchors": 5678,
+          "directed_peer_pairs": 3076010,
+          "nonempty_anchors": 5678,
+          "maximum_peers": 874,
+          "reduced_pairs": 3026832,
+          "additional_pairs": 49178,
+          "anchors_gaining_peers": 4111,
+          "answer_sha256": "3c099fb6adfd74aa126a17a6a75edd928922f8c4c2c955ff2e9b4776b59fc683"
+        }
+      },
+      "reference": "Independent SQL source projection and closure-query equality for every anchor; Python prefix membership oracle."
+    },
+    "ChEMBL_37": {
+      "corpus": "ChEMBL_37",
+      "eligible_entities": 3647,
+      "source_witnesses": 4563,
+      "source_hashes": {
+        "atc_list.csv": "7fc47d896dc0e7dc605fb3f628d84d735da6767f02941cd7ad814729ebba4487",
+        "chembl_molecules_000.json": "53e87fd8fa9f8a65a6342c4715d6854a7e8cd2d263b7cc5f473dc5bf7fec8ae2",
+        "chembl_molecules_001.json": "d6cbce6cb38b647012615619091ec81f97323bd0d43d7c7a4a49ceaa391a9a5a",
+        "chembl_molecules_002.json": "e32872a7ac4cbf6d6127fe29acb48d89234697c83c22e5d24c465b8c3d0d216b",
+        "chembl_molecules_003.json": "21e57bec00cf1f529a305a6aa8a8193e80728ec6867394213cadac884802dd83"
+      },
+      "excluded": {
+        "molecules_without_admitted_code": 4
+      },
+      "entities_in_multiple_first_level_groups": 314,
+      "entities_with_multiple_admitted_codes": 559,
+      "Swiss_entities_gaining_codes_from_packages": null,
+      "tasks": {
+        "0": {
+          "unordered_peer_pairs": 0,
+          "additional_unordered_pairs": 0,
+          "anchors": 3647,
+          "directed_peer_pairs": 0,
+          "nonempty_anchors": 0,
+          "maximum_peers": 0,
+          "reduced_pairs": 0,
+          "additional_pairs": 0,
+          "anchors_gaining_peers": 0,
+          "answer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "2": {
+          "unordered_peer_pairs": 77730,
+          "additional_unordered_pairs": 14170,
+          "anchors": 3647,
+          "directed_peer_pairs": 155460,
+          "nonempty_anchors": 3643,
+          "maximum_peers": 208,
+          "reduced_pairs": 127120,
+          "additional_pairs": 28340,
+          "anchors_gaining_peers": 2204,
+          "answer_sha256": "179d35cb6453edf6cfe8ac73f316afb2321eb25731e9c0aeab2ac7c5ea6d34c0"
+        },
+        "4": {
+          "unordered_peer_pairs": 740716,
+          "additional_unordered_pairs": 97849,
+          "anchors": 3647,
+          "directed_peer_pairs": 1481432,
+          "nonempty_anchors": 3647,
+          "maximum_peers": 1593,
+          "reduced_pairs": 1285734,
+          "additional_pairs": 195698,
+          "anchors_gaining_peers": 3240,
+          "answer_sha256": "1ebfa1e48b1ead68cf7e3029f2fca878fa63c00a1b0c46366e945718fd2f8f8a"
+        }
+      },
+      "reference": "Independent SQL source projection and closure-query equality for every anchor; Python prefix membership oracle."
+    }
+  }
+}

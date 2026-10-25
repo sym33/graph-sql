@@ -1,0 +1,22 @@
+@prefix ex: <https://example.org/medigraph/evidence/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+ex:MedicationEvidence a owl:Ontology .
+ex:DocumentaryWitness a owl:Class ; owl:disjointWith ex:HistoricalWitness .
+ex:HistoricalWitness a owl:Class .
+ex:SwissProduct a owl:Class ; owl:disjointWith ex:EuropeanMedicine .
+ex:EuropeanMedicine a owl:Class .
+ex:ATCConcept a owl:Class .
+ex:SwissTariffRecord a owl:Class .
+ex:SourceRecord a owl:Class .
+ex:recordedCode a owl:ObjectProperty .
+ex:historicalCode a owl:ObjectProperty .
+ex:listedByTariff a owl:ObjectProperty .
+ex:broader a owl:ObjectProperty, owl:TransitiveProperty .
+ex:documentaryTariff a owl:ObjectProperty ; owl:propertyChainAxiom (ex:recordedCode ex:listedByTariff) .
+ex:historicalTariff a owl:ObjectProperty ; owl:propertyChainAxiom (ex:historicalCode ex:listedByTariff) .
+ex:recordedBroaderGroup a owl:ObjectProperty ; owl:propertyChainAxiom (ex:recordedCode ex:broader) .
+ex:IngredientDeclaration a owl:Class .
+ex:ingredientDeclaration a owl:ObjectProperty ; owl:inverseOf ex:declaredInWitness .
+ex:declaredInWitness a owl:ObjectProperty .
+ex:ingredientTariffCandidate a owl:ObjectProperty ; owl:propertyChainAxiom (ex:declaredInWitness ex:documentaryTariff) .

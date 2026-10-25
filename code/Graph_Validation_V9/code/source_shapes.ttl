@@ -1,0 +1,12 @@
+@prefix ex: <https://example.org/medigraph-validation/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+ex:WitnessShape a sh:NodeShape; sh:targetClass ex:Witness;
+ sh:property [sh:path ex:observedAssociation; sh:minCount 1; sh:maxCount 1; sh:equals ex:referenceAssociation];
+ sh:property [sh:path ex:product; sh:minCount 1; sh:maxCount 1; sh:equals ex:associationProduct];
+ sh:property [sh:path ex:target; sh:minCount 1; sh:maxCount 1; sh:equals ex:associationTarget];
+ sh:property [sh:path ex:observedPremises; sh:minCount 1; sh:maxCount 1; sh:equals ex:referencePremises].
+ex:RecordShape a sh:NodeShape; sh:targetClass ex:Record;
+ sh:property [sh:path ex:payload; sh:minCount 1; sh:maxCount 1; sh:equals ex:referencePayload];
+ sh:property [sh:path ex:fileDigest; sh:minCount 1; sh:maxCount 1; sh:equals ex:referenceFileDigest];
+ sh:property [sh:path ex:payloadDigest; sh:minCount 1; sh:maxCount 1; sh:equals ex:referencePayloadDigest].

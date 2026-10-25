@@ -1,0 +1,468 @@
+[
+  {
+    "path": "External_Knowledge_Validation/PROTOCOL.json",
+    "origin": "External_Knowledge_Validation/PROTOCOL.json"
+  },
+  {
+    "path": "Graph_Validation_V10/TRANSFER_PROTOCOL.json",
+    "origin": "Graph_Validation_V10/TRANSFER_PROTOCOL.json"
+  },
+  {
+    "path": "Graph_Validation_V9/results/baseline_physical_bundles.json.gz",
+    "origin": "Graph_Validation_V9/results/baseline_physical_bundles.json"
+  },
+  {
+    "path": "Graph_Validation_V9/results/temporal_physical_bundles.json.gz",
+    "origin": "Graph_Validation_V9/results/temporal_physical_bundles.json"
+  },
+  {
+    "path": "Graph_Validation_V9/temporal_snapshot/input/silver/gBA_nutzenbewertung.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/gBA_nutzenbewertung.csv",
+    "origin": "Graph_Validation_V9/temporal_snapshot/input/silver/gBA_nutzenbewertung.csv"
+  },
+  {
+    "path": "Graph_Validation_V9/temporal_snapshot/input/silver/technisches_begleitblatt.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/technisches_begleitblatt.csv",
+    "origin": "Graph_Validation_V9/temporal_snapshot/input/silver/technisches_begleitblatt.csv"
+  },
+  {
+    "path": "Graph_Validation_V9/temporal_snapshot/input/silver/atc_alterations.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/atc_alterations.csv",
+    "origin": "Graph_Validation_V9/temporal_snapshot/input/silver/atc_alterations.csv"
+  },
+  {
+    "path": "Graph_Validation_V9/temporal_snapshot/input/silver/antraege.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/antraege.csv",
+    "origin": "Graph_Validation_V9/temporal_snapshot/input/silver/antraege.csv"
+  },
+  {
+    "path": "Graph_Validation_V9/temporal_snapshot/input/silver/ema_products.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/ema_products.csv",
+    "origin": "Graph_Validation_V9/temporal_snapshot/input/silver/ema_products.csv"
+  },
+  {
+    "path": "Graph_Validation_V9/temporal_snapshot/input/silver/sl.csv",
+    "origin": "Graph_Validation_V9/temporal_snapshot/input/silver/sl.csv"
+  },
+  {
+    "path": "Graph_Validation_V9/temporal_snapshot/input/silver/atc_list.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/atc_list.csv",
+    "origin": "Graph_Validation_V9/temporal_snapshot/input/silver/atc_list.csv"
+  },
+  {
+    "path": "Graph_Validation_V9/temporal_snapshot/input/silver/geloeschte_substanzen.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/geloeschte_substanzen.csv",
+    "origin": "Graph_Validation_V9/temporal_snapshot/input/silver/geloeschte_substanzen.csv"
+  },
+  {
+    "path": "Graph_Validation_V9/temporal_snapshot/input/silver/hochteure_medis.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/hochteure_medis.csv",
+    "origin": "Graph_Validation_V9/temporal_snapshot/input/silver/hochteure_medis.csv"
+  },
+  {
+    "path": "Graph_Validation_V9/temporal_snapshot/input/silver/atc_ddd.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/atc_ddd.csv",
+    "origin": "Graph_Validation_V9/temporal_snapshot/input/silver/atc_ddd.csv"
+  },
+  {
+    "path": "Graph_Validation_V9/temporal_snapshot/input/silver/sai_praeparate.csv",
+    "origin": "Graph_Validation_V9/temporal_snapshot/input/silver/sai_praeparate.csv"
+  },
+  {
+    "path": "Graph_Validation_V9/temporal_snapshot/input/silver/ze_definitions.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/ze_definitions.csv",
+    "origin": "Graph_Validation_V9/temporal_snapshot/input/silver/ze_definitions.csv"
+  },
+  {
+    "path": "Graph_Validation_V9/temporal_snapshot/input/silver/gBA_icd.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/gBA_icd.csv",
+    "origin": "Graph_Validation_V9/temporal_snapshot/input/silver/gBA_icd.csv"
+  },
+  {
+    "path": "Graph_Validation_V14/results/audited_attribution_reference.json",
+    "origin": "Graph_Validation_V14/results/audited_attribution_reference.json"
+  },
+  {
+    "path": "Graph_Validation_V14/results/attribution_initial_decisions.json",
+    "origin": "Graph_Validation_V14/results/attribution_initial_decisions.json"
+  },
+  {
+    "path": "Graph_Validation_V14/results/reconstruction_expected.json",
+    "origin": "Graph_Validation_V14/results/reconstruction_expected.json"
+  },
+  {
+    "path": "input/silver/gBA_nutzenbewertung.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/gBA_nutzenbewertung.csv",
+    "origin": "input/silver/gBA_nutzenbewertung.csv"
+  },
+  {
+    "path": "input/silver/technisches_begleitblatt.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/technisches_begleitblatt.csv",
+    "origin": "input/silver/technisches_begleitblatt.csv"
+  },
+  {
+    "path": "input/silver/atc_alterations.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/atc_alterations.csv",
+    "origin": "input/silver/atc_alterations.csv"
+  },
+  {
+    "path": "input/silver/antraege.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/antraege.csv",
+    "origin": "input/silver/antraege.csv"
+  },
+  {
+    "path": "input/silver/ema_products.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/ema_products.csv",
+    "origin": "input/silver/ema_products.csv"
+  },
+  {
+    "path": "input/silver/sl.csv",
+    "origin": "input/silver/sl.csv"
+  },
+  {
+    "path": "input/silver/atc_list.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/atc_list.csv",
+    "origin": "input/silver/atc_list.csv"
+  },
+  {
+    "path": "input/silver/geloeschte_substanzen.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/geloeschte_substanzen.csv",
+    "origin": "input/silver/geloeschte_substanzen.csv"
+  },
+  {
+    "path": "input/silver/hochteure_medis.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/hochteure_medis.csv",
+    "origin": "input/silver/hochteure_medis.csv"
+  },
+  {
+    "path": "input/silver/atc_ddd.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/atc_ddd.csv",
+    "origin": "input/silver/atc_ddd.csv"
+  },
+  {
+    "path": "input/silver/sai_praeparate.csv",
+    "origin": "input/silver/sai_praeparate.csv"
+  },
+  {
+    "path": "input/silver/ze_definitions.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/ze_definitions.csv",
+    "origin": "input/silver/ze_definitions.csv"
+  },
+  {
+    "path": "input/silver/gBA_icd.csv",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/staging%20area/gBA_icd.csv",
+    "origin": "input/silver/gBA_icd.csv"
+  },
+  {
+    "path": "External_Knowledge_Validation/results/product_information_crosschecks.json",
+    "origin": "External_Knowledge_Validation/results/product_information_crosschecks.json"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/chembl_molecules_002.json.gz",
+    "origin": "External_Knowledge_Validation/raw/chembl_molecules_002.json"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/smpc_lumeblue.txt",
+    "origin": "External_Knowledge_Validation/raw/smpc_lumeblue.txt"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/chembl_molecules_001.json.gz",
+    "origin": "External_Knowledge_Validation/raw/chembl_molecules_001.json"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/ema_lumeblue.txt",
+    "origin": "External_Knowledge_Validation/raw/ema_lumeblue.txt"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/retrieval_manifest.jsonl",
+    "origin": "External_Knowledge_Validation/raw/retrieval_manifest.jsonl"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/chembl_molecules_000.json.gz",
+    "origin": "External_Knowledge_Validation/raw/chembl_molecules_000.json"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/smpc_lenalidomide-mylan.txt",
+    "origin": "External_Knowledge_Validation/raw/smpc_lenalidomide-mylan.txt"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/chembl_molecules_003.json",
+    "origin": "External_Knowledge_Validation/raw/chembl_molecules_003.json"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/ema_lenalidomide-mylan.txt",
+    "origin": "External_Knowledge_Validation/raw/ema_lenalidomide-mylan.txt"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/ema_libmeldy.txt",
+    "origin": "External_Knowledge_Validation/raw/ema_libmeldy.txt"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/smpc_piqray.txt",
+    "origin": "External_Knowledge_Validation/raw/smpc_piqray.txt"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/adjudication_retrieval_manifest.jsonl",
+    "origin": "External_Knowledge_Validation/raw/adjudication_retrieval_manifest.jsonl"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/ema_kerendia.txt",
+    "origin": "External_Knowledge_Validation/raw/ema_kerendia.txt"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/chembl_status.json",
+    "origin": "External_Knowledge_Validation/raw/chembl_status.json"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/ema_piqray.txt",
+    "origin": "External_Knowledge_Validation/raw/ema_piqray.txt"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/smpc_kerendia.txt",
+    "origin": "External_Knowledge_Validation/raw/smpc_kerendia.txt"
+  },
+  {
+    "path": "External_Knowledge_Validation/raw/smpc_libmeldy.txt",
+    "origin": "External_Knowledge_Validation/raw/smpc_libmeldy.txt"
+  },
+  {
+    "path": "Graph_Validation_V11/results/combined_challenges.json",
+    "origin": "Graph_Validation_V11/results/combined_challenges.json"
+  },
+  {
+    "path": "Graph_Validation_V16/external/retrieval_manifest.json",
+    "origin": "Graph_Validation_V16/external/retrieval_manifest.json"
+  },
+  {
+    "path": "Graph_Validation_V21/external/rybrevant.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/rybrevant-epar-product-information_en.pdf",
+    "origin": "Graph_Validation_V21/external/rybrevant.pdf"
+  },
+  {
+    "path": "Graph_Validation_V21/external/tabrecta.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/tabrecta-epar-product-information_en.pdf",
+    "origin": "Graph_Validation_V21/external/tabrecta.pdf"
+  },
+  {
+    "path": "Graph_Validation_V21/external/entyvio.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/entyvio-epar-product-information_en.pdf",
+    "origin": "Graph_Validation_V21/external/entyvio.pdf"
+  },
+  {
+    "path": "Graph_Validation_V21/external/noxafil.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/noxafil-epar-product-information_en.pdf",
+    "origin": "Graph_Validation_V21/external/noxafil.pdf"
+  },
+  {
+    "path": "Graph_Validation_V21/external/ocrevus.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/ocrevus-epar-product-information_en.pdf",
+    "origin": "Graph_Validation_V21/external/ocrevus.pdf"
+  },
+  {
+    "path": "Graph_Validation_V21/external/darzalex.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/darzalex-epar-product-information_en.pdf",
+    "origin": "Graph_Validation_V21/external/darzalex.pdf"
+  },
+  {
+    "path": "Graph_Validation_V21/external/edqm_routes.html",
+    "url": "https://www.hl7.org/fhir/uv/ips/en/ValueSet-medicine-route-of-administration.html",
+    "origin": "Graph_Validation_V21/external/edqm_routes.html"
+  },
+  {
+    "path": "Graph_Validation_V21/external/votrient.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/votrient-epar-product-information_en.pdf",
+    "origin": "Graph_Validation_V21/external/votrient.pdf"
+  },
+  {
+    "path": "Graph_Validation_V21/external/cresemba.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/cresemba-epar-product-information_en.pdf",
+    "origin": "Graph_Validation_V21/external/cresemba.pdf"
+  },
+  {
+    "path": "Graph_Validation_V10/results/baseline_indication_bundles.jsonl.gz",
+    "origin": "Graph_Validation_V10/results/baseline_indication_bundles.jsonl"
+  },
+  {
+    "path": "Graph_Validation_V10/results/June_indication_bundles.jsonl.gz",
+    "origin": "Graph_Validation_V10/results/June_indication_bundles.jsonl"
+  },
+  {
+    "path": "Thesis_Recovery/results/WHO_full_code_alterations.json",
+    "origin": "Thesis_Recovery/results/WHO_full_code_alterations.json"
+  },
+  {
+    "path": "Graph_Validation_V24/external/vfend.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/vfend-epar-product-information_en.pdf",
+    "origin": "Official EMA English product information; third-party rights retained",
+    "retrieval_manifest": "Graph_Validation_V24/external/retrieval.json"
+  },
+  {
+    "path": "Graph_Validation_V25/external/tuyory.html.gz",
+    "origin": "Official EMA EPAR English product information; URLs, retrieval time and document SHA-256 in Graph_Validation_V25/external/retrieval.json"
+  },
+  {
+    "path": "Graph_Validation_V25/external/roactemra.pdf",
+    "origin": "Official EMA EPAR English product information; URLs, retrieval time and document SHA-256 in Graph_Validation_V25/external/retrieval.json"
+  },
+  {
+    "path": "Graph_Validation_V25/external/tuyory.pdf",
+    "origin": "Official EMA EPAR English product information; URLs, retrieval time and document SHA-256 in Graph_Validation_V25/external/retrieval.json"
+  },
+  {
+    "path": "Graph_Validation_V25/external/avtozma.pdf",
+    "origin": "Official EMA EPAR English product information; URLs, retrieval time and document SHA-256 in Graph_Validation_V25/external/retrieval.json"
+  },
+  {
+    "path": "Graph_Validation_V25/external/roactemra.html.gz",
+    "origin": "Official EMA EPAR English product information; URLs, retrieval time and document SHA-256 in Graph_Validation_V25/external/retrieval.json"
+  },
+  {
+    "path": "Graph_Validation_V25/external/tyenne.html.gz",
+    "origin": "Official EMA EPAR English product information; URLs, retrieval time and document SHA-256 in Graph_Validation_V25/external/retrieval.json"
+  },
+  {
+    "path": "Graph_Validation_V25/external/tocilizumab-stada.html.gz",
+    "origin": "Official EMA EPAR English product information; URLs, retrieval time and document SHA-256 in Graph_Validation_V25/external/retrieval.json"
+  },
+  {
+    "path": "Graph_Validation_V25/external/tocilizumab-stada.pdf",
+    "origin": "Official EMA EPAR English product information; URLs, retrieval time and document SHA-256 in Graph_Validation_V25/external/retrieval.json"
+  },
+  {
+    "path": "Graph_Validation_V25/external/avtozma.html.gz",
+    "origin": "Official EMA EPAR English product information; URLs, retrieval time and document SHA-256 in Graph_Validation_V25/external/retrieval.json"
+  },
+  {
+    "path": "Graph_Validation_V25/external/tyenne.pdf",
+    "origin": "Official EMA EPAR English product information; URLs, retrieval time and document SHA-256 in Graph_Validation_V25/external/retrieval.json"
+  },
+  {
+    "path": "Graph_Validation_V25/external/retrieval.json",
+    "origin": "Official EMA EPAR English product information; URLs, retrieval time and document SHA-256 in Graph_Validation_V25/external/retrieval.json"
+  },
+  {
+    "path": "Graph_Validation_V30/external/uzpruvo.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/uzpruvo-epar-product-information_en.pdf",
+    "origin": "https://www.ema.europa.eu/en/medicines/human/EPAR/uzpruvo",
+    "sha256": "c2ad3c079bed5c252c4665c7b5860bb604de2bf72cb32e7e3dfe4268fcf640fe",
+    "retrieval_utc": "2026-10-11T13:19:50.143630+00:00"
+  },
+  {
+    "path": "Graph_Validation_V30/external/usgena.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/usgena-epar-product-information_en.pdf",
+    "origin": "https://www.ema.europa.eu/en/medicines/human/EPAR/usgena",
+    "sha256": "8e5be544de91a74438b6084c7497550446fa3104ba8f5e5368034aaef5a300fc",
+    "retrieval_utc": "2026-10-11T13:19:50.144017+00:00"
+  },
+  {
+    "path": "Graph_Validation_V30/external/stelara.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/stelara-epar-product-information_en.pdf",
+    "origin": "https://www.ema.europa.eu/en/medicines/human/EPAR/stelara",
+    "sha256": "6a0c49632e19ff1155ec52b57eff985c2b5fe19c1a8b9a5771ebf66d9d2755b7",
+    "retrieval_utc": "2026-10-11T13:19:50.144117+00:00"
+  },
+  {
+    "path": "Graph_Validation_V30/external/steqeyma.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/steqeyma-epar-product-information_en.pdf",
+    "origin": "https://www.ema.europa.eu/en/medicines/human/EPAR/steqeyma",
+    "sha256": "9a3509f3b02c3fb7e75de75bcc03208fcf393a04fbbaef6c487f30c100e3060d",
+    "retrieval_utc": "2026-10-11T13:19:50.144188+00:00"
+  },
+  {
+    "path": "Graph_Validation_V30/external/qoyvolma.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/qoyvolma-epar-product-information_en.pdf",
+    "origin": "https://www.ema.europa.eu/en/medicines/human/EPAR/qoyvolma",
+    "sha256": "dac52462007d62c96f9ad87dca054e3b862718ded4612a2aefc60025aa83d7c5",
+    "retrieval_utc": "2026-10-11T13:19:50.144246+00:00"
+  },
+  {
+    "path": "Graph_Validation_V30/external/imuldosa.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/imuldosa-epar-product-information_en.pdf",
+    "origin": "https://www.ema.europa.eu/en/medicines/human/EPAR/imuldosa",
+    "sha256": "87f2092b5801344763aab65be2a2ec758c724837012f971bbfaa3c00aea9a1fb",
+    "retrieval_utc": "2026-10-11T13:19:51.260853+00:00"
+  },
+  {
+    "path": "Graph_Validation_V30/external/otulfi.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/otulfi-epar-product-information_en.pdf",
+    "origin": "https://www.ema.europa.eu/en/medicines/human/EPAR/otulfi",
+    "sha256": "51d14a27d138510516d084dedefac1148352951ce545b2cec2ea4585075fd3eb",
+    "retrieval_utc": "2026-10-11T13:19:51.287379+00:00"
+  },
+  {
+    "path": "Graph_Validation_V30/external/fymskina.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/fymskina-epar-product-information_en.pdf",
+    "origin": "https://www.ema.europa.eu/en/medicines/human/EPAR/fymskina",
+    "sha256": "6df26dd49966112225cba65ac9dbfc78557713473d3abb2c107fdadd53c1aa87",
+    "retrieval_utc": "2026-10-11T13:19:51.295262+00:00"
+  },
+  {
+    "path": "Graph_Validation_V30/external/wezenla.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/wezenla-epar-product-information_en.pdf",
+    "origin": "https://www.ema.europa.eu/en/medicines/human/EPAR/wezenla",
+    "sha256": "ee8a4a8f48f02ce6abe6b0d6d8b9c74092ca858a6dbb9266fd0c8cbbf48dea12",
+    "retrieval_utc": "2026-10-11T13:19:51.648151+00:00"
+  },
+  {
+    "path": "Graph_Validation_V30/external/usrenty.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/usrenty-epar-product-information_en.pdf",
+    "origin": "https://www.ema.europa.eu/en/medicines/human/EPAR/usrenty",
+    "sha256": "03db22671fed495f89773fa5943f7d192c6a0d0bb0a466d22f329c305f87ed92",
+    "retrieval_utc": "2026-10-11T13:19:51.839670+00:00"
+  },
+  {
+    "path": "Graph_Validation_V30/external/yesintek.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/yesintek-epar-product-information_en.pdf",
+    "origin": "https://www.ema.europa.eu/en/medicines/human/EPAR/yesintek",
+    "sha256": "c2eb149e2f8e0a36b990a48a3a15fc1d527af61bdadc18d590f9ad1e30614e1b",
+    "retrieval_utc": "2026-10-11T13:19:51.965851+00:00"
+  },
+  {
+    "path": "Graph_Validation_V30/external/usymro.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/usymro-epar-product-information_en.pdf",
+    "origin": "https://www.ema.europa.eu/en/medicines/human/EPAR/usymro",
+    "sha256": "274a2e52e504e4f872783b2297b7ce22f2f8fa38a366b8eaea4a5c9ad8e0746b",
+    "retrieval_utc": "2026-10-11T13:19:51.976610+00:00"
+  },
+  {
+    "path": "Graph_Validation_V30/external/pyzchiva.pdf",
+    "url": "https://www.ema.europa.eu/en/documents/product-information/pyzchiva-epar-product-information_en.pdf",
+    "origin": "https://www.ema.europa.eu/en/medicines/human/EPAR/pyzchiva",
+    "sha256": "24f42a13e263361e45daf03240bd1f30ff701ef234e4b135f72f1f3a44cecfae",
+    "retrieval_utc": "2026-10-11T13:19:52.085222+00:00"
+  },
+  {
+    "path": "Source_Refresh/input/sl.zip",
+    "url": "https://epl.bag.admin.ch/static/sl/current/excel/all/ExcelPublicationsSL,GGSLundAenderungen.zip",
+    "origin": "official later source or pinned published transformation",
+    "rights": "source rights retained"
+  },
+  {
+    "path": "Source_Refresh/input/refdata.zip",
+    "url": "https://sai.refdata.ch/download/structuredexportzip/9029",
+    "origin": "official later source or pinned published transformation",
+    "rights": "source rights retained"
+  },
+  {
+    "path": "Source_Refresh/code/05_refdata.R",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/scripts/05_refdata.R",
+    "origin": "official later source or pinned published transformation",
+    "rights": "source rights retained"
+  },
+  {
+    "path": "Source_Refresh/code/07_bag_sl.R",
+    "url": "https://raw.githubusercontent.com/teletrabbie/medi_graph/ae992d5f3e6333643bb8aaf8a646842dcca04460/src/2%20silver/scripts/07_bag_sl.R",
+    "origin": "official later source or pinned published transformation",
+    "rights": "source rights retained"
+  },
+  {
+    "path": "Source_Refresh/input/silver/sl.csv",
+    "origin": "derived from frozen official source with retained original fields and pinned transformation",
+    "rights": "source rights retained"
+  },
+  {
+    "path": "Source_Refresh/input/silver/sai_praeparate.csv",
+    "origin": "derived from frozen official source with retained original fields and pinned transformation",
+    "rights": "source rights retained"
+  }
+]

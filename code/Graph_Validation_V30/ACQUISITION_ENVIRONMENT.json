@@ -1,0 +1,7 @@
+{
+  "python": "3.12",
+  "optional_acquisition_TLS_package": "certifi",
+  "certifi_version": "2026.5.20",
+  "verification": "SSL certificate verification enabled; default interpreter CA failure corrected by explicitly using certifi CA bundle",
+  "offline_replay": "does not execute acquisition or require network; uses frozen PDFs and receipt"
+}

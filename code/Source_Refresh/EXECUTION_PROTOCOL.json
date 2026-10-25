@@ -1,0 +1,34 @@
+{
+  "status": "fixed before four-arm output evaluation",
+  "original_protocol": "next_experiment.json",
+  "population": "June frozen source inputs versus current official BAG export and Refdata export 9029, 5 October 2026; tariff frozen",
+  "arms": [
+    "Neo4j query-time",
+    "Neo4j stored witness-to-tariff edges",
+    "file-backed SQLite query-time",
+    "file-backed SQLite stored witness-to-tariff rows"
+  ],
+  "counts": {
+    "warmups": 3,
+    "retrieval_repetitions": 15,
+    "maintenance_cycles": 7,
+    "workloads": 7
+  },
+  "refresh": "Full replacement of the source-derived evidence layer; invalidation and rematerialization costs measured separately. No incremental-update claim.",
+  "adaptations": [
+    "Current BAG sheet and field names are mapped explicitly; raw columns and original spreadsheet row are retained.",
+    "SL/GGSL scope fixed; GGML excluded.",
+    "Every explicitly listed parallel-import package code exposed separately; absent identifiers remain unlinked.",
+    "SQLite reverse materialization index and ANALYZE set during June development checks."
+  ],
+  "protocol_deviations": [
+    "Sources were downloaded before implementation and June query-plan checks finished; no October four-arm results were inspected or used for tuning.",
+    "Graph extra storage measured as retained relationship count; physical allocated byte delta cannot be isolated with this deployment.",
+    "Insertion and refresh use native deployment paths (batched HTTP Neo4j versus local SQLite); retrieval transport is equal HTTP."
+  ],
+  "scripts": {
+    "code/acquire.py": "0e67d501b07f3a06ccc59842c3873c79b7973d7ae54d15a95fb877b46f09757b",
+    "code/sl_adapter.R": "1bbdb02d97f4b1b59d99564b360dc110a8eaa3b8e76da23bef95632e9ee5cfb0",
+    "code/compare.py": "81a372e95de2338baf7a81f30a803351639008f0351b2e68ead7f43406a10409"
+  }
+}

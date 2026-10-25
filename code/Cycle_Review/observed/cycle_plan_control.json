@@ -1,0 +1,387 @@
+{
+  "scope": "Three-case within-SQLite plan control on the original server and file-backed comparison database; no Neo4j rerun in this control. Three warmups and five randomized interleaved timed repetitions. Same predicates, indexes and complete answers; only loop-order control changes.",
+  "ordered_SQL": "SELECT wa.source_id first,wb.source_id second,c.source_id code FROM node p CROSS JOIN edge a ON a.t=p.id AND a.r='ABOUT_PRODUCT' CROSS JOIN edge b ON b.s=a.s AND b.r='TARGET_ATC' CROSS JOIN edge d ON d.t=b.t AND d.r='TARGET_ATC' CROSS JOIN edge e ON e.s=d.s AND e.r='ABOUT_PRODUCT' AND e.t=p.id CROSS JOIN node wa ON wa.id=a.s AND wa.label='Association' CROSS JOIN node c ON c.id=b.t AND c.label='ATCConcept' CROSS JOIN node wb ON wb.id=d.s AND wb.label='Association' WHERE p.label='ProductRef' AND p.source_id=:product AND wa.source_id<wb.source_id",
+  "cases": [
+    {
+      "parameters": {
+        "product": "CH:authorization:31096",
+        "record": "sai_praeparate.csv:7f1a6717b6b7cc0f8f56db6177821b4bbe1c4fd1c2ef3c8cee894c7334c70dfc:record:4288",
+        "target": "CH:authorization:53342"
+      },
+      "medians_ms": {
+        "automatic": 32.206461,
+        "ordered": 0.033669
+      },
+      "samples_ms": {
+        "automatic": [
+          32.206461,
+          32.180231,
+          32.305174,
+          32.197207,
+          32.401652
+        ],
+        "ordered": [
+          0.034836,
+          0.034058,
+          0.033669,
+          0.033449,
+          0.033608
+        ]
+      },
+      "automatic_plan": [
+        [
+          13,
+          0,
+          0,
+          "SEARCH p USING INDEX ni (label=? AND source_id=?)"
+        ],
+        [
+          21,
+          0,
+          0,
+          "SEARCH a USING COVERING INDEX et (t=? AND r=?)"
+        ],
+        [
+          27,
+          0,
+          0,
+          "SEARCH wa USING INDEX sqlite_autoindex_node_1 (id=?)"
+        ],
+        [
+          38,
+          0,
+          0,
+          "SEARCH wb USING INDEX ni (label=? AND source_id>?)"
+        ],
+        [
+          45,
+          0,
+          0,
+          "SEARCH b USING COVERING INDEX es (s=? AND r=?)"
+        ],
+        [
+          51,
+          0,
+          0,
+          "SEARCH c USING INDEX sqlite_autoindex_node_1 (id=?)"
+        ],
+        [
+          62,
+          0,
+          0,
+          "SEARCH d USING COVERING INDEX et (t=? AND r=? AND s=?)"
+        ],
+        [
+          76,
+          0,
+          0,
+          "SEARCH e USING COVERING INDEX et (t=? AND r=? AND s=?)"
+        ]
+      ],
+      "ordered_plan": [
+        [
+          13,
+          0,
+          0,
+          "SEARCH p USING INDEX ni (label=? AND source_id=?)"
+        ],
+        [
+          21,
+          0,
+          0,
+          "SEARCH a USING COVERING INDEX et (t=? AND r=?)"
+        ],
+        [
+          27,
+          0,
+          0,
+          "SEARCH b USING COVERING INDEX es (s=? AND r=?)"
+        ],
+        [
+          33,
+          0,
+          0,
+          "SEARCH d USING COVERING INDEX et (t=? AND r=?)"
+        ],
+        [
+          39,
+          0,
+          0,
+          "SEARCH e USING COVERING INDEX et (t=? AND r=? AND s=?)"
+        ],
+        [
+          53,
+          0,
+          0,
+          "SEARCH wa USING INDEX sqlite_autoindex_node_1 (id=?)"
+        ],
+        [
+          64,
+          0,
+          0,
+          "SEARCH c USING INDEX sqlite_autoindex_node_1 (id=?)"
+        ],
+        [
+          75,
+          0,
+          0,
+          "SEARCH wb USING INDEX sqlite_autoindex_node_1 (id=?)"
+        ]
+      ]
+    },
+    {
+      "parameters": {
+        "product": "CH:authorization:41330",
+        "record": "sai_praeparate.csv:7f1a6717b6b7cc0f8f56db6177821b4bbe1c4fd1c2ef3c8cee894c7334c70dfc:record:4153",
+        "target": "CH:authorization:57918"
+      },
+      "medians_ms": {
+        "automatic": 22.312058,
+        "ordered": 0.038392
+      },
+      "samples_ms": {
+        "automatic": [
+          22.368196,
+          22.380739,
+          22.312058,
+          22.226634,
+          22.281848
+        ],
+        "ordered": [
+          0.038221,
+          0.039405,
+          0.023229,
+          0.039248,
+          0.038392
+        ]
+      },
+      "automatic_plan": [
+        [
+          13,
+          0,
+          0,
+          "SEARCH p USING INDEX ni (label=? AND source_id=?)"
+        ],
+        [
+          21,
+          0,
+          0,
+          "SEARCH a USING COVERING INDEX et (t=? AND r=?)"
+        ],
+        [
+          27,
+          0,
+          0,
+          "SEARCH wa USING INDEX sqlite_autoindex_node_1 (id=?)"
+        ],
+        [
+          38,
+          0,
+          0,
+          "SEARCH wb USING INDEX ni (label=? AND source_id>?)"
+        ],
+        [
+          45,
+          0,
+          0,
+          "SEARCH b USING COVERING INDEX es (s=? AND r=?)"
+        ],
+        [
+          51,
+          0,
+          0,
+          "SEARCH c USING INDEX sqlite_autoindex_node_1 (id=?)"
+        ],
+        [
+          62,
+          0,
+          0,
+          "SEARCH d USING COVERING INDEX et (t=? AND r=? AND s=?)"
+        ],
+        [
+          76,
+          0,
+          0,
+          "SEARCH e USING COVERING INDEX et (t=? AND r=? AND s=?)"
+        ]
+      ],
+      "ordered_plan": [
+        [
+          13,
+          0,
+          0,
+          "SEARCH p USING INDEX ni (label=? AND source_id=?)"
+        ],
+        [
+          21,
+          0,
+          0,
+          "SEARCH a USING COVERING INDEX et (t=? AND r=?)"
+        ],
+        [
+          27,
+          0,
+          0,
+          "SEARCH b USING COVERING INDEX es (s=? AND r=?)"
+        ],
+        [
+          33,
+          0,
+          0,
+          "SEARCH d USING COVERING INDEX et (t=? AND r=?)"
+        ],
+        [
+          39,
+          0,
+          0,
+          "SEARCH e USING COVERING INDEX et (t=? AND r=? AND s=?)"
+        ],
+        [
+          53,
+          0,
+          0,
+          "SEARCH wa USING INDEX sqlite_autoindex_node_1 (id=?)"
+        ],
+        [
+          64,
+          0,
+          0,
+          "SEARCH c USING INDEX sqlite_autoindex_node_1 (id=?)"
+        ],
+        [
+          75,
+          0,
+          0,
+          "SEARCH wb USING INDEX sqlite_autoindex_node_1 (id=?)"
+        ]
+      ]
+    },
+    {
+      "parameters": {
+        "product": "CH:authorization:44470",
+        "record": "sai_praeparate.csv:7f1a6717b6b7cc0f8f56db6177821b4bbe1c4fd1c2ef3c8cee894c7334c70dfc:record:1884",
+        "target": "CH:authorization:70030"
+      },
+      "medians_ms": {
+        "automatic": 18.737489,
+        "ordered": 0.018726
+      },
+      "samples_ms": {
+        "automatic": [
+          18.741041,
+          18.751028,
+          18.658274,
+          18.737489,
+          18.722695
+        ],
+        "ordered": [
+          0.01173,
+          0.018726,
+          0.020042,
+          0.011881,
+          0.02046
+        ]
+      },
+      "automatic_plan": [
+        [
+          13,
+          0,
+          0,
+          "SEARCH p USING INDEX ni (label=? AND source_id=?)"
+        ],
+        [
+          21,
+          0,
+          0,
+          "SEARCH a USING COVERING INDEX et (t=? AND r=?)"
+        ],
+        [
+          27,
+          0,
+          0,
+          "SEARCH wa USING INDEX sqlite_autoindex_node_1 (id=?)"
+        ],
+        [
+          38,
+          0,
+          0,
+          "SEARCH wb USING INDEX ni (label=? AND source_id>?)"
+        ],
+        [
+          45,
+          0,
+          0,
+          "SEARCH b USING COVERING INDEX es (s=? AND r=?)"
+        ],
+        [
+          51,
+          0,
+          0,
+          "SEARCH c USING INDEX sqlite_autoindex_node_1 (id=?)"
+        ],
+        [
+          62,
+          0,
+          0,
+          "SEARCH d USING COVERING INDEX et (t=? AND r=? AND s=?)"
+        ],
+        [
+          76,
+          0,
+          0,
+          "SEARCH e USING COVERING INDEX et (t=? AND r=? AND s=?)"
+        ]
+      ],
+      "ordered_plan": [
+        [
+          13,
+          0,
+          0,
+          "SEARCH p USING INDEX ni (label=? AND source_id=?)"
+        ],
+        [
+          21,
+          0,
+          0,
+          "SEARCH a USING COVERING INDEX et (t=? AND r=?)"
+        ],
+        [
+          27,
+          0,
+          0,
+          "SEARCH b USING COVERING INDEX es (s=? AND r=?)"
+        ],
+        [
+          33,
+          0,
+          0,
+          "SEARCH d USING COVERING INDEX et (t=? AND r=?)"
+        ],
+        [
+          39,
+          0,
+          0,
+          "SEARCH e USING COVERING INDEX et (t=? AND r=? AND s=?)"
+        ],
+        [
+          53,
+          0,
+          0,
+          "SEARCH wa USING INDEX sqlite_autoindex_node_1 (id=?)"
+        ],
+        [
+          64,
+          0,
+          0,
+          "SEARCH c USING INDEX sqlite_autoindex_node_1 (id=?)"
+        ],
+        [
+          75,
+          0,
+          0,
+          "SEARCH wb USING INDEX sqlite_autoindex_node_1 (id=?)"
+        ]
+      ]
+    }
+  ]
+}

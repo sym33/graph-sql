@@ -1,0 +1,18 @@
+{
+  "question": "Which Swiss authorizations share recorded ATC classifications or ancestors with a selected medicine, and which connections require package-derived classifications?",
+  "status": "Exploratory within-domain transfer; design fixed before outcome extraction and native timings. Source schemas and the anchor-selection result were inspected during design.",
+  "selection": "D0 authorizations with dictionary-listed seven-character direct and package codes; group by first direct-code letter, hash-order classes using transfer-20261025:<letter>, retain first three; select minimum SHA256 transfer-20261025:<authorization> within each class.",
+  "anchors": ["70124", "69640", "55446"],
+  "snapshots": ["D0", "D1"],
+  "hierarchy": "ATC dictionary entries linked only to their immediately preceding standard prefix (lengths 1,3,4,5,7), if present; absent parent is not skipped.",
+  "scope": "Source-record classifications and common ATC ancestors; no equivalence, indication, substitution or reimbursement conclusion.",
+  "depths": [0, 2, 4],
+  "ablation": "Disable package-derived classifications on both sides; retain all product identities and the hierarchy.",
+  "reference": "Independent Python source grouping and prefix enumeration; no database outputs used to build expected answers. Full witness IDs, source-record lists, common ancestors, codes and depths retained.",
+  "controls": ["absent anchor", "missing parent edge", "remove one source kind", "no cross-replica links"],
+  "native_engines": ["Neo4j 5.26.1", "file-backed SQLite", "PostgreSQL 16"],
+  "timing": {"snapshot":"D1", "copies":[1,2,4], "warmups":2, "repetitions":9, "seed":20261025, "transport":"identical local HTTP JSON endpoint contract; backend execution, full response transfer and decoding timed; driver-specific serialization documented", "cache":"warm; no OS cache eviction", "timeout_seconds":180},
+  "scaling": "Disconnected copies of the same source-derived graph, including hierarchy; every copy is queried. Controls storage and answer-volume growth, not new medical diversity or denser topology.",
+  "updates": "D0-to-D1 answer changes reconstructed offline; additional native timings measure D1 retrieval and model loading, not the original build-refresh-retrieval scenario.",
+  "reporting": "All selected tasks, raw repetitions, plans, answer hashes, environment, construction time and rule ablation. No winner-dependent task selection or post-timing tuning. Any implementation repairs logged separately."
+}

@@ -1,0 +1,16 @@
+{
+ "question":"Does the source-bound comparison procedure retain correct peer answers across the full eligible Swiss authorization population and a separate ChEMBL molecule corpus, and how do real-entity growth and SQL formulation affect retrieval?",
+ "status":"Exploratory extension fixed before new census outcomes and native measurements. Prior three-anchor and copy-size results informed design. Frozen ChEMBL files were previously used as an external classification reference; this is not a held-out clinical validation dataset.",
+ "corpora":["Swiss_D1","ChEMBL_37"],
+ "admission":"All source entities with at least one dictionary-listed seven-character ATC code. Swiss entities are authorization records; ChEMBL entities are molecule records, not inferred Swiss medicines or merged chemical parent families.",
+ "reference":"Separate SQL source projections check every classification witness and premise. Python prefix enumeration and independently expressed SQLite closure queries compare all directed anchor-peer memberships at depths 0,2,4, including every eligible anchor.",
+ "native_anchors":"For every represented first-level ATC group, in lexical group order, select the unselected entity with minimum SHA256 of breadth-20261025:<corpus>:<group>:<entity>. All selected anchors remain in every size subset.",
+ "growth":"Nested 10%,40%,100% hash-ranked real entities plus anchors. No copies or invented links. Hierarchy is the ancestor-closed set of codes used by admitted source entities in each subset. Shared-node degree, source mix, branch occupancy and genuine entity diversity may change.",
+ "depths":[0,2,4],
+ "fractions":[0.1,0.4,1.0],
+ "arms":["Neo4j","SQLite_global","SQLite_anchored","PostgreSQL_global","PostgreSQL_anchored"],
+ "timing":{"warmups":2,"repetitions":9,"seed":20261025,"timeout_seconds":180,"transport":"Single local HTTP JSON response; full retrieval and decoding; backend-specific native HTTP or SQL bridge; sorting and correctness outside timer.","cache":"Warm; no OS-cache eviction."},
+ "ablations":"Swiss: remove package classifications. ChEMBL: retain one lexically first admitted code per molecule, a declared information-loss control rather than a clinical policy.",
+ "scope":"Classification membership only; shared ATC hierarchy is reused. External-source transfer, not proof across unrelated ontologies or clinical decision domains.",
+ "reporting":"All census anchors, exclusions, pair counts and hashes; all native tasks, raw repetitions, plans, degree/branch statistics and source hashes. Retain initial pilot as development evidence; replace rather than duplicate its main-text summary. No outcome-dependent tuning or task selection."
+}

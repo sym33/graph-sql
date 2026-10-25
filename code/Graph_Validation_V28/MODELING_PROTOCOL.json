@@ -1,0 +1,17 @@
+{
+  "status": "Executable artifact audit; human evaluation specified but not conducted",
+  "artifact_population": "All five frozen V27 SQL/Cypher task pairs; none selected by favorable code length",
+  "automated_outcomes": ["Exact query characters and lexical tokens", "Deterministic token edit counts for L1-to-L2, L2-to-L3, L3-to-L4 and L1-to-L5", "Existing normalized tables and graph labels/relationships reused across tasks", "Complete-output correctness checked by the storage benchmark"],
+  "human_design": {
+    "participants": "Database practitioners; record prior SQL, Cypher and medication-domain experience",
+    "assignment": "Counterbalance language order; assign different matched tasks per participant to reduce answer recall; randomize task order",
+    "materials": "Equivalent schema diagrams, data dictionaries, task wording and frozen source inputs; identical access to documentation",
+    "comprehension_tasks": ["Identify exact source premises for a tariff witness", "Distinguish repeated explanations from distinct candidate pairs", "Explain why same-tariff peer reachability does not imply therapeutic interchangeability"],
+    "change_tasks": ["Extend candidate retrieval to return source snapshots", "Extend source-lineage retrieval to return rule/dictionary context", "Add combined classification-path context with the common authorization premise"],
+    "primary_outcomes": ["Correct completed task proportion", "Elapsed time from task display to first fully correct submission"],
+    "secondary_outcomes": ["Number of incorrect submissions", "Self-rated mental workload using a preselected scale"],
+    "scoring": "Task-specific expected complete outputs from the independent Python source oracle; comprehension answers scored using a frozen rubric by assessors blinded to representation",
+    "analysis": "Report participant-level paired results and uncertainty; account for experience and task/order; determine sample size from a declared practically meaningful effect before recruitment"
+  },
+  "interpretation": "Artifact size is implementation-specific and is not a surrogate for comprehension or authoring effort. No human advantage is claimed from this audit."
+}

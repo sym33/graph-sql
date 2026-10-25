@@ -1,0 +1,18 @@
+{
+  "recorded_utc": "2026-10-11T13:56:58.549536+00:00",
+  "design": "Retrospective EMA machine-cost ranking: first three timed extractions calibrate costs, four later repetitions evaluate sum of extraction components. Nine already complete inventories, budgets1/2/5/9; compare cost order, name order and 128 seeded random orders; all resolve16 questions per inventory. Planning, route parsing, network and human review outside this cost. Separate from prospective equal-field protocol.",
+  "prior_information": "First source/planning cost run known; quantity ranking outcomes and all inventory availabilities known. This cost-aware experiment is retrospective.",
+  "repeats": 7,
+  "calibration_indices": [
+    0,
+    1,
+    2
+  ],
+  "evaluation_indices": [
+    3,
+    4,
+    5,
+    6
+  ],
+  "no_human_cost_claim": true
+}

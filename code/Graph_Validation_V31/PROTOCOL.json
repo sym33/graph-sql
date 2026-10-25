@@ -1,0 +1,38 @@
+{
+  "frozen_utc": "2026-10-11T13:47:21.859047+00:00",
+  "prior_information": "All V30 results known. Source column names, tariff unit frequencies and first 15 linked package descriptions inspected. New unit-question outcomes, policy comparisons, costs and rule perturbations not computed. This is an explicitly designed extension, not an independent preregistration.",
+  "kernel_sha256": "4e65a224e80d28780af31f2af6f10ee97fdb53aa6dadf0def8e05ab50256d625",
+  "question": "Does a tariff-linked SL presentation explicitly document a strength numerator in the mass family required by a mass-denominated tariff?",
+  "population": "Every V30 Swiss medication-tariff question in both snapshots; retain missing bridges, all ambiguous units and every package. Fixed keys.",
+  "vocabulary": [
+    "MASS",
+    "ACTIVITY",
+    "VOLUME",
+    "OTHER"
+  ],
+  "rules": "Numeric amount followed by g/mg/mcg/ug/\u00b5g is MASS, IU/UI/I.E./IE is ACTIVITY; standalone mL is VOLUME; incomplete or mixed non-mass strengths are unknown. Concentration numerators count as MASS without claiming total/administered dose. Tariff mg/g/mcg maps MASS; U/AN/UD remain uninterpreted. Generic U is not equated with IU. Exact token offsets and record hashes retained.",
+  "sensitivity": "Report every candidate transition when concentration numerators are withheld; mass-prefix normalization disabled; generic tariff U is interpreted as activity (alternative assumption); witness aggregation made universal; Swiss route family projection or formulation restrictions substituted. All variants, not best subset.",
+  "comparators": "Unchanged completion bounds vs unresolved-degree on all eligible mass/activity fields, 128 random orders, costs measured separately. Designed control: field A affects 3 questions each with another missing witness; field D affects 2 sole-witness questions. Exhaust all 4 singleton A/D actual assignments. Budget 1; nuisance witness remains unknown. Retain both policy wins and losses.",
+  "timing": "Seven repeated warm-cache local runs; record PDF subprocess extraction per 13 documents, CSV full read/decode, and selector-only runtimes. Also allocation costs per source record from CSV measured scan (explicit equal-share proxy). No human-effort inference. Timing output observational; deterministic scientific outputs compared separately.",
+  "human_effort": "Prepared randomized field-review form with start/end/active time, reused documents, success/unknown, analyst ID; actual human review pending. Never substitute machine milliseconds for human minutes.",
+  "budgets": [
+    1,
+    2,
+    5,
+    10,
+    20
+  ],
+  "random_orders": 128,
+  "seed": 31011,
+  "acceptance": "All questions, variants, costs and fixture assignments reported. Full independent SQL checks; kernel hash unchanged. No favorable-effect acceptance criterion.",
+  "adapter_correction": {
+    "utc": "2026-10-11T13:48:53.493169+00:00",
+    "prior_information": "Initial run inspected. Withholding concentration numerator incorrectly made container mL a negative strength witness. Corrected volume-only records to unknown; all initial outputs archived. Population, comparators, budgets and unit assumptions unchanged.",
+    "reason": "Container volume alone is not a complete active-strength field and cannot warrant conflict."
+  },
+  "stronger_comparator_addendum": {
+    "utc": "2026-10-11T13:50:27.215890+00:00",
+    "prior_information": "Initial unit-task budget results known: raw degree prioritizes uninterpreted tariff units.",
+    "definition": "Add exploratory interpreted-degree arm that counts only unresolved questions with nonempty fully interpreted options. Keep every original arm and budget. This tests whether simple semantic filtering explains the observed bound-versus-raw-degree difference."
+  }
+}

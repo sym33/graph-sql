@@ -1,0 +1,9 @@
+@prefix ex: <https://example.org/medigraph-validation/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+ex:ValueShape a sh:NodeShape; sh:targetClass ex:Claim;
+sh:property [sh:path ex:witness; sh:minCount 1; sh:maxCount 1; sh:equals ex:expected_witness];
+sh:property [sh:path ex:subject; sh:minCount 1; sh:maxCount 1; sh:equals ex:expected_subject];
+sh:property [sh:path ex:atc; sh:minCount 1; sh:maxCount 1; sh:equals ex:expected_atc];
+sh:property [sh:path ex:rule; sh:minCount 1; sh:maxCount 1; sh:equals ex:expected_rule];
+sh:property [sh:path ex:jurisdiction; sh:minCount 1; sh:maxCount 1; sh:equals ex:expected_jurisdiction].

@@ -1,0 +1,22 @@
+{
+  "frozen_utc": "2026-10-11T11:11:28.114231+00:00",
+  "target": "Application retrieval latency for equal-information complete explanation queries; not database-engine-only latency or human effort",
+  "workloads": [
+    "direct",
+    "alternative_source",
+    "historical_context"
+  ],
+  "warmups_per_workload_engine": 3,
+  "measured_repetitions_per_workload_engine": 15,
+  "seed": 26011,
+  "order": "Seeded shuffle of workload-engine pairs in each repetition",
+  "engines": "In-process SQLite, SQLite localhost HTTP and Neo4j localhost HTTP, all on same server. HTTP arms use identical response envelope; different server stacks remain.",
+  "cache": "Warm operational cache; no OS-cache flushing or cold-cache claim",
+  "timed_boundary": "Execute retrieval and fully consume returned rows; canonical normalization and digest verification recorded separately",
+  "acceptance": "Every complete normalized output equals source reconstruction and both implementations; zero tolerated differences",
+  "extension_measure": "Number of distinct retrieval-query texts across pre-existing scope extensions, not authoring time or general extensibility",
+  "query_source_sha256": "73689349dc382748e445834f8a1996b5af44229aa43f54f1b1ee07da3e8135d6",
+  "scope": "Existing June data; no scale extrapolation, human-effort or universal engine-speed claim",
+  "parent_protocol_sha256": "d09472b635776b31fd78c3ed03ab1b1e03df9bd4845ebf6763c6a0ee245a9b9f",
+  "addendum": "Third HTTP arm fixed after inspecting initial two-arm timing, before collecting any SQLite HTTP measurements. Same workloads, repeats, seed, exact outputs."
+}

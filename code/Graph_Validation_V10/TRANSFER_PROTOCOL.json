@@ -1,0 +1,49 @@
+{
+  "recorded_utc": "2026-10-10T12:11:04.797990+00:00",
+  "status": "locally fixed extension after inspection of V9 results; exploratory within-setting transfer, not independent prospective validation",
+  "relation": "source-bound IndicationAssertion",
+  "populations": [
+    "baseline",
+    "June two-source replay"
+  ],
+  "input_SHA256": {
+    "baseline": {
+      "sai_praeparate.csv": "5988e558d5319cf8d6edc51cb4e3c03c32d7e61106b4c13d5c8dde92fc28a8b9",
+      "ema_products.csv": "d2d7f1e1c73f7a432eae532eb7e999cd9c588664a5424a38660e81b40c80e14d",
+      "gBA_icd.csv": "0da2331c0cc9f471a8e17009a547d05ec4cfd2c93de02ef5ee2f83944bfd1a39"
+    },
+    "June": {
+      "sai_praeparate.csv": "21ab964f09219334f48439535f4ddfc708127c3d3e01bdbce807b64edbaceabe",
+      "ema_products.csv": "d2d7f1e1c73f7a432eae532eb7e999cd9c588664a5424a38660e81b40c80e14d",
+      "gBA_icd.csv": "0da2331c0cc9f471a8e17009a547d05ec4cfd2c93de02ef5ee2f83944bfd1a39"
+    }
+  },
+  "reference": "separately written CSV/SQL indication projection; shared source and specification; no graph exports as reference",
+  "claim_population": "all indication witnesses; 13 transformations each",
+  "ablations": [
+    "complete",
+    "omit_source_binding",
+    "omit_physical_endpoints",
+    "omit_claim_fields",
+    "omit_scope"
+  ],
+  "operation_labels": "faithful VERIFIED; four asserted field changes CONTRADICTED; three unsupported scope kinds, snapshot/time changes, missing evidence, coherent source modification, endpoint corruption UNDETERMINED",
+  "natural_cases": "all 22 configured raw/curated overrides; raw, curated, current-authorized targets; selection fixed from V9, not held-out",
+  "review": "single reviewer; blank human labels retained; no completed review inferred",
+  "external_reproduction": "runnable smoke check and acceptance criteria; no independent execution inferred",
+  "code_SHA256": {
+    "typed_contract.py": "cd660c5f8e6144a18a78bb8b4fbb518b2d00bcf455ec89f2cac8e077ea65f10f",
+    "export_indications.py": "edef570f7d1e4f9a7a220f4955856b96c546728e3cbc7988d24f9996521ced85",
+    "run_indication_transfer.py": "9d202834ad8754fd1a40c0d5a9e7c594a35c383a2390ba25e622b8292efa72f9",
+    "indication_reference.py": "07a790857188f164d84f5c4c283ee92553de21ebdea98f66e0b2e4c63f1264de"
+  },
+  "implementation_amendments": [
+    {
+      "utc": "2026-10-10T12:11:24.830231+00:00",
+      "reason": "Correct SQLite INSERT placeholder count before physical transfer or claim evaluation; scientific policy unchanged",
+      "file": "indication_reference.py",
+      "prior_sha256": "45af1d0c405a653114d7783cf3c20fa256fa2a5b054eb668df703b960cfeb0d5",
+      "revised_sha256": "07a790857188f164d84f5c4c283ee92553de21ebdea98f66e0b2e4c63f1264de"
+    }
+  ]
+}

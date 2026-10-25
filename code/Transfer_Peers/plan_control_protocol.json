@@ -1,0 +1,35 @@
+{
+  "status": "Exploratory query-formulation control, designed after initial native size-1 and size-2 results; fixed before native anchored-query timings. Offline implementation checks used SQLite ANALYZE after an unanalysed development check stalled.",
+  "reason": "Initial SQL computes the ancestor relation for all recorded leaf codes. Cypher starts at selected medicines. Compare an anchored recursive SQL formulation with the initial formulation to test the execution consequence of this algebraic choice.",
+  "unchanged": [
+    "source inputs",
+    "complete output contract",
+    "hierarchy depth",
+    "indexes",
+    "engine settings",
+    "replication sizes"
+  ],
+  "arms": [
+    "Neo4j",
+    "SQLite",
+    "SQLite_anchored",
+    "PostgreSQL",
+    "PostgreSQL_anchored"
+  ],
+  "timing": {
+    "copies": [
+      1,
+      2,
+      4
+    ],
+    "depths": [
+      0,
+      2,
+      4
+    ],
+    "warmups": 2,
+    "repetitions": 9,
+    "seed": 20261026
+  },
+  "reporting": "Retain initial run; interleave all five variants in the follow-up. Claim query-formulation effects, not a preregistered engine winner."
+}

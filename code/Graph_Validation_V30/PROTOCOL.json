@@ -1,0 +1,128 @@
+{
+  "frozen_utc": "2026-10-11T13:17:20.272820+00:00",
+  "prior_information": "Earlier Swiss and five-medicine L04AC07 outcomes known. Ustekinumab metadata identities inspected; new label inventories, bounds, policy outcomes and baseline transfer counts not computed.",
+  "question": "Can one unmodified finite-completion kernel preserve determinate judgments and certify single-field gains across Swiss snapshots and a new European label-inventory question? How do bound-based, degree-based and random acquisition orders compare at equal field budgets?",
+  "kernel_sha256": "4e65a224e80d28780af31f2af6f10ee97fdb53aa6dadf0def8e05ab50256d625",
+  "heldout_cohort": [
+    {
+      "ordinal": 50,
+      "name": "Uzpruvo",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/uzpruvo",
+      "ATC": "L04AC05"
+    },
+    {
+      "ordinal": 59,
+      "name": "Usgena",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/usgena",
+      "ATC": "L04AC05"
+    },
+    {
+      "ordinal": 99,
+      "name": "Stelara",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/stelara",
+      "ATC": "L04AC05"
+    },
+    {
+      "ordinal": 147,
+      "name": "Steqeyma",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/steqeyma",
+      "ATC": "L04AC05"
+    },
+    {
+      "ordinal": 148,
+      "name": "Qoyvolma",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/qoyvolma",
+      "ATC": "L04AC05"
+    },
+    {
+      "ordinal": 216,
+      "name": "Imuldosa",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/imuldosa",
+      "ATC": "L04AC05"
+    },
+    {
+      "ordinal": 236,
+      "name": "Otulfi",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/otulfi",
+      "ATC": "L04AC05"
+    },
+    {
+      "ordinal": 402,
+      "name": "Fymskina",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/fymskina",
+      "ATC": "L04AC05"
+    },
+    {
+      "ordinal": 430,
+      "name": "Wezenla",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/wezenla",
+      "ATC": "L04AC05"
+    },
+    {
+      "ordinal": 436,
+      "name": "Usrenty",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/usrenty",
+      "ATC": "L04AC05"
+    },
+    {
+      "ordinal": 441,
+      "name": "Yesintek",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/yesintek",
+      "ATC": "L04AC05"
+    },
+    {
+      "ordinal": 640,
+      "name": "Usymro",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/usymro",
+      "ATC": "L04AC05"
+    },
+    {
+      "ordinal": 807,
+      "name": "Pyzchiva",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/pyzchiva",
+      "ATC": "L04AC05"
+    }
+  ],
+  "source_sha256": "d2d7f1e1c73f7a432eae532eb7e999cd9c588664a5424a38660e81b40c80e14d",
+  "heldout_selection": "All exact L04AC05 EMA entries in the frozen metadata. Cohort chosen for source-format and target-question transfer; not randomly selected. No exclusions based on available documents or favorable routes.",
+  "label_extraction": "Use unchanged V25 section-5 heading/title/end boundaries and route patterns. Preserve unavailable document or incomplete/unrecognized fields as unavailable; account for every medicine. Confirm staged ATC against complete SmPC ATC-code fields.",
+  "query_population": "Ordered pairs of different cohort medicines and each source-documented route. Target inventory must be complete before noncoverage can be asserted. Query keys frozen before masking, as in the earlier EMA transfer task.",
+  "possibilities": {
+    "oral": [
+      "O"
+    ],
+    "parenteral": [
+      "IV",
+      "SC",
+      "IM",
+      "IT",
+      "OTHER_PAREN"
+    ],
+    "unknown": [
+      "O",
+      "IV",
+      "SC",
+      "IM",
+      "IT",
+      "SR",
+      "Inhal",
+      "ET",
+      "OTHER"
+    ]
+  },
+  "kernel_assumptions": "Fixed query keys and option sets; immutable records; all admitted nonempty field values enumerated; independent possibilities for distinct fields; shared field revelations propagated to all affected questions; missing witnesses stay unavailable. Bounds conditional on modeled possibilities and a successfully acquired nonempty exact field.",
+  "masked_budget_evaluation": "Mask all eligible explicit parenteral Swiss fields simultaneously and all complete EMA target inventories. Never expose held-out actual values to selectors. Recompute min/max bounds after each revelation. Compare adaptive bound-first order, adaptive unresolved-degree order and 128 seeded random orders. Equal unit field costs; no human-time claim.",
+  "budgets": [
+    1,
+    2,
+    5,
+    10,
+    20,
+    37
+  ],
+  "random_orders": 128,
+  "seed": 30011,
+  "reference_checks": "Independent SQL expression for every path and aggregate; finite possible-world controls; sharpness via explicit attaining completions; preservation under valid revelations; fully restored outputs must match original.",
+  "temporal_transfer": "Run the unchanged kernel on the baseline and June Swiss snapshots; report overlap and changed candidate keys. This is a dependent temporal replay, not independent-team replication.",
+  "acceptance": "Complete accounting and output consistency, regardless of favorable policy advantage. All arms and all budgets retained."
+}

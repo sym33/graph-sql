@@ -1,0 +1,66 @@
+{
+  "frozen_before_document_retrieval_utc": "2026-10-10T20:09:17.055732+00:00",
+  "scope": "All five retained EMA rows with exact L04AC07; full product cohort, not all tocilizumab products worldwide or all current EMA medicines.",
+  "question": "Which directed same-ATC medicine candidates cover an explicitly recorded administration route, and which distinctions disappear under a parenteral-family projection?",
+  "source_sha256": "d2d7f1e1c73f7a432eae532eb7e999cd9c588664a5424a38660e81b40c80e14d",
+  "cohort": [
+    {
+      "ordinal": 200,
+      "name": "RoActemra",
+      "substance": "tocilizumab",
+      "ATC": "L04AC07",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/roactemra"
+    },
+    {
+      "ordinal": 372,
+      "name": "Tuyory",
+      "substance": "tocilizumab",
+      "ATC": "L04AC07",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/tuyory"
+    },
+    {
+      "ordinal": 490,
+      "name": "Tocilizumab STADA (previously Tofidence)",
+      "substance": "tocilizumab",
+      "ATC": "L04AC07",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/tocilizumab-stada"
+    },
+    {
+      "ordinal": 546,
+      "name": "Avtozma",
+      "substance": "tocilizumab",
+      "ATC": "L04AC07",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/avtozma"
+    },
+    {
+      "ordinal": 945,
+      "name": "Tyenne",
+      "substance": "tocilizumab",
+      "ATC": "L04AC07",
+      "page_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/tyenne"
+    }
+  ],
+  "prior_knowledge": "RoActemra IV and SC formulations known from official search. Other cohort documents not inspected. Existing Swiss route findings known. Locally prospective transfer specification, not external preregistration.",
+  "new_context": "EU medicine-to-medicine recorded-route coverage, compared with Swiss authorization-to-tariff route support. No clinical substitution or Swiss eligibility target.",
+  "field_scope": "All complete label section 5 route fields bound to preceding label section 1 product title and closing section 6 warning heading; field 1 on small containers is excluded and counted separately where observable.",
+  "routes": [
+    "IV",
+    "SC",
+    "IM",
+    "IT",
+    "O"
+  ],
+  "positive_field_lines": "Standalone positive route declarations with optional for, only or after preparation qualifier; negative and conditional declarations withheld. Existing section-4.2 assertion matcher unchanged and compared at medicine-route set level.",
+  "primary_candidate_unit": "Directed source medicine, different target medicine, source documented route; require same exact staged ATC. Every primary candidate retained.",
+  "exact_decision": "VERIFIED when target label inventory explicitly includes source route; CONTRADICTED when target has a nonempty complete declared route inventory with disjoint recorded routes; UNDETERMINED when source or target inventory unavailable. Target is documentary route inventory membership, not clinical suitability.",
+  "coarse_decision": "IV,SC,IM,IT project to parenteral; O to oral. Same decision rule applied to projected inventories.",
+  "checks": [
+    "Complete cohort retrieval/accounting including failed documents",
+    "EMA SmPC ATC field comparison for every cohort medicine",
+    "Native graph and independent relational candidate-set agreement",
+    "Label removal produces unavailable assessments, not conflict",
+    "All assessments bind snapshot/document/field identities",
+    "Unchanged previous Swiss experiment results"
+  ],
+  "interpretation": "Route absence in this complete scoped label census is documentary noncoverage, not an assertion that treatment substitution is contraindicated or that approval elsewhere is absent."
+}

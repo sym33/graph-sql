@@ -1,0 +1,28 @@
+{
+  "source_states": [
+    "june",
+    "later"
+  ],
+  "population": "Every package record contributing route evidence to a documentary candidate in either frozen state; each state evaluated separately.",
+  "identifier_robustness": [
+    "missing authorization",
+    "dangling authorization",
+    "missing classification",
+    "unmatched classification",
+    "valid identifier reassignment",
+    "masked route"
+  ],
+  "priority_sensitivity": "All six permutations of conflict, missing exact route and missing formulation; package-link prerequisite held first. Report the route-before-formulation subset separately.",
+  "update_tests": [
+    "delete package",
+    "replace classification",
+    "mask route fields",
+    "insert identical-content package with new source identity"
+  ],
+  "oracles": "Independent Python adjacency and SQL joins; shared route-policy adapter; original populations reconciled with practical_analysis; stale-cache negative controls and restoration checks.",
+  "missing_identifier_control": "Inject a product and package with co-missing authorization; compare guarded admission with unrestricted equality.",
+  "acceptance": "Exact agreement of all evidence-bearing answers; destructive missingness must add no candidate keys; every eligible record update must invalidate the complete cached answer; restored source state must reproduce its baseline.",
+  "interpretation": "Valid identifier reassignment is deliberately not assumed detectable by exact equality; report introduced candidate and path occurrences. Not a clinical accuracy reference standard. Counts reuse source records and are dependent engineering trials.",
+  "execution": "Local SQLite and Python graph-reference cache. Existing native Neo4j refresh evidence remains separate.",
+  "scenario_identity": "Frozen files remain immutable. Field-level scenarios retain source-record coordinates to isolate dependency changes; per-trial output digests identify the resulting hypothetical answers. No new official source snapshot is claimed."
+}
