@@ -14,7 +14,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "8a9ea0cfb52af6a0d2b8985d870a6d4748a971d4456f970e7a8d3212fce97dec"
+      "sha256": "2138858b3272b4af1e9bfcf99b4e315abec88e753101631c8ac1120e21ecaba9"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -651,6 +651,38 @@
     {
       "path": "requirements.txt",
       "sha256": "d8c37a2dc2580699a456a380ca7195842b2855be85deb0bca8b98919f2f423bd"
+    },
+    {
+      "path": "revisions/2026-11-20/MANIFEST.json",
+      "sha256": "f3cb838b4a0d70904ac26eebf8a8350c929c56c74f107991baebf640de7058c0"
+    },
+    {
+      "path": "revisions/2026-11-20/Manuskript.md",
+      "sha256": "2faff9478c26ea30df4cf6e1d5cd72b651bb7fcf2e72d697164935a63ca3754d"
+    },
+    {
+      "path": "revisions/2026-11-20/Manuskript.pdf",
+      "sha256": "418a01dfdecd112887b99970acc16d0354e7d03bffe58ccf1d57a1d699cc2150"
+    },
+    {
+      "path": "revisions/2026-11-20/Manuskript_LaTeX.zip",
+      "sha256": "67b18e8e4f76679abde5c26c90a0eb2351110a72b97910adea2f6295b4bb69a8"
+    },
+    {
+      "path": "revisions/2026-11-20/README.md",
+      "sha256": "e17d5cadb1838c34d3cf8c6fa1b4b4e3d6443186fcb7d948b34eaecde943802a"
+    },
+    {
+      "path": "revisions/2026-11-20/Supplement.md",
+      "sha256": "45ee1b6a8367af14c13e1e3ab7e1f2d3bf4feae0807049f0d119184545f2148f"
+    },
+    {
+      "path": "revisions/2026-11-20/Supplement.pdf",
+      "sha256": "fbed93b61d54106653ad9aa9ce66aad589e4631eb00721ba8bc4e9a52b42defd"
+    },
+    {
+      "path": "revisions/2026-11-20/Supplementary_Data.zip",
+      "sha256": "4a520eb1378135cd04e7a9e2a5eae559a698dea99b9edec1c30a5fb3acaaaee7"
     }
   ]
 }

@@ -2,7 +2,7 @@
 
 Reproduce source-linked medication–tariff review and ATC classification-peer
 retrieval with Neo4j, SQLite and PostgreSQL. Contains code, frozen inputs,
-protocols and recorded measurements; no manuscript or generated databases.
+protocols and recorded measurements. The [20 November 2026 revision](revisions/2026-11-20/) adds the clean manuscript, compact supplement and indexed supplementary evidence. Generated databases are not included.
 
 ## Run
 

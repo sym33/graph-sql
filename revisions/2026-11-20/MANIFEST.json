@@ -1,0 +1,32 @@
+{
+  "files": [
+    {
+      "path": "Manuskript.md",
+      "sha256": "2faff9478c26ea30df4cf6e1d5cd72b651bb7fcf2e72d697164935a63ca3754d"
+    },
+    {
+      "path": "Manuskript.pdf",
+      "sha256": "418a01dfdecd112887b99970acc16d0354e7d03bffe58ccf1d57a1d699cc2150"
+    },
+    {
+      "path": "Manuskript_LaTeX.zip",
+      "sha256": "67b18e8e4f76679abde5c26c90a0eb2351110a72b97910adea2f6295b4bb69a8"
+    },
+    {
+      "path": "README.md",
+      "sha256": "e17d5cadb1838c34d3cf8c6fa1b4b4e3d6443186fcb7d948b34eaecde943802a"
+    },
+    {
+      "path": "Supplement.md",
+      "sha256": "45ee1b6a8367af14c13e1e3ab7e1f2d3bf4feae0807049f0d119184545f2148f"
+    },
+    {
+      "path": "Supplement.pdf",
+      "sha256": "fbed93b61d54106653ad9aa9ce66aad589e4631eb00721ba8bc4e9a52b42defd"
+    },
+    {
+      "path": "Supplementary_Data.zip",
+      "sha256": "4a520eb1378135cd04e7a9e2a5eae559a698dea99b9edec1c30a5fb3acaaaee7"
+    }
+  ]
+}
