@@ -1,9 +1,7 @@
-# Revised manuscript and supplementary evidence — 20 November 2026
+# Study data and analysis code
 
-This directory contains the current clean manuscript, its LaTeX source package, and the compact supplementary document (sections S1–S11, six pages). The Markdown files are editable text sources. Supplementary_Data.zip contains an INDEX.csv linking S1–S11 to detailed documents, six original evidence archives, and a SHA-256 manifest.
+The study files include full tables, raw measurements, queries, source coordinates, protocols and verification scripts for supplementary sections S1–S11. The included `INDEX.csv` shows where to find each item. [Download the study data and analysis code](https://github.com/sym33/graph-sql/blob/4f545fa88794eedf22aff85d09e0e580ea3b5a73/revisions/2026-11-20/Supplementary_Data.zip).
 
-The frozen base reproduction package remains at commit fac0a0290155b952a7e44cd73371cfcc6cd27ee5 and https://doi.org/10.5281/zenodo.23646927 (v1.0.0). The supplementary evidence extends that base. No new experiments were performed during the editorial consolidation; the withdrawn extension series and S12 are excluded.
+S9 provides the calculations for 600 workload scenarios. S10 and S11 provide the measured retrieval and lifecycle controls, including equal-budget experiments and the cost decomposition. The base data and code are available as [Zenodo v1.0.0](https://doi.org/10.5281/zenodo.23646927) and at the [corresponding GitHub commit](https://github.com/sym33/graph-sql/tree/fac0a0290155b952a7e44cd73371cfcc6cd27ee5).
 
-For saved-result verification, extract the relevant component archive and follow its README. Native database timing requires the specified software, frozen base and adaptation of historical paths. Offline verification does not remeasure latency. Retrieved full product-information documents are not redistributed. Original study code is MIT-licensed; third-party material retains its respective rights.
-
-The editorial cover letter, reviewer correspondence and internal working archive are not included here. The manuscript records the study limitations and AI assistance disclosure.
+To verify the saved results, extract the relevant ZIP file and follow its README. Rerunning the timing experiments requires the specified software, frozen inputs and adaptation of the recorded paths. Original study software is MIT-licensed. Third-party material retains its respective rights.
